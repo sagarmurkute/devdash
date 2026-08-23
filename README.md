@@ -1,6 +1,13 @@
 # ⚡ DevDash — Modern Developer Command Center
 
-A futuristic, high-performance developer dashboard built with **Vanilla HTML5, CSS3, and Modern JavaScript (ES6+)**. Designed for engineering productivity, daily habit tracking, coding volume analytics, and streak preservation with zero external build tool dependencies.
+> **Architected, Designed & Built with Precision by [Sagar Murkute](https://github.com/sagarmurkute)**.
+
+A futuristic, high-performance developer dashboard and newsletter-inspired engineering roadmap built with **Vanilla HTML5, CSS3, and Modern JavaScript (ES6+)**. Designed for engineering productivity, daily habit tracking, coding volume analytics, and streak preservation with zero external build tool dependencies.
+
+---
+
+## 📰 DevDash Dispatch: The 100-Feature Roadmap
+Explore the official **[100 Engineering Capabilities Roadmap (`roadmap.html`)](roadmap.html)** covering AI Copilots, DevOps automation, AST diagnostics, cloud monitoring, and security scanners.
 
 ---
 

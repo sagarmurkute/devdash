@@ -57,9 +57,14 @@ class HeaderClock {
           <span class="swiss-tag">SYS // DEVDASH</span>
           <h1 class="greeting-text">${this.getGreeting()}, ${username}</h1>
         </div>
-        <div class="motivation-line">
-          <span>“${currentQuote.quote}”</span>
-          <span class="quote-author">// ${currentQuote.author}</span>
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <div class="motivation-line">
+            <span>“${currentQuote.quote}”</span>
+            <span class="quote-author">// ${currentQuote.author}</span>
+          </div>
+          <a href="roadmap.html" class="btn btn-primary btn-sm" style="font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.04em;">
+            <i class="ph ph-newspaper"></i> DISPATCH // 100 ROADMAP
+          </a>
         </div>
       </div>
 

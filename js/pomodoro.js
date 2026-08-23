@@ -188,6 +188,12 @@ class PomodoroTimer {
     if (this.currentMode === 'pomodoro') {
       this.completedSessions++;
       this.totalFocusMinutes += this.modes.pomodoro.minutes;
+
+      // Automatically log 25m (0.42h) to Daily Coding Hours Tracker
+      if (window.CodingHoursInstance) {
+        window.CodingHoursInstance.logTime(0.4, 'JavaScript');
+      }
+
       this.setMode('short');
     } else {
       this.setMode('pomodoro');

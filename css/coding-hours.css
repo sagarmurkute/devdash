@@ -1,0 +1,95 @@
+/* Daily Coding Hours Styles */
+.coding-hours-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.hours-main-display {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.hours-metric {
+  display: flex;
+  flex-direction: column;
+}
+
+.hours-number {
+  font-family: var(--font-mono);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.1;
+  display: flex;
+  align-items: baseline;
+  gap: 0.3rem;
+}
+
+.hours-target {
+  font-size: 1rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.hours-subtext {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.hours-quick-log {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Progress bar */
+.hours-progress-track {
+  width: 100%;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+  display: flex;
+}
+
+.hours-progress-fill {
+  height: 100%;
+  transition: width var(--transition-normal);
+}
+
+/* Language breakdown */
+.lang-breakdown-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.lang-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+}
+
+.lang-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.lang-color-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.lang-hours {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--text-primary);
+}

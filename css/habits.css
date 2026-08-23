@@ -1,0 +1,82 @@
+/* Developer Habit Tracker Styles */
+.habits-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.habits-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+}
+
+.habits-table th {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.habits-table th:first-child {
+  text-align: left;
+}
+
+.habits-table td {
+  padding: 0.6rem 0.5rem;
+  border-top: 1px solid var(--border-glass);
+  text-align: center;
+}
+
+.habit-name-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-align: left;
+}
+
+.habit-icon {
+  color: var(--accent-cyan);
+  font-size: 1rem;
+}
+
+.habit-streak-pill {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent-amber);
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+/* Habit Checkbox Circle */
+.habit-check-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border-glass);
+  background: rgba(255, 255, 255, 0.02);
+  color: transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  transition: all var(--transition-fast);
+}
+
+.habit-check-btn:hover {
+  border-color: var(--accent-primary);
+  transform: scale(1.1);
+}
+
+.habit-check-btn.checked {
+  background: var(--accent-emerald);
+  border-color: var(--accent-emerald);
+  color: #ffffff;
+  box-shadow: 0 0 10px var(--accent-emerald-glow);
+}

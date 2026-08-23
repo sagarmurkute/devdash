@@ -1,0 +1,93 @@
+/* Notes & Ideas Vault Styles */
+.notes-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.notes-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.notes-search-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  padding: 0.4rem 0.75rem;
+  flex: 1;
+  min-width: 180px;
+}
+
+.notes-search-input {
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-size: 0.82rem;
+  font-family: inherit;
+  outline: none;
+  width: 100%;
+}
+
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 0.75rem;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.note-item-card {
+  background: rgba(15, 23, 42, 0.45);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  padding: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.5rem;
+  transition: all var(--transition-fast);
+}
+
+.note-item-card:hover {
+  border-color: var(--border-glass-hover);
+  background: rgba(15, 23, 42, 0.8);
+}
+
+.note-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.note-title {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  line-height: 1.25;
+}
+
+.note-content {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  line-height: 1.35;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.note-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--border-glass);
+  padding-top: 0.45rem;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}

@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DevDash | Modern Developer Dashboard</title>
-  <meta name="description" content="A feature-rich, high-performance vanilla developer dashboard with GitHub streak heatmap, sprint kanban, pomodoro timer, and developer utilities.">
+  <title>DevDash | Developer Command Center</title>
+  <meta name="description" content="A feature-rich developer dashboard with GitHub streak matrix, daily coding hours, active projects, habit matrix, notes vault, and weekly analytics.">
 
   <!-- Google Fonts: Inter & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <!-- Phosphor Icons for crisp developer symbols -->
+  <!-- Phosphor Icons -->
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
   <!-- Core CSS -->
@@ -21,6 +21,11 @@
   <link rel="stylesheet" href="css/header.css">
   <link rel="stylesheet" href="css/command-palette.css">
   <link rel="stylesheet" href="css/github-widget.css">
+  <link rel="stylesheet" href="css/coding-hours.css">
+  <link rel="stylesheet" href="css/projects.css">
+  <link rel="stylesheet" href="css/habits.css">
+  <link rel="stylesheet" href="css/notes.css">
+  <link rel="stylesheet" href="css/analytics.css">
   <link rel="stylesheet" href="css/kanban.css">
   <link rel="stylesheet" href="css/pomodoro.css">
   <link rel="stylesheet" href="css/toolbox.css">
@@ -30,39 +35,60 @@
   <div class="app-container">
     <!-- Main Content Area -->
     <main class="main-content">
-      <!-- Dynamic Header / Timezone Bar (Commit 2) -->
+      <!-- Dynamic Header / Timezone Bar -->
       <header id="main-header" class="header-container"></header>
 
       <!-- Dashboard Grid of Interactive Widgets -->
       <section class="dashboard-grid">
-        <!-- GitHub Matrix & Stats (Commit 4) -->
+        <!-- 1. GitHub Matrix & Streak (Full Width) -->
         <div id="github-widget-container" class="col-span-12"></div>
 
-        <!-- Kanban Sprint Planner (Commit 5) -->
-        <div id="kanban-widget-container" class="col-span-7"></div>
+        <!-- 2. Daily Coding Hours Tracker & Language Breakdown -->
+        <div id="coding-hours-container" class="col-span-6"></div>
 
-        <!-- Pomodoro Focus Station (Commit 6) -->
+        <!-- 3. Weekly Analytics & Engineering Velocity -->
+        <div id="analytics-widget-container" class="col-span-6"></div>
+
+        <!-- 4. Projects in Progress Tracker (Full Width) -->
+        <div id="projects-widget-container" class="col-span-12"></div>
+
+        <!-- 5. Developer Habit Tracker (7-day Matrix) -->
+        <div id="habits-widget-container" class="col-span-7"></div>
+
+        <!-- 6. Pomodoro Focus Station -->
         <div id="pomodoro-widget-container" class="col-span-5"></div>
 
-        <!-- Dev Utilities & Code Vault (Commit 7) -->
+        <!-- 7. Kanban Sprint Tasks -->
+        <div id="kanban-widget-container" class="col-span-7"></div>
+
+        <!-- 8. Notes & Ideas Vault -->
+        <div id="notes-widget-container" class="col-span-5"></div>
+
+        <!-- 9. Dev Utilities & Code Vault -->
         <div id="toolbox-widget-container" class="col-span-7"></div>
 
-        <!-- System Port Monitor & Tech News (Commit 8) -->
+        <!-- 10. System Port Monitor & Tech News -->
         <div id="side-widgets-container" class="col-span-5"></div>
       </section>
     </main>
   </div>
 
-  <!-- Command Palette Modal (Commit 3) -->
+  <!-- Command Palette Modal -->
   <div id="command-palette-modal" class="modal-overlay"></div>
 
-  <!-- Toolbox Modal for Fullscreen Tools -->
+  <!-- Unified Dialog Modal -->
   <div id="toolbox-modal" class="modal-overlay"></div>
 
   <!-- JavaScript Modules -->
+  <script src="js/storage.js"></script>
   <script src="js/clock.js"></script>
   <script src="js/command-palette.js"></script>
   <script src="js/github-widget.js"></script>
+  <script src="js/coding-hours.js"></script>
+  <script src="js/analytics.js"></script>
+  <script src="js/projects.js"></script>
+  <script src="js/habits.js"></script>
+  <script src="js/notes.js"></script>
   <script src="js/kanban.js"></script>
   <script src="js/pomodoro.js"></script>
   <script src="js/toolbox.js"></script>

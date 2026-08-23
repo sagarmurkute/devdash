@@ -73,6 +73,15 @@ class CommandPalette {
         run: () => window.GithubWidgetInstance?.simulateCommit()
       },
       {
+        id: 'toggle-theme',
+        title: 'Toggle Minimal Light / Dark Theme',
+        desc: 'Switch between minimal light mode and cyber dark mode',
+        icon: 'ph-sun',
+        category: 'Theme',
+        badge: 'T',
+        run: () => window.headerClockInstance?.toggleTheme()
+      },
+      {
         id: 'toggle-fullscreen',
         title: 'Toggle Fullscreen Mode',
         desc: 'Expand DevDash to distraction-free fullscreen',

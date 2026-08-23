@@ -6,6 +6,8 @@
 class HeaderClock {
   constructor(containerId = 'main-header') {
     this.container = document.getElementById(containerId);
+    this.currentTheme = localStorage.getItem('devdash_theme') || 'light';
+    this.applyTheme(this.currentTheme);
     this.timezones = [
       { label: 'Local', tz: Intl.DateTimeFormat().resolvedOptions().timeZone },
       { label: 'UTC', tz: 'UTC' },
@@ -14,6 +16,21 @@ class HeaderClock {
       { label: 'TKY (JST)', tz: 'Asia/Tokyo' }
     ];
     this.init();
+  }
+
+  applyTheme(theme) {
+    this.currentTheme = theme;
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('devdash_theme', theme);
+    const icon = document.getElementById('theme-toggle-icon');
+    if (icon) {
+      icon.className = `ph ${theme === 'light' ? 'ph-moon' : 'ph-sun'}`;
+    }
+  }
+
+  toggleTheme() {
+    const nextTheme = this.currentTheme === 'light' ? 'dark' : 'light';
+    this.applyTheme(nextTheme);
   }
 
   getGreeting() {
@@ -64,6 +81,9 @@ class HeaderClock {
       </div>
 
       <div class="header-actions">
+        <button class="btn-icon" id="btn-toggle-theme" title="Toggle Light/Dark Theme">
+          <i class="ph ${this.currentTheme === 'light' ? 'ph-moon' : 'ph-sun'}" id="theme-toggle-icon"></i>
+        </button>
         <button class="cmd-shortcut-badge" id="btn-open-cmd" title="Open Command Palette (Ctrl+K)">
           <i class="ph ph-command"></i>
           <span>Command</span>
@@ -76,6 +96,11 @@ class HeaderClock {
     `;
 
     // Hook up buttons
+    const themeBtn = document.getElementById('btn-toggle-theme');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => this.toggleTheme());
+    }
+
     const cmdBtn = document.getElementById('btn-open-cmd');
     if (cmdBtn) {
       cmdBtn.addEventListener('click', () => {

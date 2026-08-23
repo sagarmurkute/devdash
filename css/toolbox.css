@@ -1,0 +1,105 @@
+/* Dev Toolbox Styles */
+.toolbox-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.toolbox-tabs {
+  display: flex;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--border-glass);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.toolbox-tab-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all var(--transition-fast);
+}
+
+.toolbox-tab-btn.active {
+  background: rgba(99, 102, 241, 0.15);
+  color: var(--accent-primary);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+.toolbox-tab-content {
+  display: none;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.toolbox-tab-content.active {
+  display: flex;
+}
+
+/* Tool Actions Bar */
+.tool-actions-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* Snippet Vault Items */
+.snippet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 0.75rem;
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.snippet-card {
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.5rem;
+  transition: all var(--transition-fast);
+}
+
+.snippet-card:hover {
+  border-color: var(--border-glass-hover);
+  background: rgba(15, 23, 42, 0.8);
+}
+
+.snippet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.snippet-title {
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--text-primary);
+}
+
+.snippet-code-preview {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.4rem 0.6rem;
+  border-radius: var(--radius-sm);
+  white-space: pre;
+  overflow-x: auto;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}

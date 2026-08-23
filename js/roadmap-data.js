@@ -173,14 +173,8 @@ class RoadmapRenderer {
     this.countBadge = document.getElementById('feature-count-badge');
     this.upvotes = JSON.parse(localStorage.getItem('devdash_roadmap_upvotes') || '{}');
     this.unlockedSections = JSON.parse(localStorage.getItem('devdash_unlocked_sections') || '{}');
-    this.openSections = {}; // All closed by default
     this.searchQuery = '';
     this.init();
-  }
-
-  toggleSection(catIdx) {
-    this.openSections[catIdx] = !this.openSections[catIdx];
-    this.render();
   }
 
   unlockSection(catIdx) {
@@ -207,23 +201,23 @@ class RoadmapRenderer {
 
       if (filteredFeatures.length === 0) return '';
 
-      const isOpen = !!this.openSections[catIdx] || !!query;
       const isUnlocked = !!this.unlockedSections[catIdx];
+      const autoOpen = query.length > 0 ? 'open' : '';
 
       return `
-        <div class="roadmap-category-block ${isOpen ? 'open' : ''}" data-cat="${catIdx}">
-          <!-- Accordion Toggle Button -->
-          <button class="category-header-btn" data-toggle="${catIdx}">
+        <details class="roadmap-accordion-item" ${autoOpen} data-cat="${catIdx}">
+          <!-- Native Accordion Header Dropdown -->
+          <summary>
             <div class="category-title-group">
               <span class="category-num">// SECTION ${cat.num}</span>
-              <h3 class="category-title">${cat.category}</h3>
+              <span class="category-title">${cat.category}</span>
               <span class="badge badge-indigo" style="font-size: 0.65rem;">${filteredFeatures.length} Specs</span>
             </div>
-            <i class="ph ph-caret-down category-chevron"></i>
-          </button>
+            <i class="ph ph-caret-down accordion-chevron"></i>
+          </summary>
 
           <!-- Collapsible Content -->
-          <div class="category-content-body">
+          <div class="accordion-content-inner">
             <!-- Star Repository Gate Banner -->
             <div class="star-repo-gate-banner">
               <div class="gate-left">
@@ -234,21 +228,21 @@ class RoadmapRenderer {
                 </div>
               </div>
               <div class="gate-actions">
-                <a href="https://github.com/sagarmurkute/devdash" target="_blank" class="btn btn-primary btn-sm" onclick="setTimeout(() => window.roadmapInstance.unlockSection(${catIdx}), 800)">
+                <a href="https://github.com/sagarmurkute/devdash" target="_blank" class="btn btn-primary btn-sm" onclick="setTimeout(() => window.roadmapInstance.unlockSection(${catIdx}), 600)">
                   <i class="ph ph-star"></i> Star on GitHub
                 </a>
-                <button class="btn btn-secondary btn-sm btn-unlock-gate" data-cat="${catIdx}">
-                  ${isUnlocked ? '<i class="ph ph-check"></i> Unlocked' : '<i class="ph ph-lock-key-open"></i> Reveal Specs'}
+                <button type="button" class="btn btn-secondary btn-sm btn-unlock-gate" data-cat="${catIdx}">
+                  ${isUnlocked ? '<i class="ph ph-check"></i> Unlocked' : '<i class="ph ph-lock-key-open"></i> Reveal 10 Features'}
                 </button>
               </div>
             </div>
 
             <!-- Features Grid (Gated or Visible) -->
             ${!isUnlocked ? `
-              <div style="padding: 1.5rem; text-align: center; background: var(--bg-tertiary); border: 1px solid var(--border-glass); font-size: 0.8rem; color: var(--text-secondary);">
-                <i class="ph ph-lock-key" style="font-size: 1.5rem; color: var(--text-muted); display: block; margin-bottom: 0.4rem;"></i>
-                <strong>${filteredFeatures.length} Detailed Engineering Specifications Hidden</strong>
-                <p style="font-size: 0.72rem; color: var(--text-muted); margin-top: 0.25rem;">Click "Star on GitHub" or "Reveal Specs" above to preview full implementation breakdowns and vote.</p>
+              <div class="locked-features-box">
+                <i class="ph ph-lock-key"></i>
+                <div style="font-weight: 700; margin-bottom: 0.25rem;">10 Detailed Engineering Specifications Hidden</div>
+                <p style="font-size: 0.75rem; color: var(--text-muted);">Please star the repository on GitHub or click "Reveal 10 Features" above to view full technical breakdowns and vote.</p>
               </div>
             ` : `
               <div class="feature-list">
@@ -261,7 +255,7 @@ class RoadmapRenderer {
                       <div>
                         <div class="feature-top">
                           <span class="feature-id">SPEC #${f.id}</span>
-                          <span class="badge badge-emerald">Ready to Build</span>
+                          <span class="badge badge-emerald">Planned</span>
                         </div>
                         <div class="feature-name">${f.name}</div>
                         <div class="feature-desc">${f.desc}</div>
@@ -269,7 +263,7 @@ class RoadmapRenderer {
 
                       <div class="feature-footer">
                         <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-muted);">Priority: High</span>
-                        <button class="btn-upvote ${isVoted ? 'voted' : ''}" data-id="${f.id}">
+                        <button type="button" class="btn-upvote ${isVoted ? 'voted' : ''}" data-id="${f.id}">
                           <i class="ph ${isVoted ? 'ph-check' : 'ph-thumbs-up'}"></i>
                           <span>${voteCount}</span>
                         </button>
@@ -280,7 +274,7 @@ class RoadmapRenderer {
               </div>
             `}
           </div>
-        </div>
+        </details>
       `;
     }).join('');
 
@@ -299,17 +293,10 @@ class RoadmapRenderer {
       };
     }
 
-    // Accordion Header Click Listeners
-    this.container.querySelectorAll('.category-header-btn').forEach(btn => {
-      btn.onclick = (e) => {
-        const catIdx = btn.getAttribute('data-toggle');
-        this.toggleSection(catIdx);
-      };
-    });
-
     // Unlock Gate Buttons
     this.container.querySelectorAll('.btn-unlock-gate').forEach(btn => {
       btn.onclick = (e) => {
+        e.preventDefault();
         e.stopPropagation();
         const catIdx = btn.getAttribute('data-cat');
         this.unlockSection(catIdx);
@@ -319,6 +306,7 @@ class RoadmapRenderer {
     // Upvote Buttons
     this.container.querySelectorAll('.btn-upvote').forEach(btn => {
       btn.onclick = (e) => {
+        e.preventDefault();
         e.stopPropagation();
         const id = btn.getAttribute('data-id');
         this.upvotes[id] = !this.upvotes[id];
@@ -333,6 +321,5 @@ class RoadmapRenderer {
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  window.roadmapInstance = new RoadmapRenderer();
-});
+// Instantiate immediately and safely
+window.roadmapInstance = new RoadmapRenderer();

@@ -15,20 +15,20 @@
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
   <!-- Core CSS -->
-  <link rel="stylesheet" href="css/variables.css">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/roadmap.css">
+  <link rel="stylesheet" href="css/variables.css?v=3">
+  <link rel="stylesheet" href="css/base.css?v=3">
+  <link rel="stylesheet" href="css/components.css?v=3">
+  <link rel="stylesheet" href="css/roadmap.css?v=3">
 </head>
 <body>
   <div class="newsletter-wrapper">
     <!-- Editorial Masthead -->
     <header class="masthead">
       <div class="masthead-top">
-        <div>DEVDASH DISPATCH &bull; ISSUE #01 &bull; SPECIAL EDITION</div>
+        <div>DEVDASH DISPATCH &bull; ISSUE #01 &bull; ROADMAP SPECIAL</div>
         <nav class="masthead-nav">
           <a href="index.html"><i class="ph ph-arrow-left"></i> BACK TO DASHBOARD</a>
-          <button class="btn-icon" id="btn-toggle-theme" title="Toggle Theme" style="height: 24px; width: 24px;">
+          <button class="btn-icon" id="btn-toggle-theme" title="Toggle Theme" style="height: 26px; width: 26px;">
             <i class="ph ph-sun" id="theme-toggle-icon"></i>
           </button>
         </nav>
@@ -54,7 +54,7 @@
           <i class="ph ph-github-logo"></i> @sagarmurkute
         </a>
         <a href="https://github.com/sagarmurkute/devdash" target="_blank" class="btn btn-primary btn-sm">
-          <i class="ph ph-star"></i> Star DevDash
+          <i class="ph ph-star"></i> Star on GitHub
         </a>
       </div>
     </section>
@@ -79,8 +79,8 @@
     <main>
       <div class="roadmap-controls">
         <div>
-          <h2 style="font-size: 1.4rem; font-weight: 800; letter-spacing: -0.03em;">The 100-Feature Matrix</h2>
-          <p style="font-size: 0.75rem; color: var(--text-secondary);">Filter through all 100 planned modules for upcoming releases.</p>
+          <h2 style="font-size: 1.3rem; font-weight: 800; letter-spacing: -0.03em;">The 100-Feature Matrix</h2>
+          <p style="font-size: 0.75rem; color: var(--text-secondary);">All 10 category dropdowns are closed by default. Open any section and star the repo to unlock feature specs.</p>
         </div>
         <div style="display: flex; gap: 0.5rem; align-items: center;">
           <input type="text" class="roadmap-search-input" id="roadmap-search" placeholder="Search 100 features..." />
@@ -104,7 +104,7 @@
     </footer>
   </div>
 
-  <script src="js/roadmap-data.js"></script>
+  <script src="js/roadmap-data.js?v=3"></script>
   <script>
     // Theme sync
     const currentTheme = localStorage.getItem('devdash_theme') || 'light';

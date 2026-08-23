@@ -2,7 +2,7 @@
 .newsletter-wrapper {
   max-width: 1040px;
   margin: 0 auto;
-  padding: 2.5rem 1.5rem 5rem 1.5rem;
+  padding: 2rem 1.5rem 5rem 1.5rem;
 }
 
 /* Editorial Masthead */
@@ -170,27 +170,30 @@
   outline: none;
 }
 
-/* Collapsible Dropdown Accordion Section */
-.roadmap-category-block {
-  margin-bottom: 0.75rem;
+/* Native HTML5 Accordion Dropdown Block */
+.roadmap-accordion-item {
+  margin-bottom: 0.65rem;
   border: 1px solid var(--border-glass);
   background: var(--bg-secondary);
 }
 
-.category-header-btn {
-  width: 100%;
-  padding: 1rem 1.25rem;
+.roadmap-accordion-item summary {
+  padding: 0.9rem 1.25rem;
   background: var(--bg-secondary);
-  border: none;
+  cursor: pointer;
+  list-style: none;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  cursor: pointer;
-  text-align: left;
+  user-select: none;
   transition: background var(--transition-fast);
 }
 
-.category-header-btn:hover {
+.roadmap-accordion-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.roadmap-accordion-item summary:hover {
   background: var(--bg-tertiary);
 }
 
@@ -201,7 +204,7 @@
 }
 
 .category-title {
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 700;
   color: var(--text-primary);
   letter-spacing: -0.02em;
@@ -214,31 +217,26 @@
   font-weight: 700;
 }
 
-.category-chevron {
-  font-size: 1rem;
+.accordion-chevron {
+  font-size: 0.9rem;
   color: var(--text-secondary);
   transition: transform var(--transition-normal);
 }
 
-.roadmap-category-block.open .category-chevron {
+.roadmap-accordion-item[open] .accordion-chevron {
   transform: rotate(180deg);
 }
 
-/* Collapsible Content Area (Closed by default) */
-.category-content-body {
-  display: none;
+/* Content Area inside details */
+.accordion-content-inner {
   padding: 0 1.25rem 1.25rem 1.25rem;
   border-top: 1px solid var(--border-glass);
-}
-
-.roadmap-category-block.open .category-content-body {
-  display: block;
 }
 
 /* Star Repository Gate Banner */
 .star-repo-gate-banner {
   background: var(--bg-tertiary);
-  border: 1px dashed var(--border-glass-hover);
+  border: 1px dashed var(--text-primary);
   padding: 1.25rem;
   margin-top: 1rem;
   margin-bottom: 1.25rem;
@@ -261,9 +259,10 @@
 }
 
 .gate-title {
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   font-weight: 700;
   color: var(--text-primary);
+  letter-spacing: -0.015em;
 }
 
 .gate-sub {
@@ -275,6 +274,22 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+
+/* Hidden locked features notice */
+.locked-features-box {
+  padding: 1.75rem;
+  text-align: center;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-glass);
+  color: var(--text-secondary);
+}
+
+.locked-features-box i {
+  font-size: 1.8rem;
+  color: var(--accent-amber);
+  display: block;
+  margin-bottom: 0.5rem;
 }
 
 /* Feature cards grid */

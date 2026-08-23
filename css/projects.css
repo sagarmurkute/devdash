@@ -1,4 +1,4 @@
-/* Projects In Progress Styles */
+/* Projects In Progress - OpenAI Minimal Styles */
 .projects-card {
   display: flex;
   flex-direction: column;
@@ -7,44 +7,42 @@
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 .project-item-card {
-  background: rgba(15, 23, 42, 0.45);
+  background: var(--bg-secondary);
   border: 1px solid var(--border-glass);
-  border-radius: var(--radius-md);
-  padding: 1rem;
+  border-radius: var(--radius-sm);
+  padding: 0.9rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 0.75rem;
-  transition: all var(--transition-normal);
+  gap: 0.65rem;
+  transition: border-color var(--transition-fast);
 }
 
 .project-item-card:hover {
-  background: rgba(15, 23, 42, 0.85);
-  border-color: var(--border-glass-hover);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  border-color: #737373;
 }
 
 .project-top-row {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 0.5rem;
+  gap: 0.4rem;
 }
 
 .project-title {
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   font-weight: 600;
   color: var(--text-primary);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.2rem;
+  letter-spacing: -0.01em;
 }
 
 .project-desc {
-  font-size: 0.75rem;
+  font-size: 0.73rem;
   color: var(--text-secondary);
   line-height: 1.35;
 }
@@ -52,35 +50,35 @@
 .project-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.35rem;
-  margin: 0.4rem 0;
+  gap: 0.3rem;
+  margin: 0.35rem 0;
 }
 
 .project-progress-wrap {
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: 0.25rem;
 }
 
 .project-progress-header {
   display: flex;
   justify-content: space-between;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   color: var(--text-muted);
 }
 
 .project-progress-bar {
   width: 100%;
-  height: 6px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: var(--radius-full);
+  height: 4px;
+  background: var(--bg-tertiary);
+  border-radius: 1px;
   overflow: hidden;
 }
 
 .project-progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--accent-primary) 0%, var(--accent-cyan) 100%);
-  border-radius: var(--radius-full);
+  background: var(--text-primary);
+  border-radius: 1px;
   transition: width var(--transition-smooth);
 }
 
@@ -89,23 +87,23 @@
   align-items: center;
   justify-content: space-between;
   border-top: 1px solid var(--border-glass);
-  padding-top: 0.6rem;
-  font-size: 0.75rem;
+  padding-top: 0.5rem;
+  font-size: 0.72rem;
 }
 
 .project-links {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.35rem;
 }
 
 .project-link-btn {
   color: var(--text-secondary);
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   transition: color var(--transition-fast);
 }
 
 .project-link-btn:hover {
-  color: var(--accent-cyan);
+  color: var(--text-primary);
 }

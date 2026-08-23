@@ -1,4 +1,4 @@
-/* Weekly Analytics Styles */
+/* Weekly Analytics - OpenAI Minimal Styles */
 .analytics-card {
   display: flex;
   flex-direction: column;
@@ -7,41 +7,41 @@
 .analytics-stats-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0.75rem;
-  margin-bottom: 1.25rem;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .stat-metric-card {
-  background: rgba(15, 23, 42, 0.4);
+  background: var(--bg-tertiary);
   border: 1px solid var(--border-glass);
-  border-radius: var(--radius-md);
-  padding: 0.75rem;
+  border-radius: var(--radius-sm);
+  padding: 0.6rem;
   text-align: center;
 }
 
 .stat-metric-val {
   font-family: var(--font-mono);
-  font-size: 1.3rem;
-  font-weight: 700;
+  font-size: 1.15rem;
+  font-weight: 600;
   color: var(--text-primary);
 }
 
 .stat-metric-lbl {
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   color: var(--text-muted);
 }
 
-/* Weekly Chart Bar Chart */
+/* Weekly Bar Chart */
 .chart-container {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  height: 140px;
-  padding: 1rem 0.5rem 0.5rem 0.5rem;
-  background: rgba(15, 23, 42, 0.3);
+  height: 120px;
+  padding: 0.75rem 0.5rem 0.4rem 0.5rem;
+  background: var(--bg-secondary);
   border: 1px solid var(--border-glass);
-  border-radius: var(--radius-md);
-  gap: 0.5rem;
+  border-radius: var(--radius-sm);
+  gap: 0.4rem;
 }
 
 .chart-bar-group {
@@ -51,15 +51,15 @@
   flex: 1;
   height: 100%;
   justify-content: flex-end;
-  gap: 0.4rem;
+  gap: 0.35rem;
 }
 
 .chart-bar-wrapper {
   width: 100%;
-  max-width: 32px;
-  height: 90px;
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: var(--radius-sm);
+  max-width: 24px;
+  height: 80px;
+  background: var(--bg-tertiary);
+  border-radius: 1px;
   display: flex;
   align-items: flex-end;
   overflow: hidden;
@@ -68,24 +68,14 @@
 
 .chart-bar-fill {
   width: 100%;
-  background: linear-gradient(180deg, var(--accent-cyan) 0%, var(--accent-primary) 100%);
-  border-radius: var(--radius-sm);
+  background: var(--text-primary);
+  border-radius: 1px;
   transition: height var(--transition-smooth);
 }
 
-.chart-bar-val {
-  position: absolute;
-  top: 2px;
-  left: 0;
-  right: 0;
-  text-align: center;
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  color: var(--text-secondary);
-}
-
 .chart-day-label {
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   color: var(--text-muted);
   font-weight: 500;
+  font-family: var(--font-mono);
 }

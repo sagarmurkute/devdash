@@ -1,4 +1,4 @@
-/* Developer Habit Tracker Styles */
+/* Developer Habit Tracker - OpenAI Minimal Styles */
 .habits-card {
   display: flex;
   flex-direction: column;
@@ -7,16 +7,18 @@
 .habits-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 0.5rem;
+  margin-top: 0.25rem;
 }
 
 .habits-table th {
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 600;
   text-transform: uppercase;
   color: var(--text-muted);
-  padding: 0.5rem;
+  padding: 0.4rem;
   text-align: center;
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
 }
 
 .habits-table th:first-child {
@@ -24,7 +26,7 @@
 }
 
 .habits-table td {
-  padding: 0.6rem 0.5rem;
+  padding: 0.5rem 0.4rem;
   border-top: 1px solid var(--border-glass);
   text-align: center;
 }
@@ -32,51 +34,49 @@
 .habit-name-cell {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  font-size: 0.82rem;
+  gap: 0.5rem;
+  font-size: 0.8rem;
   font-weight: 500;
   color: var(--text-primary);
   text-align: left;
 }
 
 .habit-icon {
-  color: var(--accent-cyan);
-  font-size: 1rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
 }
 
 .habit-streak-pill {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--accent-amber);
+  font-size: 0.68rem;
+  color: var(--text-secondary);
   display: flex;
   align-items: center;
   gap: 0.2rem;
 }
 
-/* Habit Checkbox Circle */
+/* Sharp Square Habit Checkbox */
 .habit-check-btn {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  border: 1.5px solid var(--border-glass);
-  background: rgba(255, 255, 255, 0.02);
+  width: 22px;
+  height: 22px;
+  border-radius: 2px;
+  border: 1px solid var(--border-glass);
+  background: var(--bg-secondary);
   color: transparent;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   transition: all var(--transition-fast);
 }
 
 .habit-check-btn:hover {
-  border-color: var(--accent-primary);
-  transform: scale(1.1);
+  border-color: var(--text-primary);
 }
 
 .habit-check-btn.checked {
-  background: var(--accent-emerald);
-  border-color: var(--accent-emerald);
+  background: var(--accent-sage);
+  border-color: var(--accent-sage);
   color: #ffffff;
-  box-shadow: 0 0 10px var(--accent-emerald-glow);
 }

@@ -1,4 +1,4 @@
-/* Base Reset & Global Styles */
+/* Base Reset & Global Styles (OpenAI Inspired Minimal Aesthetic) */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -12,35 +12,11 @@ html, body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
   font-family: var(--font-sans);
-  font-size: 14px;
+  font-size: 13.5px;
   line-height: 1.5;
+  letter-spacing: -0.011em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-/* Background Ambient Lighting Effect */
-body::before {
-  content: '';
-  position: fixed;
-  top: -150px;
-  left: 20%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, rgba(99, 102, 241, 0) 70%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-body::after {
-  content: '';
-  position: fixed;
-  bottom: -150px;
-  right: 15%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(6, 182, 212, 0.08) 0%, rgba(6, 182, 212, 0) 70%);
-  pointer-events: none;
-  z-index: 0;
 }
 
 /* App Container Layout */
@@ -48,7 +24,7 @@ body::after {
   display: flex;
   min-height: 100vh;
   position: relative;
-  z-index: 1;
+  background-color: var(--bg-primary);
 }
 
 /* Main Dashboard Area */
@@ -57,15 +33,17 @@ body::after {
   display: flex;
   flex-direction: column;
   min-width: 0;
-  padding: 1.5rem 2rem 3rem 2rem;
-  gap: 1.5rem;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  gap: 1.25rem;
 }
 
 /* Dashboard Grid Layout */
 .dashboard-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  gap: 1.25rem;
+  gap: 1rem;
   width: 100%;
 }
 
@@ -78,22 +56,22 @@ body::after {
 .col-span-3  { grid-column: span 3; }
 
 @media (max-width: 1200px) {
-  .col-span-8, .col-span-7, .col-span-5, .col-span-4 {
+  .col-span-8, .col-span-7, .col-span-6, .col-span-5, .col-span-4 {
     grid-column: span 12;
   }
 }
 
-/* Scrollbars */
+/* Minimal Architectural Scrollbars */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 4px;
+  height: 4px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-primary);
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--bg-tertiary);
-  border-radius: var(--radius-full);
+  background: var(--border-glass);
+  border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--text-muted);

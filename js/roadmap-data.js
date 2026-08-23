@@ -150,7 +150,7 @@ const ROADMAP_DATA = [
   },
   {
     category: "Platform Integrations, DB Sync & Offline Native",
-    num: "09",
+    num: "10",
     features: [
       { id: "091", name: "PostgreSQL / Supabase Cloud Database Sync Engine", desc: "Sync DevDash tasks and hours across all your developer devices." },
       { id: "092", name: "Linear & Jira Issue Tracker Bi-Directional Bridge", desc: "Pull assigned tickets directly onto the DevDash sprint board." },
@@ -172,8 +172,21 @@ class RoadmapRenderer {
     this.searchInput = document.getElementById('roadmap-search');
     this.countBadge = document.getElementById('feature-count-badge');
     this.upvotes = JSON.parse(localStorage.getItem('devdash_roadmap_upvotes') || '{}');
+    this.unlockedSections = JSON.parse(localStorage.getItem('devdash_unlocked_sections') || '{}');
+    this.openSections = {}; // All closed by default
     this.searchQuery = '';
     this.init();
+  }
+
+  toggleSection(catIdx) {
+    this.openSections[catIdx] = !this.openSections[catIdx];
+    this.render();
+  }
+
+  unlockSection(catIdx) {
+    this.unlockedSections[catIdx] = true;
+    localStorage.setItem('devdash_unlocked_sections', JSON.stringify(this.unlockedSections));
+    this.render();
   }
 
   render() {
@@ -194,41 +207,80 @@ class RoadmapRenderer {
 
       if (filteredFeatures.length === 0) return '';
 
+      const isOpen = !!this.openSections[catIdx] || !!query;
+      const isUnlocked = !!this.unlockedSections[catIdx];
+
       return `
-        <section class="roadmap-category-block">
-          <div class="category-header">
-            <h3 class="category-title">${cat.category}</h3>
-            <span class="category-num">// SECTION ${cat.num}</span>
-          </div>
+        <div class="roadmap-category-block ${isOpen ? 'open' : ''}" data-cat="${catIdx}">
+          <!-- Accordion Toggle Button -->
+          <button class="category-header-btn" data-toggle="${catIdx}">
+            <div class="category-title-group">
+              <span class="category-num">// SECTION ${cat.num}</span>
+              <h3 class="category-title">${cat.category}</h3>
+              <span class="badge badge-indigo" style="font-size: 0.65rem;">${filteredFeatures.length} Specs</span>
+            </div>
+            <i class="ph ph-caret-down category-chevron"></i>
+          </button>
 
-          <div class="feature-list">
-            ${filteredFeatures.map(f => {
-              const isVoted = !!this.upvotes[f.id];
-              const voteCount = (parseInt(f.id, 10) % 7) + (isVoted ? 1 : 0) + 12;
-
-              return `
-                <div class="feature-card" data-id="${f.id}">
-                  <div>
-                    <div class="feature-top">
-                      <span class="feature-id">FEATURE #${f.id}</span>
-                      <span class="badge badge-indigo">Planned</span>
-                    </div>
-                    <div class="feature-name">${f.name}</div>
-                    <div class="feature-desc">${f.desc}</div>
-                  </div>
-
-                  <div class="feature-footer">
-                    <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-muted);">Priority: High</span>
-                    <button class="btn-upvote ${isVoted ? 'voted' : ''}" data-id="${f.id}">
-                      <i class="ph ${isVoted ? 'ph-check' : 'ph-thumbs-up'}"></i>
-                      <span>${voteCount}</span>
-                    </button>
-                  </div>
+          <!-- Collapsible Content -->
+          <div class="category-content-body">
+            <!-- Star Repository Gate Banner -->
+            <div class="star-repo-gate-banner">
+              <div class="gate-left">
+                <i class="ph ph-star-four gate-icon"></i>
+                <div>
+                  <div class="gate-title">Star Repository on GitHub to Unlock Full Feature Specs & Vote</div>
+                  <div class="gate-sub">Support DevDash open-source development by Sagar Murkute on GitHub.</div>
                 </div>
-              `;
-            }).join('')}
+              </div>
+              <div class="gate-actions">
+                <a href="https://github.com/sagarmurkute/devdash" target="_blank" class="btn btn-primary btn-sm" onclick="setTimeout(() => window.roadmapInstance.unlockSection(${catIdx}), 800)">
+                  <i class="ph ph-star"></i> Star on GitHub
+                </a>
+                <button class="btn btn-secondary btn-sm btn-unlock-gate" data-cat="${catIdx}">
+                  ${isUnlocked ? '<i class="ph ph-check"></i> Unlocked' : '<i class="ph ph-lock-key-open"></i> Reveal Specs'}
+                </button>
+              </div>
+            </div>
+
+            <!-- Features Grid (Gated or Visible) -->
+            ${!isUnlocked ? `
+              <div style="padding: 1.5rem; text-align: center; background: var(--bg-tertiary); border: 1px solid var(--border-glass); font-size: 0.8rem; color: var(--text-secondary);">
+                <i class="ph ph-lock-key" style="font-size: 1.5rem; color: var(--text-muted); display: block; margin-bottom: 0.4rem;"></i>
+                <strong>${filteredFeatures.length} Detailed Engineering Specifications Hidden</strong>
+                <p style="font-size: 0.72rem; color: var(--text-muted); margin-top: 0.25rem;">Click "Star on GitHub" or "Reveal Specs" above to preview full implementation breakdowns and vote.</p>
+              </div>
+            ` : `
+              <div class="feature-list">
+                ${filteredFeatures.map(f => {
+                  const isVoted = !!this.upvotes[f.id];
+                  const voteCount = (parseInt(f.id, 10) % 7) + (isVoted ? 1 : 0) + 14;
+
+                  return `
+                    <div class="feature-card" data-id="${f.id}">
+                      <div>
+                        <div class="feature-top">
+                          <span class="feature-id">SPEC #${f.id}</span>
+                          <span class="badge badge-emerald">Ready to Build</span>
+                        </div>
+                        <div class="feature-name">${f.name}</div>
+                        <div class="feature-desc">${f.desc}</div>
+                      </div>
+
+                      <div class="feature-footer">
+                        <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-muted);">Priority: High</span>
+                        <button class="btn-upvote ${isVoted ? 'voted' : ''}" data-id="${f.id}">
+                          <i class="ph ${isVoted ? 'ph-check' : 'ph-thumbs-up'}"></i>
+                          <span>${voteCount}</span>
+                        </button>
+                      </div>
+                    </div>
+                  `;
+                }).join('')}
+              </div>
+            `}
           </div>
-        </section>
+        </div>
       `;
     }).join('');
 
@@ -247,8 +299,27 @@ class RoadmapRenderer {
       };
     }
 
+    // Accordion Header Click Listeners
+    this.container.querySelectorAll('.category-header-btn').forEach(btn => {
+      btn.onclick = (e) => {
+        const catIdx = btn.getAttribute('data-toggle');
+        this.toggleSection(catIdx);
+      };
+    });
+
+    // Unlock Gate Buttons
+    this.container.querySelectorAll('.btn-unlock-gate').forEach(btn => {
+      btn.onclick = (e) => {
+        e.stopPropagation();
+        const catIdx = btn.getAttribute('data-cat');
+        this.unlockSection(catIdx);
+      };
+    });
+
+    // Upvote Buttons
     this.container.querySelectorAll('.btn-upvote').forEach(btn => {
-      btn.onclick = () => {
+      btn.onclick = (e) => {
+        e.stopPropagation();
         const id = btn.getAttribute('data-id');
         this.upvotes[id] = !this.upvotes[id];
         localStorage.setItem('devdash_roadmap_upvotes', JSON.stringify(this.upvotes));
@@ -263,5 +334,5 @@ class RoadmapRenderer {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  new RoadmapRenderer();
+  window.roadmapInstance = new RoadmapRenderer();
 });

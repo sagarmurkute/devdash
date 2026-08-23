@@ -170,21 +170,38 @@
   outline: none;
 }
 
+/* Collapsible Dropdown Accordion Section */
 .roadmap-category-block {
-  margin-bottom: 2.5rem;
-  border-top: 1px solid var(--text-primary);
-  padding-top: 1rem;
+  margin-bottom: 0.75rem;
+  border: 1px solid var(--border-glass);
+  background: var(--bg-secondary);
 }
 
-.category-header {
+.category-header-btn {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  background: var(--bg-secondary);
+  border: none;
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
-  margin-bottom: 1rem;
+  cursor: pointer;
+  text-align: left;
+  transition: background var(--transition-fast);
+}
+
+.category-header-btn:hover {
+  background: var(--bg-tertiary);
+}
+
+.category-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 .category-title {
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: var(--text-primary);
   letter-spacing: -0.02em;
@@ -192,11 +209,75 @@
 
 .category-num {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   color: var(--accent-swiss-red);
   font-weight: 700;
 }
 
+.category-chevron {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  transition: transform var(--transition-normal);
+}
+
+.roadmap-category-block.open .category-chevron {
+  transform: rotate(180deg);
+}
+
+/* Collapsible Content Area (Closed by default) */
+.category-content-body {
+  display: none;
+  padding: 0 1.25rem 1.25rem 1.25rem;
+  border-top: 1px solid var(--border-glass);
+}
+
+.roadmap-category-block.open .category-content-body {
+  display: block;
+}
+
+/* Star Repository Gate Banner */
+.star-repo-gate-banner {
+  background: var(--bg-tertiary);
+  border: 1px dashed var(--border-glass-hover);
+  padding: 1.25rem;
+  margin-top: 1rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.gate-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.gate-icon {
+  font-size: 1.5rem;
+  color: var(--accent-amber);
+}
+
+.gate-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.gate-sub {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.gate-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Feature cards grid */
 .feature-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));

@@ -35,7 +35,7 @@ export default function RoadmapPage() {
     subs.push({ email: subscriberEmail.trim(), date: new Date().toISOString() });
     localStorage.setItem('devdash_subscribers', JSON.stringify(subs));
 
-    setSubscribeStatus(`✓ Successfully subscribed ${subscriberEmail} to DevDash Dispatch!`);
+    setSubscribeStatus(`✓ Successfully subscribed ${subscriberEmail} to DevSlash Dispatch!`);
     setSubscriberEmail('');
     playSuccessChime();
     setTimeout(() => setSubscribeStatus(''), 4000);
@@ -96,7 +96,7 @@ export default function RoadmapPage() {
           <div className="author-avatar">SM</div>
           <div className="author-info">
             <h4>Architected & Designed by Sagar Murkute</h4>
-            <p>Lead Engineer &bull; Software Craftsman &bull; Creator of DevDash</p>
+            <p>Lead Engineer &bull; Software Craftsman &bull; Creator of DevSlash</p>
           </div>
         </div>
         <div className="author-links">
@@ -124,7 +124,7 @@ export default function RoadmapPage() {
         <div className="newsletter-subscribe-header">
           <div>
             <h3 style={{ fontSize: '1.05rem', fontWeight: 700, letterSpacing: '-0.02em' }}>
-              Subscribe to DevDash Release Notes
+              Subscribe to DevSlash Release Notes
             </h3>
             <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>
               Receive changelogs, architecture deep dives, and early feature access directly in your inbox.

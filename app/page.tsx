@@ -21,7 +21,7 @@ import {
 } from 'lucide-react';
 import GithubIcon from '@/components/icons/GithubIcon';
 
-export default function DevStreakLandingPage() {
+export default function DevSlashLandingPage() {
   return (
     <div className="landing-page-wrapper">
       {/* 1. Header Navigation Bar */}
@@ -31,21 +31,21 @@ export default function DevStreakLandingPage() {
             <div className="sidebar-logo-icon" style={{ width: '32px', height: '32px' }}>
               <Zap size={18} fill="currentColor" />
             </div>
-            <span className="landing-brand-title">DevStreak</span>
+            <span className="landing-brand-title">DevSlash</span>
           </Link>
 
           <nav className="landing-nav-links">
             <a href="#features">Features</a>
             <Link href="/roadmap">100 Roadmap</Link>
             <a href="#architecture">Architecture</a>
-            <a href="https://github.com/sagarmurkute/devdash" target="_blank" rel="noreferrer">
+            <a href="https://github.com/sagarmurkute/devslash" target="_blank" rel="noreferrer">
               Documentation
             </a>
           </nav>
 
           <div className="landing-nav-actions">
             <a 
-              href="https://github.com/sagarmurkute/devdash" 
+              href="https://github.com/sagarmurkute/devslash" 
               target="_blank" 
               rel="noreferrer"
               className="btn btn-secondary btn-sm"
@@ -64,7 +64,7 @@ export default function DevStreakLandingPage() {
       <section className="landing-hero">
         <div className="hero-badge">
           <Sparkles size={13} style={{ color: 'var(--brand-blue)' }} />
-          <span>DevStreak v2.2 &bull; The Modern Developer Command Center</span>
+          <span>DevSlash v2.2 &bull; The Modern Developer Command Center</span>
         </div>
 
         <h1 className="hero-title">
@@ -263,7 +263,7 @@ export default function DevStreakLandingPage() {
         <div className="landing-cta-card">
           <h2 className="cta-heading">Ready to Level Up Your Daily Workflow?</h2>
           <p className="cta-sub">
-            Join developers building their daily streaks and mastering full-stack architecture with DevStreak.
+            Join developers building their daily streaks and mastering full-stack architecture with DevSlash.
           </p>
           <div className="cta-buttons">
             <Link href="/dashboard" className="btn btn-primary hero-btn-main">

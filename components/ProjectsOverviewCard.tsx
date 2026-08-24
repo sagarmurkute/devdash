@@ -17,7 +17,7 @@ interface ProjectOverviewItem {
 const PROJECTS_DATA: ProjectOverviewItem[] = [
   {
     id: '1',
-    name: 'DevStreak',
+    name: 'DevSlash',
     sub: 'Developer Dashboard',
     progress: 75,
     status: 'On Track',

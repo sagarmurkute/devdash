@@ -1,11 +1,11 @@
-# DevStreak Monorepo Architecture 🏛️
+# DevSlash Monorepo Architecture 🏛️
 
-DevStreak is organized as a modular, high-performance monorepo designed for web, desktop, and shared packages.
+DevSlash is organized as a modular, high-performance monorepo designed for web, desktop, and shared packages.
 
 ## Structure
 
 ```text
-devstreak/
+devslash/
 ├── apps/
 │   ├── web/                 # Next.js 14 App Router application
 │   └── desktop/             # Electron desktop application wrapper
@@ -23,7 +23,7 @@ devstreak/
 ```
 
 ## Route Separation
-- **`/`**: DevStreak Marketing & Conversion Landing Page.
-- **`/dashboard`**: Complete, interactive DevStreak Command Center Dashboard (untouched & isolated).
+- **`/`**: DevSlash Marketing & Conversion Landing Page.
+- **`/dashboard`**: Complete, interactive DevSlash Command Center Dashboard.
 - **`/roadmap`**: 100 Engineering Capabilities Matrix with newsletter signup.
 - **`/not-found`**: Custom 404 error page.

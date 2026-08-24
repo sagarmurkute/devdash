@@ -1,5 +1,5 @@
 {
-  "name": "@devstreak/database",
+  "name": "@devslash/database",
   "version": "2.2.0",
   "private": true,
   "main": "src/schema.ts",

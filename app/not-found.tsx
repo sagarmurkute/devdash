@@ -13,7 +13,7 @@ export default function NotFound() {
           <Zap size={22} fill="currentColor" />
         </div>
         <span style={{ fontSize: '1.25rem', fontWeight: 700, letterSpacing: '-0.02em', color: 'var(--text-primary)' }}>
-          DevStreak
+          DevSlash
         </span>
       </div>
 
@@ -70,7 +70,7 @@ export default function NotFound() {
 
       {/* Decorative Bottom Credits */}
       <div className="not-found-credits">
-        <span>DevStreak &bull; Designed & Built by Sagar Murkute</span>
+        <span>DevSlash &bull; Designed & Built by Sagar Murkute</span>
       </div>
     </div>
   );

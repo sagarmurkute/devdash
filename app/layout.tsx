@@ -16,7 +16,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'DevStreak | Modern Developer Command Center',
+  title: 'DevSlash | Modern Developer Command Center',
   description: 'A feature-rich developer dashboard with GitHub streak matrix, daily coding hours, active projects, habit matrix, notes vault, and weekly analytics architected by Sagar Murkute.',
 };
 

@@ -5,7 +5,7 @@ export const ROADMAP_DATA: RoadmapCategory[] = [
     category: "AI & LLM Developer Copilots",
     num: "01",
     features: [
-      { id: "001", name: "Local Ollama / LM Studio Model Bridge", desc: "Connect local LLM servers directly to prompt or refactor snippets within DevDash." },
+      { id: "001", name: "Local Ollama / LM Studio Model Bridge", desc: "Connect local LLM servers directly to prompt or refactor snippets within DevSlash." },
       { id: "002", name: "Automated PR Description & Summary Generator", desc: "Generate semantic release notes and PR summaries from staged git diffs." },
       { id: "003", name: "Interactive Regex & SQL Query Synthesizer", desc: "Natural language to optimal SQL queries and regex patterns." },
       { id: "004", name: "AI Code Explainer & Big-O Complexity Analyzer", desc: "Instant time & space complexity breakdown for pasted functions." },

@@ -1,8 +1,8 @@
-# ⚡ DevStreak — Modern Developer Command Center
+# ⚡ DevSlash — Modern Developer Command Center
 
 <div align="center">
 
-![DevStreak Banner](https://img.shields.io/badge/DevStreak-v2.2.0-blue?style=for-the-badge&logo=next.js&logoColor=white)
+![DevSlash Banner](https://img.shields.io/badge/DevSlash-v2.2.0-blue?style=for-the-badge&logo=next.js&logoColor=white)
 [![Next.js](https://img.shields.io/badge/Next.js-14.2-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-18.3-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
@@ -20,21 +20,21 @@
 
 ## 📸 Overview & Dashboard Layout
 
-DevStreak unifies your entire development workflow into a high-performance, single-pane command center:
+DevSlash unifies your entire development workflow into a high-performance, single-pane command center:
 
 ```text
 ┌─────────────────────────────────────────────────────────────────────────────────────────────┐
-│ ⚡ DevStreak    Good morning, Sagar 👋          [ 🔍 Search anything...  ⌘K ]  🔔  [SK Sagar ⌄]│
+│ ⚡ DevSlash    Good morning, Sagar 👋          [ 🔍 Search anything...  ⌘K ]  🔔  [SK Sagar ⌄]│
 ├──────────────┬──────────────────────────────────────────────────────────────────────────────┤
 │ 🏠 Dashboard │ [🔥 Streak: 32d]  [⏱️ Hours: 4.6h]  [☑️ Tasks: 12]  [📁 Projects: 8]  [📈 Score: 86]│
 │ 📁 Projects  ├───────────────────────────────┬────────────────────────┬─────────────────────┤
 │ ☑️ Tasks     │ GitHub Contribution (90 Days) │ Focus Session (25:00)  │ Today's Agenda      │
-│ 🎯 Habits    │  ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■    │      ╭───────╮         │  [✓] Code DevStreak │
+│ 🎯 Habits    │  ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■    │      ╭───────╮         │  [✓] Code DevSlash │
 │ ⏱️ Focus     │  Feb    Mar    Apr    May     │      │ 25:00 │         │  [ ] DSA Practice   │
 │ 📖 Learning  │  523 contribs | Streak: 32d   │      ╰───────╯         │  [ ] Team Meeting   │
 │ 📝 Notes     ├───────────────────────────────┼────────────────────────┼─────────────────────┤
 │ 📊 Analytics │ Projects Overview             │ Habit Tracker          │ Recent Activity     │
-│ 📅 Calendar  │  ⚡ DevStreak      [75%] OnTrk│  </> Code Daily ●●●●●●●│  🔀 Pushed 3 commits│
+│ 📅 Calendar  │  ⚡ DevSlash      [75%] OnTrk│  </> Code Daily ●●●●●●●│  🔀 Pushed 3 commits│
 │ 🎯 Goals     │  🌐 Portfolio      [40%] InPrg│  📖 Read Books  ●●●●◐○○│  ⏱️ 2 Pomodoros done│
 │ 🏆 Trophies  │  💬 AI Chat App    [60%] OnTrk│  🧠 DSA Practice●●●◐○○○│  🧩 Solved 5 DSA    │
 │ ⚙️ Settings  │  📄 Blog Platform  [20%] InPrg│  🏋️ Workout     ●●●●●◐○│  📁 Project updated │
@@ -76,7 +76,7 @@ DevStreak unifies your entire development workflow into a high-performance, sing
 - One-click navigation to full calendar view.
 
 ### 6. 📁 Projects Overview
-- Project workspace rows with custom brand badges (`DevStreak`, `Portfolio Website`, `AI Chat App`, `Blog Platform`).
+- Project workspace rows with custom brand badges (`DevSlash`, `Portfolio Website`, `AI Chat App`, `Blog Platform`).
 - Dynamic progress bars (`75%`, `40%`, `60%`, `20%`).
 - Colored status badges: `● On Track` (Emerald) and `● In Progress` (Amber).
 
@@ -153,14 +153,14 @@ npm start
 ```text
 ├── app/
 │   ├── layout.tsx                # Root layout with fonts & ThemeProvider
-│   ├── page.tsx                  # Main DevStreak Dashboard
+│   ├── page.tsx                  # Main DevSlash Dashboard
 │   ├── not-found.tsx             # Custom branded 404 Not Found page
 │   ├── roadmap/
 │   │   └── page.tsx              # 100 Engineering Capabilities Roadmap
 │   └── globals.css               # Design tokens, variables & roundness rules
 ├── components/
 │   ├── Sidebar.tsx               # Left navigation & XP level card
-│   ├── DevStreakHeader.tsx       # Top bar (Search, Bell, Profile, Date)
+│   ├── DevSlashHeader.tsx       # Top bar (Search, Bell, Profile, Date)
 │   ├── TopStatsRow.tsx           # 5 Top metric cards
 │   ├── GitHubContributionCard.tsx# 90-day GitHub heatmap
 │   ├── FocusSessionCard.tsx      # SVG Pomodoro timer with audio
@@ -216,5 +216,5 @@ Distributed under the **MIT License**. See [`LICENSE`](./LICENSE) for more infor
 ---
 
 <div align="center">
-  <sub>Architected with ❤️ by <a href="https://github.com/sagarmurkute">Sagar Murkute</a> &bull; DevStreak v2.2.0</sub>
+  <sub>Architected with ❤️ by <a href="https://github.com/sagarmurkute">Sagar Murkute</a> &bull; DevSlash v2.2.0</sub>
 </div>

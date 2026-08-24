@@ -1,5 +1,5 @@
 {
-  "name": "@devstreak/ui",
+  "name": "@devslash/ui",
   "version": "2.2.0",
   "private": true,
   "main": "src/index.ts",

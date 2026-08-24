@@ -13,7 +13,7 @@ import RecentActivityCard from '@/components/RecentActivityCard';
 import CommandPalette from '@/components/CommandPalette';
 import ScratchpadModal from '@/components/ScratchpadModal';
 
-export default function DevStreakDashboard() {
+export default function DevSlashDashboard() {
   const [mounted, setMounted] = useState(false);
   const [activeTab, setActiveTab] = useState('dashboard');
   const [isCmdOpen, setIsCmdOpen] = useState(false);

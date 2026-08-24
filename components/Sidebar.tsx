@@ -48,7 +48,7 @@ export default function Sidebar({ activeTab, onTabChange }: SidebarProps) {
           <div className="sidebar-logo-icon">
             <Zap size={18} fill="currentColor" />
           </div>
-          <span className="sidebar-brand-name">DevStreak</span>
+          <span className="sidebar-brand-name">DevSlash</span>
         </Link>
 
         {/* Navigation Links */}

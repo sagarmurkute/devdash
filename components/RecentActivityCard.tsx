@@ -15,7 +15,7 @@ interface ActivityItem {
 const ACTIVITIES: ActivityItem[] = [
   {
     id: '1',
-    title: 'Pushed 3 commits to DevStreak',
+    title: 'Pushed 3 commits to DevSlash',
     time: '2 minutes ago',
     icon: <GitCommit size={13} />,
     iconBg: 'var(--accent-orange-light)',

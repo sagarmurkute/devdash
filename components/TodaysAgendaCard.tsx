@@ -12,7 +12,7 @@ interface AgendaItem {
 }
 
 const INITIAL_AGENDA: AgendaItem[] = [
-  { id: '1', title: 'Code for DevStreak', time: '9:00 AM – 11:00 AM', completed: false },
+  { id: '1', title: 'Code for DevSlash', time: '9:00 AM – 11:00 AM', completed: false },
   { id: '2', title: 'DSA Practice', time: '11:30 AM – 1:00 PM', completed: false },
   { id: '3', title: 'Project Meeting', time: '3:00 PM – 4:00 PM', completed: false }
 ];

@@ -1,5 +1,5 @@
 {
-  "name": "@devstreak/desktop",
+  "name": "@devslash/desktop",
   "version": "2.2.0",
   "private": true,
   "description": "DevStreak Desktop Electron Application",

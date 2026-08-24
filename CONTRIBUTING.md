@@ -1,8 +1,8 @@
-# Contributing to DevStreak ⚡
+# Contributing to DevSlash ⚡
 
 First off, thank you for taking the time to contribute! 🎉
 
-We love your input! We want to make contributing to **DevStreak** as easy and transparent as possible, whether it's:
+We love your input! We want to make contributing to **DevSlash** as easy and transparent as possible, whether it's:
 
 - Reporting a bug
 - Discussing the current state of the code
@@ -54,7 +54,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## 🎨 Coding & Design Standards
 
-To ensure DevStreak maintains its clean, high-performance aesthetic, please follow these guidelines:
+To ensure DevSlash maintains its clean, high-performance aesthetic, please follow these guidelines:
 
 ### 1. Design System & Border Radius
 - Use predefined CSS variables in [`app/globals.css`](./app/globals.css):

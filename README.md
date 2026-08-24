@@ -1,13 +1,13 @@
-# ⚡ DevDash — Modern Developer Command Center
+# ⚡ DevDash — Modern Developer Command Center (Next.js & React)
 
 > **Architected, Designed & Built with Precision by [Sagar Murkute](https://github.com/sagarmurkute)**.
 
-A futuristic, high-performance developer dashboard and newsletter-inspired engineering roadmap built with **Vanilla HTML5, CSS3, and Modern JavaScript (ES6+)**. Designed for engineering productivity, daily habit tracking, coding volume analytics, and streak preservation with zero external build tool dependencies.
+A futuristic, high-performance developer dashboard and engineering capability matrix built with **Next.js 14/15 (App Router), React 18/19, TypeScript, and Swiss & Glassmorphic CSS Design Tokens**.
 
 ---
 
 ## 📰 DevDash Dispatch: The 100-Feature Roadmap
-Explore the official **[100 Engineering Capabilities Roadmap (`roadmap.html`)](roadmap.html)** covering AI Copilots, DevOps automation, AST diagnostics, cloud monitoring, and security scanners.
+Explore the official **[100 Engineering Capabilities Roadmap (`/roadmap`)](/roadmap)** covering AI Copilots, DevOps automation, AST diagnostics, cloud monitoring, and security scanners.
 
 ---
 
@@ -39,7 +39,7 @@ Explore the official **[100 Engineering Capabilities Roadmap (`roadmap.html`)](r
 
 ## 💾 Local Storage Architecture
 
-All data is structured cleanly in the browser's `localStorage` via `DevDashStorage`:
+All data is structured cleanly in the browser's `localStorage` via `@/lib/storage`:
 - `devdash_coding_hours`
 - `devdash_projects`
 - `devdash_habits`
@@ -47,23 +47,31 @@ All data is structured cleanly in the browser's `localStorage` via `DevDashStora
 - `devdash_kanban_tasks`
 - `devdash_scratchpad_note`
 
-Use the **Export Backup** button in the Weekly Analytics widget to download a portable JSON backup anytime (ready for future database API migrations!).
+Use the **Export Backup** button in the Weekly Analytics widget to download a portable JSON backup anytime.
 
 ---
 
 ## 🚀 Getting Started
 
-Simply open `index.html` in your browser or run:
-
+### 1. Install Dependencies
 ```bash
-# Using Python
-python -m http.server 3000
+npm install
+```
 
-# Using Node / npx
-npx serve .
+### 2. Run the Development Server
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see DevDash in action!
+
+### 3. Build for Production
+```bash
+npm run build
+npm run start
 ```
 
 ---
 
 ## 📝 License
-MIT
+MIT &bull; Sagar Murkute

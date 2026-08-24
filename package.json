@@ -1,7 +1,10 @@
 {
-  "name": "devdash",
-  "version": "2.0.0",
+  "name": "devstreak",
+  "version": "2.2.0",
   "private": true,
+  "description": "DevStreak — Modern Developer Command Center & Engineering Capability Matrix",
+  "author": "Sagar Murkute <https://github.com/sagarmurkute>",
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

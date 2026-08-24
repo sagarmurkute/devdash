@@ -1,74 +1,68 @@
-# ⚡ DevDash — Modern Developer Command Center (Next.js & React)
+# ⚡ DevStreak — Modern Developer Command Center (v2.2)
 
 > **Architected, Designed & Built with Precision by [Sagar Murkute](https://github.com/sagarmurkute)**.
 
-A futuristic, high-performance developer dashboard and engineering capability matrix built with **Next.js 14/15 (App Router), React 18/19, TypeScript, and Swiss & Glassmorphic CSS Design Tokens**.
+A state-of-the-art, high-performance developer command center and habit tracking system built with **Next.js 14/15 (App Router), React 18/19, TypeScript, and unified Swiss UI tokens**.
 
 ---
 
-## 📰 DevDash Dispatch: The 100-Feature Roadmap
-Explore the official **[100 Engineering Capabilities Roadmap (`/roadmap`)](/roadmap)** covering AI Copilots, DevOps automation, AST diagnostics, cloud monitoring, and security scanners.
+## 🌟 Version 2.2 Highlights
+
+- **🎯 Exact Reference UI**: Seamless left sidebar navigation, Level 12 XP progression, top header bar with live greeting and date card.
+- **📊 5 Real-Time Metric Cards**: Current streak, daily coding hours, tasks completed, active projects, and productivity score.
+- **🔥 GitHub 90-Day Contribution Heatmap**: 13-week contribution matrix with activity levels, month markers, and streak preservation.
+- **⏱️ Focus Session Station**: Circular SVG timer with Web Audio synthesizers, Pomodoro intervals, and focus time auto-logging.
+- **📋 Today's Agenda**: Interactive schedule with instant status checkboxes and timeslot tags.
+- **📁 Projects Overview**: Workspaces with sprint completion bars and live status pills.
+- **✅ 7-Day Habit Tracker**: Interactive dot matrix (`S M T W T F S`) with instant streak calculation.
+- **📰 Recent Activity Feed**: Real-time event log with color-coded badges.
+- **⚡ Global Command Palette (`⌘ K` / `Ctrl + K`)**: Keyboard-driven navigation and shortcut dispatcher.
 
 ---
 
-## ✨ Features Breakdown
+## 📁 Clean Next.js Architecture
 
-- **🔥 GitHub Streak Matrix (Manual + Live API)**: 52-week contribution heatmap, streak counters, real-time public GitHub API sync (`api.github.com`), and manual commit logger with custom messages.
-- **⏳ Daily Coding Hours Tracker**: Track daily coding goals (e.g. 6.0h/day), multi-language volume distribution (JS, TS, Python, CSS), and quick `+30m`/`+1h` logging.
-- **🚀 Projects in Progress Tracker**: Manage active repositories and projects with sprint progress sliders, status pills, and direct repository links.
-- **🎯 Developer Habit Matrix**: 7-day interactive checklist (Mon–Sun) tracking core dev routines (LeetCode, Git Streak, PR Reviews, Deep Focus) with streak counts.
-- **💡 Notes & Ideas Vault**: Categorized idea cards (Architecture, UI/UX, Bug Fixes, Snippets) with instant live search and 1-click clipboard copying.
-- **⏱️ Pomodoro Focus Station**: Circular SVG countdown timer with synthesized Web Audio chimes, automatically logging focus intervals to your Daily Coding Hours.
-- **📊 Weekly Engineering Analytics**: Interactive Mon–Sun coding volume bar chart, consistency score, sprint velocity, and JSON backup export/import.
-- **📋 Sprint Kanban Board**: Backlog, In-Progress, and Done board with priorities, tags, and persistent storage.
-- **🛠️ Developer Utility Toolbox**: Offline JSON Prettifier / Minifier / Validator, Base64/URL converter, and snippet vault.
-- **🌐 Live Multi-Timezone Header & Command Palette (`Ctrl+K`)**: Clocks for Local, UTC, San Francisco, London, and Tokyo plus full keyboard shortcuts.
-
----
-
-## ⌨️ Keyboard Shortcuts
-
-| Shortcut | Action |
-| :--- | :--- |
-| `Ctrl + K` / `Cmd + K` | Open Command Palette |
-| `Esc` | Close any active modal or palette |
-| `↑` / `↓` | Navigate Command Palette results |
-| `Enter` | Execute selected command |
-
----
-
-## 💾 Local Storage Architecture
-
-All data is structured cleanly in the browser's `localStorage` via `@/lib/storage`:
-- `devdash_coding_hours`
-- `devdash_projects`
-- `devdash_habits`
-- `devdash_notes`
-- `devdash_kanban_tasks`
-- `devdash_scratchpad_note`
-
-Use the **Export Backup** button in the Weekly Analytics widget to download a portable JSON backup anytime.
+```text
+├── app/
+│   ├── layout.tsx         # Root layout with next/font/google and ThemeProvider
+│   ├── page.tsx           # DevStreak Command Center Dashboard
+│   ├── roadmap/page.tsx   # 100 Engineering Capabilities Matrix
+│   └── globals.css        # Unified design tokens & harmonious roundness system
+├── components/
+│   ├── Sidebar.tsx        # Left navigation & XP level card
+│   ├── DevStreakHeader.tsx# Header bar with search, notifications, profile, date
+│   ├── TopStatsRow.tsx    # 5 Top metric cards
+│   ├── GitHubContributionCard.tsx # 90-day GitHub heatmap
+│   ├── FocusSessionCard.tsx       # Circular SVG Pomodoro timer
+│   ├── TodaysAgendaCard.tsx       # Daily task agenda with checkboxes
+│   ├── ProjectsOverviewCard.tsx   # Projects overview with progress bars
+│   ├── HabitTrackerCard.tsx       # 7-day dot matrix habit tracker
+│   ├── RecentActivityCard.tsx     # Activity stream with timestamps
+│   ├── CommandPalette.tsx         # Ctrl+K spotlight modal
+│   └── ScratchpadModal.tsx        # Auto-saving developer scratchpad
+├── lib/
+│   ├── audio.ts           # Web Audio synthesizer chimes
+│   ├── storage.ts         # SSR-safe localStorage persistence & backups
+│   ├── theme-context.tsx  # React Theme Context (Light/Dark)
+│   ├── types.ts           # TypeScript interfaces & data models
+│   └── roadmap-data.ts    # 100 capabilities dataset
+├── package.json           # v2.2.0 dependencies & scripts
+└── tsconfig.json          # TypeScript config with @/* aliases
+```
 
 ---
 
 ## 🚀 Getting Started
 
-### 1. Install Dependencies
 ```bash
+# Install dependencies
 npm install
-```
 
-### 2. Run the Development Server
-```bash
+# Start Next.js Development Server
 npm run dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see DevDash in action!
-
-### 3. Build for Production
-```bash
+# Build for Production
 npm run build
-npm run start
 ```
 
 ---

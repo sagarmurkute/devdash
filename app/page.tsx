@@ -1,326 +1,400 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import {
-  Zap,
-  ArrowRight,
-  Flame,
-  Clock,
-  CheckCircle2,
-  Compass,
-  Sparkles,
-  Terminal,
-  Check,
-} from 'lucide-react';
+import { ChevronDown, ArrowRight, Check, Terminal, Search } from 'lucide-react';
 import GithubIcon from '@/components/icons/GithubIcon';
 
-export default function DevSlashLandingPage() {
+export default function OpenAILandingPage() {
   const [activeTasks, setActiveTasks] = useState([
-    { id: '1', title: 'Implement Warm Ember & Titanium Design', done: true },
-    { id: '2', title: 'Connect Local LLM Copilot Bridge', done: false },
-    { id: '3', title: 'Review System Architecture Specs', done: false },
+    { id: '1', title: 'Compile monorepo capabilities matrix', done: true },
+    { id: '2', title: 'Initialize local LLM offline bridge', done: false },
+    { id: '3', title: 'Synchronize 90-day git contribution state', done: false },
   ]);
-
-  const [pomoSeconds, setPomoSeconds] = useState(25 * 60);
-  const [isPomoRunning, setIsPomoRunning] = useState(false);
-
-  useEffect(() => {
-    let interval: NodeJS.Timeout;
-    if (isPomoRunning && pomoSeconds > 0) {
-      interval = setInterval(() => {
-        setPomoSeconds((prev) => (prev > 0 ? prev - 1 : 0));
-      }, 1000);
-    }
-    return () => clearInterval(interval);
-  }, [isPomoRunning, pomoSeconds]);
 
   const toggleTask = (id: string) => {
     setActiveTasks((prev) => prev.map((t) => (t.id === id ? { ...t, done: !t.done } : t)));
   };
 
-  const formatPomoTime = (sec: number) => {
-    const m = Math.floor(sec / 60);
-    const s = sec % 60;
-    return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+  // Exactly 37 Categorized Links
+  const navSections = {
+    research: [
+      { title: 'Overview', desc: 'Core engineering and systems architecture', href: '/roadmap' },
+      { title: 'Index', desc: 'Complete registry of all system capabilities', href: '/roadmap' },
+      {
+        title: 'GPT-4o Copilot',
+        desc: 'Integrated model bridge for instant code synthesis',
+        href: '/roadmap',
+      },
+      { title: 'o1 Reasoning', desc: 'Deep algorithmic and complexity analysis', href: '/roadmap' },
+      { title: 'o3-mini Matrix', desc: 'Low-latency code generation benchmarks', href: '/roadmap' },
+      { title: 'Sora Telemetry', desc: 'Real-time rendering & visual pipeline', href: '/roadmap' },
+      {
+        title: 'DALL·E 3 Assets',
+        desc: 'Programmatic generative UI asset pipeline',
+        href: '/roadmap',
+      },
+      {
+        title: 'Whisper Audio',
+        desc: 'Synthesized voice & acoustic feedback engine',
+        href: '/roadmap',
+      },
+      { title: 'Alignment', desc: 'Deterministic developer state verification', href: '/roadmap' },
+      {
+        title: 'Safety & Trust',
+        desc: '100% offline, local-first data isolation',
+        href: '/roadmap',
+      },
+      {
+        title: 'Research Papers',
+        desc: 'Technical specifications and whitepapers',
+        href: '/docs/architecture.md',
+      },
+      {
+        title: 'Release Logs',
+        desc: 'Detailed version milestones and tags',
+        href: '/CHANGELOG.md',
+      },
+      { title: 'Supercomputing', desc: 'Zero-latency edge distribution network', href: '/roadmap' },
+    ], // 13 links
+    products: [
+      {
+        title: 'Command Center',
+        desc: 'Single-pane developer cockpit and widgets',
+        href: '/dashboard',
+      },
+      {
+        title: 'API Platform',
+        desc: 'Direct WebSocket and REST bridge contracts',
+        href: '/dashboard',
+      },
+      {
+        title: 'DevSlash CLI',
+        desc: 'Terminal companion for daily streak tracking',
+        href: '/dashboard',
+      },
+      {
+        title: 'Enterprise Cockpit',
+        desc: 'Multi-workspace and team management',
+        href: '/dashboard',
+      },
+      {
+        title: 'Team Workspaces',
+        desc: 'Collaborative sprint and board synchronization',
+        href: '/dashboard',
+      },
+      {
+        title: 'Education & Edu',
+        desc: 'Interactive DSA, algorithms, and roadmaps',
+        href: '/roadmap',
+      },
+      {
+        title: 'Search & Intelligence',
+        desc: '⌘K instant workspace indexing and discovery',
+        href: '/dashboard',
+      },
+      {
+        title: 'Voice & Audio Engine',
+        desc: 'Web Audio API synthesized focus chimes',
+        href: '/dashboard',
+      },
+      { title: 'Pricing Matrix', desc: 'Open-source MIT core and capabilities', href: '/LICENSE' },
+    ], // 9 links
+    developers: [
+      { title: 'Documentation', desc: 'Comprehensive guides and tutorials', href: '/README.md' },
+      {
+        title: 'API Reference',
+        desc: 'TypeScript types and contract definitions',
+        href: '/docs/architecture.md',
+      },
+      {
+        title: 'Interactive Playground',
+        desc: 'Live widget sandbox and experimentation',
+        href: '/dashboard',
+      },
+      {
+        title: 'SDKs & Libraries',
+        desc: 'Official client wrappers and bindings',
+        href: '/packages/lib',
+      },
+      {
+        title: '100 Capabilities Matrix',
+        desc: 'Full engineering roadmap and dispatch',
+        href: '/roadmap',
+      },
+      {
+        title: 'Community Forum',
+        desc: 'GitHub discussions and issue tracking',
+        href: 'https://github.com/sagarmurkute/devdash',
+      },
+      { title: 'System Status', desc: 'Real-time uptime and client heartbeat', href: '/dashboard' },
+      {
+        title: 'Changelog',
+        desc: 'Version 2.2.0 features and improvements',
+        href: '/CHANGELOG.md',
+      },
+    ], // 8 links
+    company: [
+      { title: 'About DevSlash', desc: 'Vision and open-source craftsmanship', href: '/README.md' },
+      { title: 'Engineering News', desc: 'Weekly release notes and dispatches', href: '/roadmap' },
+      {
+        title: 'Careers',
+        desc: 'Join engineers building next-gen developer tools',
+        href: '/CONTRIBUTING.md',
+      },
+      {
+        title: 'Security & Privacy',
+        desc: 'Local storage isolation and zero telemetry',
+        href: '/README.md',
+      },
+      {
+        title: 'Open Source Charter',
+        desc: 'MIT permissive licensing principles',
+        href: '/LICENSE',
+      },
+      {
+        title: 'Customer Stories',
+        desc: 'How high-output developers maintain streaks',
+        href: '/roadmap',
+      },
+      {
+        title: 'Press & Brand Kit',
+        desc: 'Official logos, badges, and guidelines',
+        href: '/README.md',
+      },
+    ], // 7 links
   };
 
   return (
-    <div className="landing-dark-wrapper">
-      {/* Background Animated Gradient Mesh & Orbs (Zero-Blue, Zero-Green, Zero-Purple: Pure Amber, Ember Orange, Titanium) */}
-      <div className="landing-bg-mesh">
-        <div className="landing-grid-pattern" />
-        <div className="gradient-orb orb-amber" />
-        <div className="gradient-orb orb-orange" />
-        <div className="gradient-orb orb-silver" />
-      </div>
-
-      {/* 1. Header Navigation Bar */}
-      <header className="dark-nav">
-        <div className="dark-nav-container">
-          <Link href="/" className="dark-brand">
-            <div className="dark-logo-icon">
-              <Zap size={19} fill="currentColor" />
+    <div className="openai-landing">
+      {/* 1. OpenAI Minimalist Navigation Bar (37 Categorized Links) */}
+      <header className="openai-nav">
+        <div className="openai-nav-inner">
+          <Link href="/" className="openai-brand">
+            <div className="openai-logo-mark">
+              <span style={{ fontSize: '11px', fontWeight: 900 }}>/</span>
             </div>
-            <span className="dark-brand-title">DevSlash</span>
+            <span>DevSlash</span>
           </Link>
 
-          <nav className="dark-nav-links">
-            <a href="#hero">Overview</a>
-            <a href="#features">Features</a>
-            <Link href="/roadmap">100 Roadmap</Link>
-            <a href="#architecture">Architecture</a>
-            <a href="https://github.com/sagarmurkute/devdash" target="_blank" rel="noreferrer">
-              Docs
-            </a>
+          {/* Categorized Mega-Menu Navigation (13 + 9 + 8 + 7 = 37 Links) */}
+          <nav className="openai-nav-categories">
+            {/* 1. Research (13 Links) */}
+            <div className="openai-nav-item">
+              <button type="button" className="openai-nav-btn">
+                <span>Research</span>
+                <ChevronDown size={12} />
+              </button>
+              <div className="openai-dropdown wide">
+                {navSections.research.map((item) => (
+                  <Link key={item.title} href={item.href} className="openai-dropdown-link">
+                    <span className="openai-dropdown-title">{item.title}</span>
+                    <span className="openai-dropdown-desc">{item.desc}</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* 2. Products (9 Links) */}
+            <div className="openai-nav-item">
+              <button type="button" className="openai-nav-btn">
+                <span>Products</span>
+                <ChevronDown size={12} />
+              </button>
+              <div className="openai-dropdown">
+                {navSections.products.map((item) => (
+                  <Link key={item.title} href={item.href} className="openai-dropdown-link">
+                    <span className="openai-dropdown-title">{item.title}</span>
+                    <span className="openai-dropdown-desc">{item.desc}</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* 3. Developers (8 Links) */}
+            <div className="openai-nav-item">
+              <button type="button" className="openai-nav-btn">
+                <span>Developers</span>
+                <ChevronDown size={12} />
+              </button>
+              <div className="openai-dropdown">
+                {navSections.developers.map((item) => (
+                  <Link key={item.title} href={item.href} className="openai-dropdown-link">
+                    <span className="openai-dropdown-title">{item.title}</span>
+                    <span className="openai-dropdown-desc">{item.desc}</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* 4. Company (7 Links) */}
+            <div className="openai-nav-item">
+              <button type="button" className="openai-nav-btn">
+                <span>Company</span>
+                <ChevronDown size={12} />
+              </button>
+              <div className="openai-dropdown">
+                {navSections.company.map((item) => (
+                  <Link key={item.title} href={item.href} className="openai-dropdown-link">
+                    <span className="openai-dropdown-title">{item.title}</span>
+                    <span className="openai-dropdown-desc">{item.desc}</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
           </nav>
 
-          <div className="dark-nav-actions">
+          {/* Right Header Actions */}
+          <div className="openai-nav-actions">
             <a
               href="https://github.com/sagarmurkute/devdash"
               target="_blank"
               rel="noreferrer"
-              className="btn-github-star"
-              title="Star on GitHub"
+              className="openai-btn-outline"
             >
-              <GithubIcon size={14} />
-              <span>Star</span>
-              <span className="github-star-count">1.4k</span>
+              <GithubIcon size={13} />
+              <span>GitHub</span>
             </a>
-            <Link href="/dashboard" className="btn-launch-glow">
+            <Link href="/dashboard" className="openai-btn-white">
               <span>Launch App</span>
-              <ArrowRight size={14} />
+              <ArrowRight size={13} />
             </Link>
           </div>
         </div>
       </header>
 
-      {/* 2. Hero Section */}
-      <section id="hero" className="dark-hero">
-        {/* Shimmering Badge */}
-        <div className="dark-hero-badge">
-          <Sparkles size={14} style={{ color: '#F59E0B' }} />
-          <span>DevSlash v2.2 &bull; The Ultra-Fast Developer Command Center</span>
+      {/* 2. OpenAI Editorial Hero Section */}
+      <main className="openai-hero">
+        <div className="openai-badge">
+          <span>{`// DevSlash Architecture 2.2.0`}</span>
         </div>
 
-        {/* H1 Main Headline with Moving Amber-Silver Gradient */}
-        <h1 className="dark-hero-title">
-          Master Your Daily Streak.
-          <br />
-          <span className="moving-gradient-text">Command Your Engineering.</span>
+        <h1 className="openai-hero-headline">
+          The developer command center for high-velocity engineering.
         </h1>
 
-        {/* Subtitle */}
-        <p className="dark-hero-subtitle">
-          A high-velocity, single-pane developer cockpit designed for engineers who build daily.
-          Track your GitHub matrix, automate Pomodoro focus sessions, manage sprint agendas, and
-          execute across 100 engineering capabilities.
+        <p className="openai-hero-sub">
+          DevSlash unifies contribution telemetry, focus sessions, sprint pipelines, and 100 system
+          capabilities into a single, local-first cockpit. Built for engineers who demand pure speed
+          and precision.
         </p>
 
-        {/* Action Button Cluster */}
-        <div className="dark-hero-cta-group">
-          <Link href="/dashboard" className="hero-cta-primary">
-            <Zap size={18} fill="currentColor" />
-            <span>Open Command Center</span>
+        <div className="openai-hero-cta-row">
+          <Link href="/dashboard" className="openai-hero-cta-main">
+            <span>Launch Command Center</span>
+            <ArrowRight size={15} />
           </Link>
-          <Link href="/roadmap" className="hero-cta-secondary">
-            <Compass size={17} style={{ color: '#F59E0B' }} />
-            <span>Explore 100 Capabilities</span>
+          <Link href="/roadmap" className="openai-hero-cta-sec">
+            <span>Read 100 Roadmap</span>
           </Link>
-          <a
-            href="https://github.com/sagarmurkute/devdash"
-            target="_blank"
-            rel="noreferrer"
-            className="hero-cta-secondary"
-          >
-            <GithubIcon size={16} />
-            <span>GitHub Repository</span>
-          </a>
         </div>
 
-        {/* 3. Hero Interactive Visual Live Preview Frame */}
-        <div className="dark-preview-wrapper">
-          <div className="dark-preview-glow" />
-          <div className="dark-preview-card">
-            {/* Window Chrome Topbar */}
-            <div className="dark-preview-topbar">
-              <div className="dark-preview-dots">
-                <span className="dark-pdot red" />
-                <span className="dark-pdot yellow" />
-                <span className="dark-pdot green" />
-              </div>
-              <div className="dark-preview-urlbar">
-                <Terminal size={12} style={{ color: '#F59E0B' }} />
-                <span>devslash.dev/command-center</span>
-              </div>
-              <div className="dark-preview-status">
-                <span className="pulse-amber-dot" />
-                <span>LIVE SYNC ACTIVE</span>
-              </div>
+        {/* 3. Pure Monochromatic Command Canvas */}
+        <div className="openai-canvas-wrapper">
+          <div className="openai-canvas-topbar">
+            <div className="openai-canvas-dots">
+              <span className="openai-canvas-dot" />
+              <span className="openai-canvas-dot" />
+              <span className="openai-canvas-dot" />
+            </div>
+            <div className="openai-canvas-tag">devslash://system.telemetry.local</div>
+            <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: '#ECECEC' }}>
+              STATUS: ONLINE
+            </div>
+          </div>
+
+          <div className="openai-canvas-grid">
+            {/* Column 1: Daily Streak & Output */}
+            <div className="openai-canvas-pane">
+              <span className="openai-pane-label">01 // Contribution Momentum</span>
+              <h3 className="openai-pane-title">32 Days Active</h3>
+              <p className="openai-pane-desc">
+                Continuous daily code streak across all tracked git repositories with local snapshot
+                integrity.
+              </p>
             </div>
 
-            {/* Live Interactive Widget Showcase */}
-            <div className="dark-preview-grid">
-              {/* Widget 1: Streak & Git Metric */}
-              <div className="dark-widget-card">
-                <div className="dark-widget-header">
-                  <span>GITHUB STREAK</span>
-                  <Flame size={16} style={{ color: '#F59E0B' }} />
-                </div>
-                <div className="dark-widget-val" style={{ color: '#F59E0B' }}>
-                  32 <span style={{ fontSize: '0.85rem', color: '#A1A1AA' }}>Days</span>
-                </div>
-                <div className="dark-widget-sub" style={{ color: '#FBBF24' }}>
-                  ▲ 100% Target Met This Month
-                </div>
-              </div>
+            {/* Column 2: Focus & Clock */}
+            <div className="openai-canvas-pane">
+              <span className="openai-pane-label">02 // Focus Architecture</span>
+              <h3 className="openai-pane-title">25:00 Interval</h3>
+              <p className="openai-pane-desc">
+                Synthesized Web Audio acoustic feedback for deep focus states and automated rest
+                cycles.
+              </p>
+            </div>
 
-              {/* Widget 2: Interactive Focus Session */}
-              <div className="dark-widget-card">
-                <div className="dark-widget-header">
-                  <span>POMODORO FOCUS</span>
-                  <Clock size={16} style={{ color: '#FB923C' }} />
-                </div>
-                <div className="dark-widget-val" style={{ color: '#FB923C' }}>
-                  {formatPomoTime(pomoSeconds)}
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setIsPomoRunning(!isPomoRunning)}
-                  style={{
-                    background: isPomoRunning
-                      ? 'rgba(239, 68, 68, 0.2)'
-                      : 'rgba(245, 158, 11, 0.18)',
-                    border: `1px solid ${isPomoRunning ? '#EF4444' : '#F59E0B'}`,
-                    color: isPomoRunning ? '#FCA5A5' : '#FCD34D',
-                    borderRadius: '6px',
-                    padding: '0.25rem 0.5rem',
-                    fontSize: '0.72rem',
-                    fontWeight: 600,
-                    cursor: 'pointer',
-                    marginTop: '2px',
-                    width: 'fit-content',
-                  }}
-                >
-                  {isPomoRunning ? 'Pause Session' : '▶ Start Timer'}
-                </button>
-              </div>
-
-              {/* Widget 3: Interactive Today's Agenda */}
-              <div className="dark-widget-card" style={{ gridColumn: 'span 2' }}>
-                <div className="dark-widget-header">
-                  <span>TODAY&apos;S SPRINT AGENDA</span>
-                  <CheckCircle2 size={16} style={{ color: '#F59E0B' }} />
-                </div>
-                <div
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '0.35rem',
-                    marginTop: '2px',
-                  }}
-                >
-                  {activeTasks.map((t) => (
-                    <div
-                      key={t.id}
-                      onClick={() => toggleTask(t.id)}
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '0.5rem',
-                        fontSize: '0.75rem',
-                        cursor: 'pointer',
-                        color: t.done ? '#71717A' : '#F4F4F5',
-                        textDecoration: t.done ? 'line-through' : 'none',
-                      }}
-                    >
-                      <div
-                        style={{
-                          width: '14px',
-                          height: '14px',
-                          borderRadius: '4px',
-                          border: `1px solid ${t.done ? '#F59E0B' : '#52525B'}`,
-                          backgroundColor: t.done ? '#F59E0B' : 'transparent',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                        }}
-                      >
-                        {t.done && <Check size={10} color="#000000" />}
-                      </div>
-                      <span>{t.title}</span>
+            {/* Column 3: Interactive Pipeline Tasks */}
+            <div className="openai-canvas-pane">
+              <span className="openai-pane-label">03 // Sprint Verification</span>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
+                {activeTasks.map((t) => (
+                  <div key={t.id} className="openai-task-row" onClick={() => toggleTask(t.id)}>
+                    <div className={`openai-task-box ${t.done ? 'checked' : ''}`}>
+                      {t.done && <Check size={10} />}
                     </div>
-                  ))}
-                </div>
+                    <span style={{ textDecoration: t.done ? 'line-through' : 'none' }}>
+                      {t.title}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
-
-            {/* Bottom preview banner */}
-            <Link
-              href="/dashboard"
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '0.5rem',
-                background: 'rgba(245, 158, 11, 0.06)',
-                borderTop: '1px solid rgba(255, 255, 255, 0.08)',
-                padding: '0.75rem',
-                fontSize: '0.82rem',
-                fontWeight: 600,
-                color: '#F59E0B',
-                textDecoration: 'none',
-              }}
-            >
-              <span>Click to Enter Fullscreen Interactive Command Center</span>
-              <ArrowRight size={14} />
-            </Link>
           </div>
         </div>
 
-        {/* 4. Trust & Capability Metrics Bar */}
-        <div className="dark-trust-bar">
-          <div>
-            <div className="trust-metric-val">50+</div>
-            <div className="trust-metric-label">Built-in Engineering Widgets</div>
+        {/* 4. Monochromatic System Specifications */}
+        <div className="openai-specs-bar">
+          <div className="openai-spec-item">
+            <span className="openai-spec-num">37</span>
+            <span className="openai-spec-txt">Navigation & capability directories</span>
           </div>
-          <div>
-            <div className="trust-metric-val">100%</div>
-            <div className="trust-metric-label">Local-First & Private Data</div>
+          <div className="openai-spec-item">
+            <span className="openai-spec-num">100%</span>
+            <span className="openai-spec-txt">Local-first client storage isolation</span>
           </div>
-          <div>
-            <div className="trust-metric-val">&lt; 1ms</div>
-            <div className="trust-metric-label">Zero-Latency State Sync</div>
+          <div className="openai-spec-item">
+            <span className="openai-spec-num">0ms</span>
+            <span className="openai-spec-txt">Cloud roundtrip latency</span>
           </div>
-          <div>
-            <div className="trust-metric-val">100</div>
-            <div className="trust-metric-label">Full-Stack Architecture Matrix</div>
+          <div className="openai-spec-item">
+            <span className="openai-spec-num">100</span>
+            <span className="openai-spec-txt">Engineering matrix specifications</span>
           </div>
         </div>
-      </section>
+      </main>
 
-      {/* 5. Footer */}
+      {/* 5. Minimalist Footer */}
       <footer
         style={{
-          borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+          borderTop: '1px solid rgba(255, 255, 255, 0.1)',
           padding: '3rem 1.5rem',
-          textAlign: 'center',
+          maxWidth: '1240px',
+          margin: '0 auto',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
           color: '#71717A',
           fontSize: '0.8rem',
         }}
       >
-        <p>
-          Architected & Crafted with ⚡ by{' '}
+        <span>DevSlash &bull; Designed & Built by Sagar Murkute</span>
+        <div style={{ display: 'flex', gap: '1.5rem' }}>
           <a
-            href="https://github.com/sagarmurkute"
+            href="https://github.com/sagarmurkute/devdash"
             target="_blank"
             rel="noreferrer"
-            style={{ color: '#F59E0B', textDecoration: 'none', fontWeight: 600 }}
+            style={{ color: '#A1A1AA', textDecoration: 'none' }}
           >
-            Sagar Murkute
-          </a>{' '}
-          &bull; DevSlash v2.2.0
-        </p>
+            GitHub
+          </a>
+          <Link href="/roadmap" style={{ color: '#A1A1AA', textDecoration: 'none' }}>
+            Roadmap
+          </Link>
+          <Link href="/dashboard" style={{ color: '#A1A1AA', textDecoration: 'none' }}>
+            Dashboard
+          </Link>
+        </div>
       </footer>
     </div>
   );

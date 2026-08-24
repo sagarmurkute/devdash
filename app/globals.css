@@ -1,5 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* ==========================================================================
-   DevStreak — Modern Developer Dashboard Design System
+   DevSlash — Modern Developer Dashboard & Landing Design System
    ========================================================================== */
 
 :root {

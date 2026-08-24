@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import {
   Zap,
@@ -18,382 +18,318 @@ import {
   Calendar,
   Layers,
   Cpu,
+  GitCommit,
+  Laptop,
+  Check,
 } from 'lucide-react';
 import GithubIcon from '@/components/icons/GithubIcon';
 
 export default function DevSlashLandingPage() {
+  const [activeTasks, setActiveTasks] = useState([
+    { id: '1', title: 'Implement Hero Moving Gradient', done: true },
+    { id: '2', title: 'Connect Local LLM Copilot Bridge', done: false },
+    { id: '3', title: 'Review System Architecture Specs', done: false },
+  ]);
+
+  const [pomoSeconds, setPomoSeconds] = useState(25 * 60);
+  const [isPomoRunning, setIsPomoRunning] = useState(false);
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (isPomoRunning && pomoSeconds > 0) {
+      interval = setInterval(() => {
+        setPomoSeconds((prev) => (prev > 0 ? prev - 1 : 0));
+      }, 1000);
+    }
+    return () => clearInterval(interval);
+  }, [isPomoRunning, pomoSeconds]);
+
+  const toggleTask = (id: string) => {
+    setActiveTasks((prev) => prev.map((t) => (t.id === id ? { ...t, done: !t.done } : t)));
+  };
+
+  const formatPomoTime = (sec: number) => {
+    const m = Math.floor(sec / 60);
+    const s = sec % 60;
+    return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+  };
+
   return (
-    <div className="landing-page-wrapper">
+    <div className="landing-dark-wrapper">
+      {/* Background Animated Gradient Mesh & Orbs */}
+      <div className="landing-bg-mesh">
+        <div className="landing-grid-pattern" />
+        <div className="gradient-orb orb-blue" />
+        <div className="gradient-orb orb-purple" />
+        <div className="gradient-orb orb-cyan" />
+      </div>
+
       {/* 1. Header Navigation Bar */}
-      <header className="landing-nav">
-        <div className="landing-nav-container">
-          <Link href="/" className="landing-brand">
-            <div className="sidebar-logo-icon" style={{ width: '32px', height: '32px' }}>
-              <Zap size={18} fill="currentColor" />
+      <header className="dark-nav">
+        <div className="dark-nav-container">
+          <Link href="/" className="dark-brand">
+            <div className="dark-logo-icon">
+              <Zap size={19} fill="currentColor" />
             </div>
-            <span className="landing-brand-title">DevSlash</span>
+            <span className="dark-brand-title">DevSlash</span>
           </Link>
 
-          <nav className="landing-nav-links">
+          <nav className="dark-nav-links">
+            <a href="#hero">Overview</a>
             <a href="#features">Features</a>
             <Link href="/roadmap">100 Roadmap</Link>
             <a href="#architecture">Architecture</a>
-            <a href="https://github.com/sagarmurkute/devslash" target="_blank" rel="noreferrer">
-              Documentation
+            <a href="https://github.com/sagarmurkute/devdash" target="_blank" rel="noreferrer">
+              Docs
             </a>
           </nav>
 
-          <div className="landing-nav-actions">
+          <div className="dark-nav-actions">
             <a
-              href="https://github.com/sagarmurkute/devslash"
+              href="https://github.com/sagarmurkute/devdash"
               target="_blank"
               rel="noreferrer"
-              className="btn btn-secondary btn-sm"
+              className="btn-github-star"
               title="Star on GitHub"
             >
-              <GithubIcon size={14} /> Star
+              <GithubIcon size={14} />
+              <span>Star</span>
+              <span className="github-star-count">1.4k</span>
             </a>
-            <Link href="/dashboard" className="btn btn-primary btn-sm">
-              Launch Dashboard <ArrowRight size={13} />
+            <Link href="/dashboard" className="btn-launch-glow">
+              <span>Launch App</span>
+              <ArrowRight size={14} />
             </Link>
           </div>
         </div>
       </header>
 
       {/* 2. Hero Section */}
-      <section className="landing-hero">
-        <div className="hero-badge">
-          <Sparkles size={13} style={{ color: 'var(--brand-blue)' }} />
-          <span>DevSlash v2.2 &bull; The Modern Developer Command Center</span>
+      <section id="hero" className="dark-hero">
+        {/* Shimmering Badge */}
+        <div className="dark-hero-badge">
+          <Sparkles size={14} style={{ color: '#60A5FA' }} />
+          <span>DevSlash v2.2 &bull; The Ultra-Fast Developer Command Center</span>
         </div>
 
-        <h1 className="hero-title">
-          Master Your Coding Streak.
+        {/* H1 Main Headline with Moving Gradient */}
+        <h1 className="dark-hero-title">
+          Master Your Daily Streak.
           <br />
-          <span className="hero-gradient-text">Level Up Your Engineering.</span>
+          <span className="moving-gradient-text">Command Your Engineering.</span>
         </h1>
 
-        <p className="hero-subtitle">
-          A unified, high-performance workspace engineered for high-output developers. Track GitHub
-          contributions, manage sprint sprints, automate focus sessions, and master 100 engineering
-          capabilities.
+        {/* Subtitle */}
+        <p className="dark-hero-subtitle">
+          A high-velocity, single-pane developer cockpit designed for engineers who build daily.
+          Track your GitHub matrix, automate Pomodoro focus sessions, manage sprint agendas, and
+          execute across 100 engineering capabilities.
         </p>
 
-        <div className="hero-cta-group">
-          <Link href="/dashboard" className="btn btn-primary hero-btn-main">
-            <Zap size={16} fill="currentColor" /> Launch Live Dashboard
+        {/* Action Button Cluster */}
+        <div className="dark-hero-cta-group">
+          <Link href="/dashboard" className="hero-cta-primary">
+            <Zap size={18} fill="currentColor" />
+            <span>Open Command Center</span>
           </Link>
-          <Link href="/roadmap" className="btn btn-secondary hero-btn-sub">
-            <Compass size={16} /> 100 Engineering Roadmap
+          <Link href="/roadmap" className="hero-cta-secondary">
+            <Compass size={17} style={{ color: '#60A5FA' }} />
+            <span>Explore 100 Capabilities</span>
           </Link>
+          <a
+            href="https://github.com/sagarmurkute/devdash"
+            target="_blank"
+            rel="noreferrer"
+            className="hero-cta-secondary"
+          >
+            <GithubIcon size={16} />
+            <span>GitHub Repository</span>
+          </a>
         </div>
 
-        {/* 3. Hero Visual Dashboard Preview */}
-        <div className="hero-preview-wrapper">
-          <div className="hero-preview-card">
-            {/* Top Bar inside preview */}
-            <div className="preview-top-bar">
-              <div className="preview-dots">
-                <span className="p-dot red" />
-                <span className="p-dot yellow" />
-                <span className="p-dot green" />
+        {/* 3. Hero Interactive Visual Live Preview Frame */}
+        <div className="dark-preview-wrapper">
+          <div className="dark-preview-glow" />
+          <div className="dark-preview-card">
+            {/* Window Chrome Topbar */}
+            <div className="dark-preview-topbar">
+              <div className="dark-preview-dots">
+                <span className="dark-pdot red" />
+                <span className="dark-pdot yellow" />
+                <span className="dark-pdot green" />
               </div>
-              <div className="preview-url">devstreak.local/dashboard</div>
-              <div className="preview-status">● Live</div>
-            </div>
-
-            {/* Content inside preview mockup */}
-            <div className="preview-content-grid">
-              {/* Stat Card 1 */}
-              <div className="preview-mini-card">
-                <div className="preview-mini-header">
-                  <div
-                    className="stat-card-icon"
-                    style={{
-                      backgroundColor: 'var(--accent-orange-light)',
-                      color: 'var(--accent-orange)',
-                      width: '28px',
-                      height: '28px',
-                    }}
-                  >
-                    <Flame size={14} />
-                  </div>
-                  <span>Current Streak</span>
-                </div>
-                <div className="preview-mini-val">
-                  32 <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>days</span>
-                </div>
-                <div style={{ fontSize: '0.7rem', color: 'var(--accent-green)' }}>
-                  Best: 47 days
-                </div>
+              <div className="dark-preview-urlbar">
+                <Terminal size={12} style={{ color: '#60A5FA' }} />
+                <span>devslash.dev/command-center</span>
               </div>
-
-              {/* Stat Card 2 */}
-              <div className="preview-mini-card">
-                <div className="preview-mini-header">
-                  <div
-                    className="stat-card-icon"
-                    style={{
-                      backgroundColor: 'var(--brand-blue-light)',
-                      color: 'var(--brand-blue)',
-                      width: '28px',
-                      height: '28px',
-                    }}
-                  >
-                    <Clock size={14} />
-                  </div>
-                  <span>Coding Hours</span>
-                </div>
-                <div className="preview-mini-val">
-                  4.6 <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>hrs</span>
-                </div>
-                <div style={{ fontSize: '0.7rem', color: 'var(--accent-green)' }}>↑ 12% today</div>
-              </div>
-
-              {/* Stat Card 3 */}
-              <div className="preview-mini-card">
-                <div className="preview-mini-header">
-                  <div
-                    className="stat-card-icon"
-                    style={{
-                      backgroundColor: 'var(--brand-blue-light)',
-                      color: 'var(--brand-blue)',
-                      width: '28px',
-                      height: '28px',
-                    }}
-                  >
-                    <CheckCircle2 size={14} />
-                  </div>
-                  <span>Tasks Completed</span>
-                </div>
-                <div className="preview-mini-val">
-                  12 <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>tasks</span>
-                </div>
-                <div style={{ fontSize: '0.7rem', color: 'var(--accent-green)' }}>↑ 20% today</div>
-              </div>
-
-              {/* Stat Card 4 */}
-              <div className="preview-mini-card">
-                <div className="preview-mini-header">
-                  <div
-                    className="stat-card-icon"
-                    style={{
-                      backgroundColor: 'var(--accent-green-light)',
-                      color: 'var(--accent-green)',
-                      width: '28px',
-                      height: '28px',
-                    }}
-                  >
-                    <TrendingUp size={14} />
-                  </div>
-                  <span>Productivity Score</span>
-                </div>
-                <div className="preview-mini-val">
-                  86 <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>/100</span>
-                </div>
-                <div style={{ fontSize: '0.7rem', color: 'var(--accent-green)' }}>↑ 8% today</div>
+              <div className="dark-preview-status">
+                <span className="pulse-green-dot" />
+                <span>LIVE SYNC ACTIVE</span>
               </div>
             </div>
 
-            {/* Click to open overlay */}
-            <Link href="/dashboard" className="preview-cta-overlay">
-              <span>Click to Enter Full Interactive Dashboard &rarr;</span>
-            </Link>
-          </div>
-        </div>
-      </section>
+            {/* Live Interactive Widget Showcase */}
+            <div className="dark-preview-grid">
+              {/* Widget 1: Streak & Git Metric */}
+              <div className="dark-widget-card">
+                <div className="dark-widget-header">
+                  <span>GITHUB STREAK</span>
+                  <Flame size={16} style={{ color: '#F97316' }} />
+                </div>
+                <div className="dark-widget-val" style={{ color: '#F97316' }}>
+                  32 <span style={{ fontSize: '0.85rem', color: '#94A3B8' }}>Days</span>
+                </div>
+                <div className="dark-widget-sub" style={{ color: '#34D399' }}>
+                  ▲ 100% Target Met This Month
+                </div>
+              </div>
 
-      {/* 4. Feature Grid Section */}
-      <section className="landing-features" id="features">
-        <div className="section-header">
-          <h2 className="section-title">Engineered For Peak Developer Productivity</h2>
-          <p className="section-subtitle">
-            Every feature is designed to keep you in flow state, eliminate distractions, and
-            quantify your coding journey.
-          </p>
-        </div>
+              {/* Widget 2: Interactive Focus Session */}
+              <div className="dark-widget-card">
+                <div className="dark-widget-header">
+                  <span>POMODORO FOCUS</span>
+                  <Clock size={16} style={{ color: '#60A5FA' }} />
+                </div>
+                <div className="dark-widget-val" style={{ color: '#60A5FA' }}>
+                  {formatPomoTime(pomoSeconds)}
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setIsPomoRunning(!isPomoRunning)}
+                  style={{
+                    background: isPomoRunning
+                      ? 'rgba(239, 68, 68, 0.2)'
+                      : 'rgba(59, 130, 246, 0.2)',
+                    border: `1px solid ${isPomoRunning ? '#EF4444' : '#3B82F6'}`,
+                    color: isPomoRunning ? '#FCA5A5' : '#93C5FD',
+                    borderRadius: '6px',
+                    padding: '0.25rem 0.5rem',
+                    fontSize: '0.72rem',
+                    fontWeight: 600,
+                    cursor: 'pointer',
+                    marginTop: '2px',
+                    width: 'fit-content',
+                  }}
+                >
+                  {isPomoRunning ? 'Pause Session' : '▶ Start Timer'}
+                </button>
+              </div>
 
-        <div className="features-grid">
-          {/* Feature 1 */}
-          <div className="feature-card">
-            <div
-              className="feature-icon-box"
-              style={{ backgroundColor: 'var(--accent-green-light)', color: 'var(--accent-green)' }}
-            >
-              <Code2 size={20} />
+              {/* Widget 3: Interactive Today's Agenda */}
+              <div className="dark-widget-card" style={{ gridColumn: 'span 2' }}>
+                <div className="dark-widget-header">
+                  <span>TODAY&apos;S SPRINT AGENDA</span>
+                  <CheckCircle2 size={16} style={{ color: '#34D399' }} />
+                </div>
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '0.35rem',
+                    marginTop: '2px',
+                  }}
+                >
+                  {activeTasks.map((t) => (
+                    <div
+                      key={t.id}
+                      onClick={() => toggleTask(t.id)}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.5rem',
+                        fontSize: '0.75rem',
+                        cursor: 'pointer',
+                        color: t.done ? '#64748B' : '#E2E8F0',
+                        textDecoration: t.done ? 'line-through' : 'none',
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: '14px',
+                          height: '14px',
+                          borderRadius: '4px',
+                          border: `1px solid ${t.done ? '#10B981' : '#475569'}`,
+                          backgroundColor: t.done ? '#10B981' : 'transparent',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                        }}
+                      >
+                        {t.done && <Check size={10} color="#FFFFFF" />}
+                      </div>
+                      <span>{t.title}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
-            <h3 className="feature-title">90-Day GitHub Heatmap</h3>
-            <p className="feature-desc">
-              Visual contribution matrix with 13-week history, live streak trackers, and multi-tier
-              density color scales.
-            </p>
-          </div>
 
-          {/* Feature 2 */}
-          <div className="feature-card">
-            <div
-              className="feature-icon-box"
-              style={{ backgroundColor: 'var(--brand-blue-light)', color: 'var(--brand-blue)' }}
-            >
-              <Clock size={20} />
-            </div>
-            <h3 className="feature-title">Pomodoro Focus Station</h3>
-            <p className="feature-desc">
-              Circular SVG countdown timer with synthesized Web Audio chimes, focus presets, and
-              automatic coding hours logging.
-            </p>
-          </div>
-
-          {/* Feature 3 */}
-          <div className="feature-card">
-            <div
-              className="feature-icon-box"
+            {/* Bottom preview banner */}
+            <Link
+              href="/dashboard"
               style={{
-                backgroundColor: 'var(--accent-orange-light)',
-                color: 'var(--accent-orange)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '0.5rem',
+                background: 'rgba(37, 99, 235, 0.08)',
+                borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+                padding: '0.75rem',
+                fontSize: '0.82rem',
+                fontWeight: 600,
+                color: '#60A5FA',
+                textDecoration: 'none',
               }}
             >
-              <Flame size={20} />
-            </div>
-            <h3 className="feature-title">7-Day Habit Matrix</h3>
-            <p className="feature-desc">
-              Track daily habits with interactive Sunday–Saturday dots, dynamic streaks, and
-              celebration audio triggers.
-            </p>
+              <span>Click to Enter Fullscreen Interactive Command Center</span>
+              <ArrowRight size={14} />
+            </Link>
           </div>
+        </div>
 
-          {/* Feature 4 */}
-          <div className="feature-card">
-            <div
-              className="feature-icon-box"
-              style={{
-                backgroundColor: 'var(--accent-purple-light)',
-                color: 'var(--accent-purple)',
-              }}
-            >
-              <Layers size={20} />
-            </div>
-            <h3 className="feature-title">Projects & Sprint Tracking</h3>
-            <p className="feature-desc">
-              Monitor active workspaces with completion progress bars, priority badges, and quick
-              repository shortcuts.
-            </p>
+        {/* 4. Trust & Capability Metrics Bar */}
+        <div className="dark-trust-bar">
+          <div>
+            <div className="trust-metric-val">50+</div>
+            <div className="trust-metric-label">Built-in Engineering Widgets</div>
           </div>
-
-          {/* Feature 5 */}
-          <div className="feature-card">
-            <div
-              className="feature-icon-box"
-              style={{ backgroundColor: 'var(--accent-cyan-light)', color: 'var(--accent-cyan)' }}
-            >
-              <Terminal size={20} />
-            </div>
-            <h3 className="feature-title">Spotlight Command Palette</h3>
-            <p className="feature-desc">
-              Press <kbd>⌘ K</kbd> or <kbd>Ctrl + K</kbd> to search tools, trigger focus sessions,
-              and navigate at lightning speed.
-            </p>
+          <div>
+            <div className="trust-metric-val">100%</div>
+            <div className="trust-metric-label">Local-First & Private Data</div>
           </div>
-
-          {/* Feature 6 */}
-          <div className="feature-card">
-            <div
-              className="feature-icon-box"
-              style={{ backgroundColor: 'var(--accent-amber-light)', color: 'var(--accent-amber)' }}
-            >
-              <Compass size={20} />
-            </div>
-            <h3 className="feature-title">100 Engineering Roadmap</h3>
-            <p className="feature-desc">
-              Explore 100 capabilities across Full-Stack, Cloud Native, System Design, DevOps, and
-              AI Engineering.
-            </p>
+          <div>
+            <div className="trust-metric-val">&lt; 1ms</div>
+            <div className="trust-metric-label">Zero-Latency State Sync</div>
+          </div>
+          <div>
+            <div className="trust-metric-val">100</div>
+            <div className="trust-metric-label">Full-Stack Architecture Matrix</div>
           </div>
         </div>
       </section>
 
-      {/* 5. Metrics Banner */}
-      <section className="landing-metrics-banner">
-        <div className="metrics-banner-grid">
-          <div className="metric-stat-item">
-            <div className="metric-stat-number">523+</div>
-            <div className="metric-stat-label">Contributions Visualized</div>
-          </div>
-          <div className="metric-stat-item">
-            <div className="metric-stat-number">100</div>
-            <div className="metric-stat-label">Engineering Capabilities</div>
-          </div>
-          <div className="metric-stat-item">
-            <div className="metric-stat-number">32 Days</div>
-            <div className="metric-stat-label">Avg Streak Retention</div>
-          </div>
-          <div className="metric-stat-item">
-            <div className="metric-stat-number">0ms</div>
-            <div className="metric-stat-label">Offline-First Latency</div>
-          </div>
-        </div>
-      </section>
-
-      {/* 6. Call to Action Banner */}
-      <section className="landing-cta-section">
-        <div className="landing-cta-card">
-          <h2 className="cta-heading">Ready to Level Up Your Daily Workflow?</h2>
-          <p className="cta-sub">
-            Join developers building their daily streaks and mastering full-stack architecture with
-            DevSlash.
-          </p>
-          <div className="cta-buttons">
-            <Link href="/dashboard" className="btn btn-primary hero-btn-main">
-              <Zap size={16} fill="currentColor" /> Open Dashboard Now
-            </Link>
-            <Link href="/roadmap" className="btn btn-secondary hero-btn-sub">
-              View Capabilities Matrix
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* 7. Footer */}
-      <footer className="landing-footer">
-        <div className="landing-footer-container">
-          <div className="footer-left">
-            <div className="landing-brand">
-              <div className="sidebar-logo-icon" style={{ width: '26px', height: '26px' }}>
-                <Zap size={15} fill="currentColor" />
-              </div>
-              <span style={{ fontWeight: 700, fontSize: '0.95rem', color: 'var(--text-primary)' }}>
-                DevStreak
-              </span>
-            </div>
-            <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: '0.35rem' }}>
-              The modern developer command center & capability matrix.
-            </p>
-          </div>
-
-          <div className="footer-right">
-            <Link href="/dashboard" className="card-link-btn">
-              Dashboard
-            </Link>
-            <Link href="/roadmap" className="card-link-btn">
-              100 Roadmap
-            </Link>
-            <a
-              href="https://github.com/sagarmurkute/devdash"
-              target="_blank"
-              rel="noreferrer"
-              className="card-link-btn"
-            >
-              GitHub Repo
-            </a>
-          </div>
-        </div>
-
-        <div className="footer-bottom-bar">
-          <span>
-            &copy; {new Date().getFullYear()} DevStreak &bull; Architected by Sagar Murkute &bull;
-            MIT License
-          </span>
-        </div>
+      {/* 5. Footer */}
+      <footer
+        style={{
+          borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+          padding: '3rem 1.5rem',
+          textAlign: 'center',
+          color: '#64748B',
+          fontSize: '0.8rem',
+        }}
+      >
+        <p>
+          Architected & Crafted with ⚡ by{' '}
+          <a
+            href="https://github.com/sagarmurkute"
+            target="_blank"
+            rel="noreferrer"
+            style={{ color: '#93C5FD', textDecoration: 'none', fontWeight: 600 }}
+          >
+            Sagar Murkute
+          </a>{' '}
+          &bull; DevSlash v2.2.0
+        </p>
       </footer>
     </div>
   );

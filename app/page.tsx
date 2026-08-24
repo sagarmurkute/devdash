@@ -8,25 +8,16 @@ import {
   Flame,
   Clock,
   CheckCircle2,
-  TrendingUp,
   Compass,
-  Star,
   Sparkles,
-  ShieldCheck,
   Terminal,
-  Code2,
-  Calendar,
-  Layers,
-  Cpu,
-  GitCommit,
-  Laptop,
   Check,
 } from 'lucide-react';
 import GithubIcon from '@/components/icons/GithubIcon';
 
 export default function DevSlashLandingPage() {
   const [activeTasks, setActiveTasks] = useState([
-    { id: '1', title: 'Implement Hero Moving Gradient', done: true },
+    { id: '1', title: 'Implement Warm Ember & Titanium Design', done: true },
     { id: '2', title: 'Connect Local LLM Copilot Bridge', done: false },
     { id: '3', title: 'Review System Architecture Specs', done: false },
   ]);
@@ -56,12 +47,12 @@ export default function DevSlashLandingPage() {
 
   return (
     <div className="landing-dark-wrapper">
-      {/* Background Animated Gradient Mesh & Orbs */}
+      {/* Background Animated Gradient Mesh & Orbs (Zero-Blue, Zero-Green, Zero-Purple: Pure Amber, Ember Orange, Titanium) */}
       <div className="landing-bg-mesh">
         <div className="landing-grid-pattern" />
-        <div className="gradient-orb orb-blue" />
-        <div className="gradient-orb orb-purple" />
-        <div className="gradient-orb orb-cyan" />
+        <div className="gradient-orb orb-amber" />
+        <div className="gradient-orb orb-orange" />
+        <div className="gradient-orb orb-silver" />
       </div>
 
       {/* 1. Header Navigation Bar */}
@@ -108,11 +99,11 @@ export default function DevSlashLandingPage() {
       <section id="hero" className="dark-hero">
         {/* Shimmering Badge */}
         <div className="dark-hero-badge">
-          <Sparkles size={14} style={{ color: '#60A5FA' }} />
+          <Sparkles size={14} style={{ color: '#F59E0B' }} />
           <span>DevSlash v2.2 &bull; The Ultra-Fast Developer Command Center</span>
         </div>
 
-        {/* H1 Main Headline with Moving Gradient */}
+        {/* H1 Main Headline with Moving Amber-Silver Gradient */}
         <h1 className="dark-hero-title">
           Master Your Daily Streak.
           <br />
@@ -133,7 +124,7 @@ export default function DevSlashLandingPage() {
             <span>Open Command Center</span>
           </Link>
           <Link href="/roadmap" className="hero-cta-secondary">
-            <Compass size={17} style={{ color: '#60A5FA' }} />
+            <Compass size={17} style={{ color: '#F59E0B' }} />
             <span>Explore 100 Capabilities</span>
           </Link>
           <a
@@ -159,11 +150,11 @@ export default function DevSlashLandingPage() {
                 <span className="dark-pdot green" />
               </div>
               <div className="dark-preview-urlbar">
-                <Terminal size={12} style={{ color: '#60A5FA' }} />
+                <Terminal size={12} style={{ color: '#F59E0B' }} />
                 <span>devslash.dev/command-center</span>
               </div>
               <div className="dark-preview-status">
-                <span className="pulse-green-dot" />
+                <span className="pulse-amber-dot" />
                 <span>LIVE SYNC ACTIVE</span>
               </div>
             </div>
@@ -174,12 +165,12 @@ export default function DevSlashLandingPage() {
               <div className="dark-widget-card">
                 <div className="dark-widget-header">
                   <span>GITHUB STREAK</span>
-                  <Flame size={16} style={{ color: '#F97316' }} />
+                  <Flame size={16} style={{ color: '#F59E0B' }} />
                 </div>
-                <div className="dark-widget-val" style={{ color: '#F97316' }}>
-                  32 <span style={{ fontSize: '0.85rem', color: '#94A3B8' }}>Days</span>
+                <div className="dark-widget-val" style={{ color: '#F59E0B' }}>
+                  32 <span style={{ fontSize: '0.85rem', color: '#A1A1AA' }}>Days</span>
                 </div>
-                <div className="dark-widget-sub" style={{ color: '#34D399' }}>
+                <div className="dark-widget-sub" style={{ color: '#FBBF24' }}>
                   ▲ 100% Target Met This Month
                 </div>
               </div>
@@ -188,9 +179,9 @@ export default function DevSlashLandingPage() {
               <div className="dark-widget-card">
                 <div className="dark-widget-header">
                   <span>POMODORO FOCUS</span>
-                  <Clock size={16} style={{ color: '#60A5FA' }} />
+                  <Clock size={16} style={{ color: '#FB923C' }} />
                 </div>
-                <div className="dark-widget-val" style={{ color: '#60A5FA' }}>
+                <div className="dark-widget-val" style={{ color: '#FB923C' }}>
                   {formatPomoTime(pomoSeconds)}
                 </div>
                 <button
@@ -199,9 +190,9 @@ export default function DevSlashLandingPage() {
                   style={{
                     background: isPomoRunning
                       ? 'rgba(239, 68, 68, 0.2)'
-                      : 'rgba(59, 130, 246, 0.2)',
-                    border: `1px solid ${isPomoRunning ? '#EF4444' : '#3B82F6'}`,
-                    color: isPomoRunning ? '#FCA5A5' : '#93C5FD',
+                      : 'rgba(245, 158, 11, 0.18)',
+                    border: `1px solid ${isPomoRunning ? '#EF4444' : '#F59E0B'}`,
+                    color: isPomoRunning ? '#FCA5A5' : '#FCD34D',
                     borderRadius: '6px',
                     padding: '0.25rem 0.5rem',
                     fontSize: '0.72rem',
@@ -219,7 +210,7 @@ export default function DevSlashLandingPage() {
               <div className="dark-widget-card" style={{ gridColumn: 'span 2' }}>
                 <div className="dark-widget-header">
                   <span>TODAY&apos;S SPRINT AGENDA</span>
-                  <CheckCircle2 size={16} style={{ color: '#34D399' }} />
+                  <CheckCircle2 size={16} style={{ color: '#F59E0B' }} />
                 </div>
                 <div
                   style={{
@@ -239,7 +230,7 @@ export default function DevSlashLandingPage() {
                         gap: '0.5rem',
                         fontSize: '0.75rem',
                         cursor: 'pointer',
-                        color: t.done ? '#64748B' : '#E2E8F0',
+                        color: t.done ? '#71717A' : '#F4F4F5',
                         textDecoration: t.done ? 'line-through' : 'none',
                       }}
                     >
@@ -248,14 +239,14 @@ export default function DevSlashLandingPage() {
                           width: '14px',
                           height: '14px',
                           borderRadius: '4px',
-                          border: `1px solid ${t.done ? '#10B981' : '#475569'}`,
-                          backgroundColor: t.done ? '#10B981' : 'transparent',
+                          border: `1px solid ${t.done ? '#F59E0B' : '#52525B'}`,
+                          backgroundColor: t.done ? '#F59E0B' : 'transparent',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
                         }}
                       >
-                        {t.done && <Check size={10} color="#FFFFFF" />}
+                        {t.done && <Check size={10} color="#000000" />}
                       </div>
                       <span>{t.title}</span>
                     </div>
@@ -272,12 +263,12 @@ export default function DevSlashLandingPage() {
                 alignItems: 'center',
                 justifyContent: 'center',
                 gap: '0.5rem',
-                background: 'rgba(37, 99, 235, 0.08)',
+                background: 'rgba(245, 158, 11, 0.06)',
                 borderTop: '1px solid rgba(255, 255, 255, 0.08)',
                 padding: '0.75rem',
                 fontSize: '0.82rem',
                 fontWeight: 600,
-                color: '#60A5FA',
+                color: '#F59E0B',
                 textDecoration: 'none',
               }}
             >
@@ -314,7 +305,7 @@ export default function DevSlashLandingPage() {
           borderTop: '1px solid rgba(255, 255, 255, 0.08)',
           padding: '3rem 1.5rem',
           textAlign: 'center',
-          color: '#64748B',
+          color: '#71717A',
           fontSize: '0.8rem',
         }}
       >
@@ -324,7 +315,7 @@ export default function DevSlashLandingPage() {
             href="https://github.com/sagarmurkute"
             target="_blank"
             rel="noreferrer"
-            style={{ color: '#93C5FD', textDecoration: 'none', fontWeight: 600 }}
+            style={{ color: '#F59E0B', textDecoration: 'none', fontWeight: 600 }}
           >
             Sagar Murkute
           </a>{' '}

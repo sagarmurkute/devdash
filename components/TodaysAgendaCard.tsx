@@ -14,7 +14,7 @@ interface AgendaItem {
 const INITIAL_AGENDA: AgendaItem[] = [
   { id: '1', title: 'Code for DevSlash', time: '9:00 AM – 11:00 AM', completed: false },
   { id: '2', title: 'DSA Practice', time: '11:30 AM – 1:00 PM', completed: false },
-  { id: '3', title: 'Project Meeting', time: '3:00 PM – 4:00 PM', completed: false }
+  { id: '3', title: 'Project Meeting', time: '3:00 PM – 4:00 PM', completed: false },
 ];
 
 export default function TodaysAgendaCard() {
@@ -56,7 +56,7 @@ export default function TodaysAgendaCard() {
                   className="agenda-title"
                   style={{
                     textDecoration: item.completed ? 'line-through' : 'none',
-                    color: item.completed ? 'var(--text-light)' : 'var(--text-primary)'
+                    color: item.completed ? 'var(--text-light)' : 'var(--text-primary)',
                   }}
                 >
                   {item.title}
@@ -66,7 +66,13 @@ export default function TodaysAgendaCard() {
             </div>
 
             <button
-              style={{ background: 'transparent', border: 'none', color: 'var(--text-light)', cursor: 'pointer', padding: '0.2rem' }}
+              style={{
+                background: 'transparent',
+                border: 'none',
+                color: 'var(--text-light)',
+                cursor: 'pointer',
+                padding: '0.2rem',
+              }}
               type="button"
               aria-label="Item options"
             >

@@ -55,13 +55,17 @@ export default function DevSlashDashboard() {
       {/* 2. Main Dashboard Content */}
       <main className="devstreak-main">
         {/* Top Header Bar */}
-        <DevStreakHeader 
+        <DevStreakHeader
           onOpenCmd={() => setIsCmdOpen(true)}
-          onOpenNotifications={() => alert('You have 3 new notifications: PR review requested, streak milestone reached, and 2 project tasks due!')}
+          onOpenNotifications={() =>
+            alert(
+              'You have 3 new notifications: PR review requested, streak milestone reached, and 2 project tasks due!'
+            )
+          }
         />
 
         {/* Top 5 Metrics Row */}
-        <TopStatsRow 
+        <TopStatsRow
           streak={streakCount}
           codingHours={codingHoursTotal}
           tasksCompleted={tasksCompletedTotal}
@@ -71,13 +75,8 @@ export default function DevSlashDashboard() {
 
         {/* Middle Row (GitHub Contribution, Focus Session, Today's Agenda) */}
         <div className="middle-grid-row">
-          <GitHubContributionCard 
-            streak={streakCount}
-            totalContributions={523}
-          />
-          <FocusSessionCard 
-            onSessionComplete={handleSessionComplete}
-          />
+          <GitHubContributionCard streak={streakCount} totalContributions={523} />
+          <FocusSessionCard onSessionComplete={handleSessionComplete} />
           <TodaysAgendaCard />
         </div>
 
@@ -90,17 +89,14 @@ export default function DevSlashDashboard() {
       </main>
 
       {/* Global Command Palette (⌘ K) */}
-      <CommandPalette 
+      <CommandPalette
         isOpen={isCmdOpen}
         onClose={() => setIsCmdOpen(false)}
         onActionTrigger={handleCommandAction}
       />
 
       {/* Developer Scratchpad Modal */}
-      <ScratchpadModal 
-        isOpen={isScratchpadOpen}
-        onClose={() => setIsScratchpadOpen(false)}
-      />
+      <ScratchpadModal isOpen={isScratchpadOpen} onClose={() => setIsScratchpadOpen(false)} />
     </div>
   );
 }

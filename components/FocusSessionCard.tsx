@@ -19,6 +19,23 @@ export default function FocusSessionCard({ onSessionComplete }: FocusSessionCard
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const circumference = 2 * Math.PI * 60; // 376.99 (radius 60)
 
+  const handleComplete = React.useCallback(() => {
+    setIsRunning(false);
+    playChimeSound();
+    playSuccessChime();
+    try {
+      confetti({ particleCount: 40, spread: 60, origin: { y: 0.6 } });
+    } catch {}
+
+    if (onSessionComplete) {
+      onSessionComplete(25);
+    }
+
+    setRemainingSeconds(5 * 60);
+    setTotalSeconds(5 * 60);
+    setModeLabel('Short Break');
+  }, [onSessionComplete]);
+
   useEffect(() => {
     if (isRunning) {
       timerRef.current = setInterval(() => {
@@ -37,24 +54,7 @@ export default function FocusSessionCard({ onSessionComplete }: FocusSessionCard
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [isRunning]);
-
-  const handleComplete = () => {
-    setIsRunning(false);
-    playChimeSound();
-    playSuccessChime();
-    try {
-      confetti({ particleCount: 40, spread: 60, origin: { y: 0.6 } });
-    } catch {}
-
-    if (onSessionComplete) {
-      onSessionComplete(25);
-    }
-
-    setRemainingSeconds(5 * 60);
-    setTotalSeconds(5 * 60);
-    setModeLabel('Short Break');
-  };
+  }, [isRunning, handleComplete]);
 
   const toggleSession = () => {
     setIsRunning(!isRunning);
@@ -75,7 +75,11 @@ export default function FocusSessionCard({ onSessionComplete }: FocusSessionCard
         <h3 className="card-heading">Focus Session</h3>
         <button
           className="btn btn-primary btn-sm"
-          style={{ borderRadius: 'var(--radius-control)', backgroundColor: 'var(--brand-blue)', borderColor: 'var(--brand-blue)' }}
+          style={{
+            borderRadius: 'var(--radius-control)',
+            backgroundColor: 'var(--brand-blue)',
+            borderColor: 'var(--brand-blue)',
+          }}
           onClick={toggleSession}
           type="button"
         >

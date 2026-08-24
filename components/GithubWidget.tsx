@@ -27,11 +27,31 @@ export default function GithubWidget({ onStreakUpdate }: GithubWidgetProps) {
 
   const [heatmapData, setHeatmapData] = useState<HeatmapCell[]>([]);
   const [recentCommits, setRecentCommits] = useState<GitCommitItem[]>([
-    { hash: 'a412cf5', msg: 'feat: api port health monitor, tech feed aggregator, and final polish', time: 'Just now' },
-    { hash: '808bab0', msg: 'feat: developer utility toolbox and code snippet manager', time: '10m ago' },
-    { hash: '387b8aa', msg: 'feat: pomodoro focus station with audio cues and circular timer', time: '20m ago' },
-    { hash: 'e0de39c', msg: 'feat: kanban sprint board and developer task manager with storage', time: '30m ago' },
-    { hash: 'ab5246d', msg: 'feat: github streak matrix, stats widget, and activity timeline', time: '40m ago' }
+    {
+      hash: 'a412cf5',
+      msg: 'feat: api port health monitor, tech feed aggregator, and final polish',
+      time: 'Just now',
+    },
+    {
+      hash: '808bab0',
+      msg: 'feat: developer utility toolbox and code snippet manager',
+      time: '10m ago',
+    },
+    {
+      hash: '387b8aa',
+      msg: 'feat: pomodoro focus station with audio cues and circular timer',
+      time: '20m ago',
+    },
+    {
+      hash: 'e0de39c',
+      msg: 'feat: kanban sprint board and developer task manager with storage',
+      time: '30m ago',
+    },
+    {
+      hash: 'ab5246d',
+      msg: 'feat: github streak matrix, stats widget, and activity timeline',
+      time: '40m ago',
+    },
   ]);
 
   useEffect(() => {
@@ -65,9 +85,13 @@ export default function GithubWidget({ onStreakUpdate }: GithubWidgetProps) {
 
       data.push({
         date: date.toISOString().split('T')[0],
-        formattedDate: date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+        formattedDate: date.toLocaleDateString('en-US', {
+          month: 'short',
+          day: 'numeric',
+          year: 'numeric',
+        }),
         level,
-        count
+        count,
       });
     }
     setHeatmapData(data);
@@ -89,21 +113,21 @@ export default function GithubWidget({ onStreakUpdate }: GithubWidgetProps) {
     const newCommit: GitCommitItem = {
       hash,
       msg: commitMsg.trim(),
-      time: 'Just now'
+      time: 'Just now',
     };
 
-    setRecentCommits(prev => [newCommit, ...prev.slice(0, 4)]);
-    setTotalCommits(prev => prev + 1);
-    
+    setRecentCommits((prev) => [newCommit, ...prev.slice(0, 4)]);
+    setTotalCommits((prev) => prev + 1);
+
     // Update last cell in heatmap
-    setHeatmapData(prev => {
+    setHeatmapData((prev) => {
       if (prev.length === 0) return prev;
       const next = [...prev];
       const lastIdx = next.length - 1;
       next[lastIdx] = {
         ...next[lastIdx],
         count: next[lastIdx].count + 1,
-        level: Math.min(4, Math.max(1, next[lastIdx].level + 1))
+        level: Math.min(4, Math.max(1, next[lastIdx].level + 1)),
       };
       return next;
     });
@@ -113,7 +137,7 @@ export default function GithubWidget({ onStreakUpdate }: GithubWidgetProps) {
       confetti({
         particleCount: 40,
         spread: 60,
-        origin: { y: 0.85 }
+        origin: { y: 0.85 },
       });
     } catch {
       // Confetti fallback
@@ -132,20 +156,26 @@ export default function GithubWidget({ onStreakUpdate }: GithubWidgetProps) {
       const res = await fetch(`https://api.github.com/users/${username}/events/public`);
       if (res.ok) {
         const events = await res.json();
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const pushEvents = events.filter((e: any) => e.type === 'PushEvent');
+        const pushEvents = events.filter((e: { type: string }) => e.type === 'PushEvent');
         if (pushEvents.length > 0) {
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          const mappedCommits = pushEvents.slice(0, 5).map((e: any) => {
-            const commit = e.payload?.commits?.[0];
-            return {
-              hash: (commit?.sha || Math.random().toString(16)).substring(0, 7),
-              msg: commit?.message || `Pushed to ${e.repo?.name}`,
-              time: new Date(e.created_at).toLocaleTimeString()
-            };
-          });
+          const mappedCommits = pushEvents
+            .slice(0, 5)
+            .map(
+              (e: {
+                payload?: { commits?: { sha?: string; message?: string }[] };
+                repo?: { name?: string };
+                created_at: string;
+              }) => {
+                const commit = e.payload?.commits?.[0];
+                return {
+                  hash: (commit?.sha || Math.random().toString(16)).substring(0, 7),
+                  msg: commit?.message || `Pushed to ${e.repo?.name || 'repo'}`,
+                  time: new Date(e.created_at).toLocaleTimeString(),
+                };
+              }
+            );
           setRecentCommits(mappedCommits);
-          setTotalCommits(prev => prev + pushEvents.length);
+          setTotalCommits((prev) => prev + pushEvents.length);
         }
       }
     } catch {
@@ -161,16 +191,22 @@ export default function GithubWidget({ onStreakUpdate }: GithubWidgetProps) {
     <div className="card github-card">
       <div className="card-header">
         <div className="card-title-group">
-          <div className="card-icon" style={{ background: 'rgba(16, 185, 129, 0.12)', color: 'var(--accent-emerald)' }}>
+          <div
+            className="card-icon"
+            style={{ background: 'rgba(16, 185, 129, 0.12)', color: 'var(--accent-emerald)' }}
+          >
             <GitCommit size={15} />
           </div>
           <div>
             <h2 className="card-title">GitHub Activity & Contribution Matrix</h2>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
               <span className="card-subtitle">{username} / devdash</span>
-              <button 
-                className="task-btn-action" 
-                onClick={() => { setUserDraft(username); setIsUserModalOpen(true); }}
+              <button
+                className="task-btn-action"
+                onClick={() => {
+                  setUserDraft(username);
+                  setIsUserModalOpen(true);
+                }}
                 title="Change GitHub Username"
                 style={{ fontSize: '0.75rem', width: '20px', height: '20px' }}
                 type="button"
@@ -207,19 +243,23 @@ export default function GithubWidget({ onStreakUpdate }: GithubWidgetProps) {
           </div>
 
           <div style={{ display: 'flex', gap: '0.4rem' }}>
-            <button 
-              className="btn btn-secondary btn-sm" 
+            <button
+              className="btn btn-secondary btn-sm"
               onClick={fetchGithubApi}
               disabled={isSyncing}
               title="Sync with public GitHub API events"
               type="button"
             >
               <RefreshCw size={12} className={isSyncing ? 'animate-spin' : ''} />
-              {syncStatus === 'syncing' ? 'Syncing...' : syncStatus === 'synced' ? 'Synced!' : 'Sync API'}
+              {syncStatus === 'syncing'
+                ? 'Syncing...'
+                : syncStatus === 'synced'
+                  ? 'Synced!'
+                  : 'Sync API'}
             </button>
 
-            <button 
-              className="btn btn-primary btn-sm" 
+            <button
+              className="btn btn-primary btn-sm"
               onClick={() => setIsCommitModalOpen(true)}
               title="Log Commit Manually"
               type="button"
@@ -235,7 +275,7 @@ export default function GithubWidget({ onStreakUpdate }: GithubWidgetProps) {
         <div className="heatmap-wrapper">
           <div className="heatmap-grid">
             {heatmapData.map((cell, idx) => (
-              <div 
+              <div
                 key={idx}
                 className="heatmap-cell"
                 data-level={cell.level}
@@ -281,31 +321,52 @@ export default function GithubWidget({ onStreakUpdate }: GithubWidgetProps) {
       {/* Change Username Modal */}
       {isUserModalOpen && (
         <div className="modal-overlay" onClick={() => setIsUserModalOpen(false)}>
-          <div className="modal-container" style={{ maxWidth: '400px', padding: '1.5rem' }} onClick={e => e.stopPropagation()}>
+          <div
+            className="modal-container"
+            style={{ maxWidth: '400px', padding: '1.5rem' }}
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="card-header">
-              <h3 className="card-title" style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+              <h3
+                className="card-title"
+                style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}
+              >
                 <GithubIcon size={16} /> Set GitHub Username
               </h3>
               <button className="btn-icon" onClick={() => setIsUserModalOpen(false)} type="button">
                 <X size={14} />
               </button>
             </div>
-            <form onSubmit={handleSaveUsername} style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '1rem' }}>
+            <form
+              onSubmit={handleSaveUsername}
+              style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '1rem' }}
+            >
               <div>
-                <label style={{ display: 'block', fontSize: '0.8rem', marginBottom: '0.4rem', color: 'var(--text-secondary)' }}>
+                <label
+                  style={{
+                    display: 'block',
+                    fontSize: '0.8rem',
+                    marginBottom: '0.4rem',
+                    color: 'var(--text-secondary)',
+                  }}
+                >
                   GitHub Username
                 </label>
-                <input 
-                  type="text" 
-                  className="input" 
-                  value={userDraft} 
-                  onChange={e => setUserDraft(e.target.value)} 
-                  required 
-                  autoFocus 
+                <input
+                  type="text"
+                  className="input"
+                  value={userDraft}
+                  onChange={(e) => setUserDraft(e.target.value)}
+                  required
+                  autoFocus
                 />
               </div>
               <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.6rem' }}>
-                <button type="button" className="btn btn-secondary" onClick={() => setIsUserModalOpen(false)}>
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={() => setIsUserModalOpen(false)}
+                >
                   Cancel
                 </button>
                 <button type="submit" className="btn btn-primary">
@@ -320,44 +381,83 @@ export default function GithubWidget({ onStreakUpdate }: GithubWidgetProps) {
       {/* Manual Commit Modal */}
       {isCommitModalOpen && (
         <div className="modal-overlay" onClick={() => setIsCommitModalOpen(false)}>
-          <div className="modal-container" style={{ maxWidth: '440px', padding: '1.5rem' }} onClick={e => e.stopPropagation()}>
+          <div
+            className="modal-container"
+            style={{ maxWidth: '440px', padding: '1.5rem' }}
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="card-header">
-              <h3 className="card-title" style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+              <h3
+                className="card-title"
+                style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}
+              >
                 <GitCommit size={16} style={{ color: 'var(--accent-emerald)' }} /> Log Git Commit
               </h3>
-              <button className="btn-icon" onClick={() => setIsCommitModalOpen(false)} type="button">
+              <button
+                className="btn-icon"
+                onClick={() => setIsCommitModalOpen(false)}
+                type="button"
+              >
                 <X size={14} />
               </button>
             </div>
-            <form onSubmit={handleManualCommit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '1rem' }}>
+            <form
+              onSubmit={handleManualCommit}
+              style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '1rem' }}
+            >
               <div>
-                <label style={{ display: 'block', fontSize: '0.8rem', marginBottom: '0.4rem', color: 'var(--text-secondary)' }}>
+                <label
+                  style={{
+                    display: 'block',
+                    fontSize: '0.8rem',
+                    marginBottom: '0.4rem',
+                    color: 'var(--text-secondary)',
+                  }}
+                >
                   Commit Message
                 </label>
-                <input 
-                  type="text" 
-                  className="input" 
+                <input
+                  type="text"
+                  className="input"
                   placeholder="e.g. feat: add habit tracker matrix"
                   value={commitMsg}
-                  onChange={e => setCommitMsg(e.target.value)}
-                  required 
-                  autoFocus 
+                  onChange={(e) => setCommitMsg(e.target.value)}
+                  required
+                  autoFocus
                 />
               </div>
               <div>
-                <label style={{ display: 'block', fontSize: '0.8rem', marginBottom: '0.4rem', color: 'var(--text-secondary)' }}>
+                <label
+                  style={{
+                    display: 'block',
+                    fontSize: '0.8rem',
+                    marginBottom: '0.4rem',
+                    color: 'var(--text-secondary)',
+                  }}
+                >
                   Commit Hash (Optional)
                 </label>
-                <input 
-                  type="text" 
-                  className="input input-mono" 
+                <input
+                  type="text"
+                  className="input input-mono"
                   placeholder="Auto-generated if blank"
                   value={commitHash}
-                  onChange={e => setCommitHash(e.target.value)}
+                  onChange={(e) => setCommitHash(e.target.value)}
                 />
               </div>
-              <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.6rem', marginTop: '0.5rem' }}>
-                <button type="button" className="btn btn-secondary" onClick={() => setIsCommitModalOpen(false)}>
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'flex-end',
+                  gap: '0.6rem',
+                  marginTop: '0.5rem',
+                }}
+              >
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={() => setIsCommitModalOpen(false)}
+                >
                   Cancel
                 </button>
                 <button type="submit" className="btn btn-primary">

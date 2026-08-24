@@ -16,14 +16,17 @@ export default function TopStatsRow({
   codingHours = 4.6,
   tasksCompleted = 12,
   activeProjectsCount = 8,
-  productivityScore = 86
+  productivityScore = 86,
 }: TopStatsProps) {
   return (
     <div className="top-stats-row">
       {/* 1. Current Streak */}
       <div className="stat-card">
         <div className="stat-card-header">
-          <div className="stat-card-icon" style={{ backgroundColor: 'var(--accent-orange-light)', color: 'var(--accent-orange)' }}>
+          <div
+            className="stat-card-icon"
+            style={{ backgroundColor: 'var(--accent-orange-light)', color: 'var(--accent-orange)' }}
+          >
             <Flame size={17} />
           </div>
           <span className="stat-card-title">Current Streak</span>
@@ -39,7 +42,10 @@ export default function TopStatsRow({
       {/* 2. Coding Hours */}
       <div className="stat-card">
         <div className="stat-card-header">
-          <div className="stat-card-icon" style={{ backgroundColor: 'var(--brand-blue-light)', color: 'var(--brand-blue)' }}>
+          <div
+            className="stat-card-icon"
+            style={{ backgroundColor: 'var(--brand-blue-light)', color: 'var(--brand-blue)' }}
+          >
             <Clock size={17} />
           </div>
           <span className="stat-card-title">Coding Hours</span>
@@ -55,7 +61,10 @@ export default function TopStatsRow({
       {/* 3. Tasks Completed */}
       <div className="stat-card">
         <div className="stat-card-header">
-          <div className="stat-card-icon" style={{ backgroundColor: 'var(--brand-blue-light)', color: 'var(--brand-blue)' }}>
+          <div
+            className="stat-card-icon"
+            style={{ backgroundColor: 'var(--brand-blue-light)', color: 'var(--brand-blue)' }}
+          >
             <CheckCircle2 size={17} />
           </div>
           <span className="stat-card-title">Tasks Completed</span>
@@ -71,7 +80,10 @@ export default function TopStatsRow({
       {/* 4. Active Projects */}
       <div className="stat-card">
         <div className="stat-card-header">
-          <div className="stat-card-icon" style={{ backgroundColor: 'var(--brand-blue-light)', color: 'var(--brand-blue)' }}>
+          <div
+            className="stat-card-icon"
+            style={{ backgroundColor: 'var(--brand-blue-light)', color: 'var(--brand-blue)' }}
+          >
             <Folder size={17} />
           </div>
           <span className="stat-card-title">Active Projects</span>
@@ -87,7 +99,10 @@ export default function TopStatsRow({
       {/* 5. Productivity Score */}
       <div className="stat-card">
         <div className="stat-card-header">
-          <div className="stat-card-icon" style={{ backgroundColor: 'var(--accent-green-light)', color: 'var(--accent-green)' }}>
+          <div
+            className="stat-card-icon"
+            style={{ backgroundColor: 'var(--accent-green-light)', color: 'var(--accent-green)' }}
+          >
             <TrendingUp size={17} />
           </div>
           <span className="stat-card-title">Productivity Score</span>

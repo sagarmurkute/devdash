@@ -1,7 +1,18 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Search, PlusCircle, Timer, Code, ArrowLeftRight, FileCode, GitCommit, Sun, Maximize2, AlertCircle } from 'lucide-react';
+import {
+  Search,
+  PlusCircle,
+  Timer,
+  Code,
+  ArrowLeftRight,
+  FileCode,
+  GitCommit,
+  Sun,
+  Maximize2,
+  AlertCircle,
+} from 'lucide-react';
 import { useTheme } from '@/lib/theme-context';
 
 interface CommandAction {
@@ -34,7 +45,9 @@ export default function CommandPalette({ isOpen, onClose, onActionTrigger }: Com
       icon: <PlusCircle size={15} />,
       category: 'Kanban Sprint',
       badge: 'N',
-      run: () => { if (onActionTrigger) onActionTrigger('new-task'); }
+      run: () => {
+        if (onActionTrigger) onActionTrigger('new-task');
+      },
     },
     {
       id: 'start-pomodoro',
@@ -43,7 +56,9 @@ export default function CommandPalette({ isOpen, onClose, onActionTrigger }: Com
       icon: <Timer size={15} />,
       category: 'Focus Station',
       badge: 'P',
-      run: () => { if (onActionTrigger) onActionTrigger('start-pomodoro'); }
+      run: () => {
+        if (onActionTrigger) onActionTrigger('start-pomodoro');
+      },
     },
     {
       id: 'json-tool',
@@ -52,7 +67,9 @@ export default function CommandPalette({ isOpen, onClose, onActionTrigger }: Com
       icon: <Code size={15} />,
       category: 'Dev Toolbox',
       badge: 'J',
-      run: () => { if (onActionTrigger) onActionTrigger('json-tool'); }
+      run: () => {
+        if (onActionTrigger) onActionTrigger('json-tool');
+      },
     },
     {
       id: 'base64-tool',
@@ -61,7 +78,9 @@ export default function CommandPalette({ isOpen, onClose, onActionTrigger }: Com
       icon: <ArrowLeftRight size={15} />,
       category: 'Dev Toolbox',
       badge: 'B',
-      run: () => { if (onActionTrigger) onActionTrigger('base64-tool'); }
+      run: () => {
+        if (onActionTrigger) onActionTrigger('base64-tool');
+      },
     },
     {
       id: 'snippet-tool',
@@ -70,7 +89,9 @@ export default function CommandPalette({ isOpen, onClose, onActionTrigger }: Com
       icon: <FileCode size={15} />,
       category: 'Dev Toolbox',
       badge: 'S',
-      run: () => { if (onActionTrigger) onActionTrigger('snippet-tool'); }
+      run: () => {
+        if (onActionTrigger) onActionTrigger('snippet-tool');
+      },
     },
     {
       id: 'simulate-commit',
@@ -79,7 +100,9 @@ export default function CommandPalette({ isOpen, onClose, onActionTrigger }: Com
       icon: <GitCommit size={15} />,
       category: 'GitHub Streak',
       badge: 'G',
-      run: () => { if (onActionTrigger) onActionTrigger('simulate-commit'); }
+      run: () => {
+        if (onActionTrigger) onActionTrigger('simulate-commit');
+      },
     },
     {
       id: 'toggle-theme',
@@ -88,7 +111,7 @@ export default function CommandPalette({ isOpen, onClose, onActionTrigger }: Com
       icon: <Sun size={15} />,
       category: 'Theme',
       badge: 'T',
-      run: () => toggleTheme()
+      run: () => toggleTheme(),
     },
     {
       id: 'toggle-fullscreen',
@@ -103,14 +126,18 @@ export default function CommandPalette({ isOpen, onClose, onActionTrigger }: Com
         } else {
           document.exitFullscreen().catch(() => {});
         }
-      }
-    }
+      },
+    },
   ];
 
-  const filtered = actions.filter(a => {
+  const filtered = actions.filter((a) => {
     const q = query.toLowerCase().trim();
     if (!q) return true;
-    return a.title.toLowerCase().includes(q) || a.desc.toLowerCase().includes(q) || a.category.toLowerCase().includes(q);
+    return (
+      a.title.toLowerCase().includes(q) ||
+      a.desc.toLowerCase().includes(q) ||
+      a.category.toLowerCase().includes(q)
+    );
   });
 
   useEffect(() => {
@@ -132,10 +159,12 @@ export default function CommandPalette({ isOpen, onClose, onActionTrigger }: Com
       } else if (isOpen) {
         if (e.key === 'ArrowDown') {
           e.preventDefault();
-          setSelectedIndex(prev => (filtered.length > 0 ? (prev + 1) % filtered.length : 0));
+          setSelectedIndex((prev) => (filtered.length > 0 ? (prev + 1) % filtered.length : 0));
         } else if (e.key === 'ArrowUp') {
           e.preventDefault();
-          setSelectedIndex(prev => (filtered.length > 0 ? (prev - 1 + filtered.length) % filtered.length : 0));
+          setSelectedIndex((prev) =>
+            filtered.length > 0 ? (prev - 1 + filtered.length) % filtered.length : 0
+          );
         } else if (e.key === 'Enter') {
           e.preventDefault();
           if (filtered[selectedIndex]) {
@@ -154,17 +183,24 @@ export default function CommandPalette({ isOpen, onClose, onActionTrigger }: Com
 
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-container" style={{ maxWidth: '600px' }} onClick={e => e.stopPropagation()}>
+      <div
+        className="modal-container"
+        style={{ maxWidth: '600px' }}
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="cmd-palette-wrapper">
           <div className="cmd-palette-input-wrap">
             <Search size={16} style={{ color: 'var(--text-muted)' }} />
-            <input 
+            <input
               ref={inputRef}
-              type="text" 
-              className="cmd-palette-input" 
-              placeholder="Type a command or search tools..." 
+              type="text"
+              className="cmd-palette-input"
+              placeholder="Type a command or search tools..."
               value={query}
-              onChange={e => { setQuery(e.target.value); setSelectedIndex(0); }}
+              onChange={(e) => {
+                setQuery(e.target.value);
+                setSelectedIndex(0);
+              }}
             />
             <kbd className="cmd-item-badge">ESC</kbd>
           </div>
@@ -177,16 +213,17 @@ export default function CommandPalette({ isOpen, onClose, onActionTrigger }: Com
               </div>
             ) : (
               filtered.map((action, idx) => (
-                <div 
+                <div
                   key={action.id}
                   className={`cmd-item ${idx === selectedIndex ? 'selected' : ''}`}
-                  onClick={() => { action.run(); onClose(); }}
+                  onClick={() => {
+                    action.run();
+                    onClose();
+                  }}
                   onMouseEnter={() => setSelectedIndex(idx)}
                 >
                   <div className="cmd-item-left">
-                    <div className="cmd-item-icon">
-                      {action.icon}
-                    </div>
+                    <div className="cmd-item-icon">{action.icon}</div>
                     <div>
                       <div className="cmd-item-title">{action.title}</div>
                       <div className="cmd-item-desc">{action.desc}</div>
@@ -200,9 +237,15 @@ export default function CommandPalette({ isOpen, onClose, onActionTrigger }: Com
 
           <div className="cmd-palette-footer">
             <div className="cmd-shortcuts-hint">
-              <span><kbd>↑</kbd> <kbd>↓</kbd> Navigate</span>
-              <span><kbd>↵</kbd> Select</span>
-              <span><kbd>ESC</kbd> Close</span>
+              <span>
+                <kbd>↑</kbd> <kbd>↓</kbd> Navigate
+              </span>
+              <span>
+                <kbd>↵</kbd> Select
+              </span>
+              <span>
+                <kbd>ESC</kbd> Close
+              </span>
             </div>
             <span>DevDash React 2.0</span>
           </div>

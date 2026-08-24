@@ -21,8 +21,16 @@ const INITIAL_HABITS: HabitItemCard[] = [
     icon: <Code size={13} />,
     iconBg: 'var(--accent-green-light)',
     iconColor: 'var(--accent-green)',
-    dots: ['completed', 'completed', 'completed', 'completed', 'completed', 'completed', 'completed'],
-    streak: 32
+    dots: [
+      'completed',
+      'completed',
+      'completed',
+      'completed',
+      'completed',
+      'completed',
+      'completed',
+    ],
+    streak: 32,
   },
   {
     id: '2',
@@ -31,7 +39,7 @@ const INITIAL_HABITS: HabitItemCard[] = [
     iconBg: 'var(--accent-amber-light)',
     iconColor: 'var(--accent-amber)',
     dots: ['completed', 'completed', 'completed', 'completed', 'half', 'none', 'none'],
-    streak: 15
+    streak: 15,
   },
   {
     id: '3',
@@ -40,7 +48,7 @@ const INITIAL_HABITS: HabitItemCard[] = [
     iconBg: 'var(--accent-rose-light)',
     iconColor: 'var(--accent-rose)',
     dots: ['completed', 'completed', 'completed', 'half', 'none', 'none', 'none'],
-    streak: 18
+    streak: 18,
   },
   {
     id: '4',
@@ -49,8 +57,8 @@ const INITIAL_HABITS: HabitItemCard[] = [
     iconBg: 'var(--accent-cyan-light)',
     iconColor: 'var(--accent-cyan)',
     dots: ['completed', 'completed', 'completed', 'completed', 'completed', 'half', 'none'],
-    streak: 12
-  }
+    streak: 12,
+  },
 ];
 
 const DAYS_HEADER = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
@@ -64,7 +72,8 @@ export default function HabitTrackerCard() {
         if (h.id === habitId) {
           const nextDots = [...h.dots];
           const current = nextDots[dotIdx];
-          const nextState: 'completed' | 'half' | 'none' = current === 'completed' ? 'none' : 'completed';
+          const nextState: 'completed' | 'half' | 'none' =
+            current === 'completed' ? 'none' : 'completed';
           nextDots[dotIdx] = nextState;
 
           if (nextState === 'completed') {
@@ -74,7 +83,7 @@ export default function HabitTrackerCard() {
           return {
             ...h,
             dots: nextDots,
-            streak: nextState === 'completed' ? h.streak + 1 : Math.max(0, h.streak - 1)
+            streak: nextState === 'completed' ? h.streak + 1 : Math.max(0, h.streak - 1),
           };
         }
         return h;

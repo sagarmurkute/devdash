@@ -12,7 +12,14 @@ export default function NotFound() {
         <div className="sidebar-logo-icon" style={{ width: '38px', height: '38px' }}>
           <Zap size={22} fill="currentColor" />
         </div>
-        <span style={{ fontSize: '1.25rem', fontWeight: 700, letterSpacing: '-0.02em', color: 'var(--text-primary)' }}>
+        <span
+          style={{
+            fontSize: '1.25rem',
+            fontWeight: 700,
+            letterSpacing: '-0.02em',
+            color: 'var(--text-primary)',
+          }}
+        >
           DevSlash
         </span>
       </div>
@@ -27,12 +34,11 @@ export default function NotFound() {
 
         <h1 className="not-found-glitch-title">404</h1>
 
-        <h2 className="not-found-subtitle">
-          Lost in the Code Matrix
-        </h2>
+        <h2 className="not-found-subtitle">Lost in the Code Matrix</h2>
 
         <p className="not-found-description">
-          The page or endpoint you are looking for does not exist, has been moved, or encountered a git conflict in hyperspace.
+          The page or endpoint you are looking for does not exist, has been moved, or encountered a
+          git conflict in hyperspace.
         </p>
 
         {/* Action Buttons */}
@@ -57,11 +63,7 @@ export default function NotFound() {
               🗺️ Capabilities Matrix
             </Link>
             <span style={{ color: 'var(--border-hover)' }}>&bull;</span>
-            <button 
-              className="card-link-btn" 
-              onClick={() => window.history.back()}
-              type="button"
-            >
+            <button className="card-link-btn" onClick={() => window.history.back()} type="button">
               <ArrowLeft size={12} /> Previous Page
             </button>
           </div>

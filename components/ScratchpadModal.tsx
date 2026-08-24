@@ -39,10 +39,17 @@ export default function ScratchpadModal({ isOpen, onClose }: ScratchpadModalProp
 
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-container" style={{ maxWidth: '550px', padding: '1.25rem' }} onClick={e => e.stopPropagation()}>
+      <div
+        className="modal-container"
+        style={{ maxWidth: '550px', padding: '1.25rem' }}
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="card-header">
           <div className="card-title-group">
-            <div className="card-icon" style={{ background: 'rgba(245, 158, 11, 0.12)', color: 'var(--accent-amber)' }}>
+            <div
+              className="card-icon"
+              style={{ background: 'rgba(245, 158, 11, 0.12)', color: 'var(--accent-amber)' }}
+            >
               <FileEdit size={15} />
             </div>
             <div>
@@ -56,18 +63,23 @@ export default function ScratchpadModal({ isOpen, onClose }: ScratchpadModalProp
         </div>
 
         <div className="card-body">
-          <textarea 
-            className="textarea textarea-mono" 
-            rows={10} 
+          <textarea
+            className="textarea textarea-mono"
+            rows={10}
             placeholder="Type quick notes, SQL snippets, terminal commands, or mental thoughts..."
             value={text}
             onChange={handleChange}
             autoFocus
           />
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '0.75rem' }}>
-            <span style={{ fontSize: '0.75rem', color: 'var(--accent-emerald)' }}>
-              {status}
-            </span>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              marginTop: '0.75rem',
+            }}
+          >
+            <span style={{ fontSize: '0.75rem', color: 'var(--accent-emerald)' }}>{status}</span>
             <button className="btn btn-secondary btn-sm" onClick={handleClear} type="button">
               <Trash2 size={12} /> Clear
             </button>

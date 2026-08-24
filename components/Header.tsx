@@ -5,15 +5,7 @@ import Link from 'next/link';
 import { useTheme } from '@/lib/theme-context';
 import { CodingHoursData } from '@/lib/types';
 import { getStorageItem, DEFAULT_CODING_HOURS } from '@/lib/storage';
-import { 
-  Sun, 
-  Moon, 
-  Command, 
-  FileEdit, 
-  Newspaper, 
-  Flame, 
-  Hourglass 
-} from 'lucide-react';
+import { Sun, Moon, Command, FileEdit, Newspaper, Flame, Hourglass } from 'lucide-react';
 
 interface HeaderProps {
   onOpenCmd: () => void;
@@ -28,10 +20,15 @@ const QUOTES = [
   { quote: 'Make it work, make it right, make it fast.', author: 'Kent Beck' },
   { quote: 'Consistency is the catalyst of engineering mastery.', author: 'DevDash' },
   { quote: 'First, solve the problem. Then, write the code.', author: 'John Johnson' },
-  { quote: 'Clarity precedes architectural elegance.', author: 'Design Maxim' }
+  { quote: 'Clarity precedes architectural elegance.', author: 'Design Maxim' },
 ];
 
-export default function Header({ onOpenCmd, onOpenScratchpad, streakCount, codingHoursData }: HeaderProps) {
+export default function Header({
+  onOpenCmd,
+  onOpenScratchpad,
+  streakCount,
+  codingHoursData,
+}: HeaderProps) {
   const { theme, toggleTheme } = useTheme();
   const [username, setUsername] = useState('sagarmurkute');
   const [quoteIndex, setQuoteIndex] = useState(0);
@@ -51,25 +48,30 @@ export default function Header({ onOpenCmd, onOpenScratchpad, streakCount, codin
   }, []);
 
   const currentQuote = QUOTES[quoteIndex] || QUOTES[0];
-  const percentHours = Math.min(100, Math.round((codingHoursData.todayTotal / (codingHoursData.target || 1)) * 100));
+  const percentHours = Math.min(
+    100,
+    Math.round((codingHoursData.todayTotal / (codingHoursData.target || 1)) * 100)
+  );
 
   return (
     <header className="header-container">
       <div className="header-top-banner">
         <div className="header-greeting-wrap">
           <span className="swiss-tag">SYS // DEVDASH</span>
-          <h1 className="greeting-text">{greeting}, {username}</h1>
+          <h1 className="greeting-text">
+            {greeting}, {username}
+          </h1>
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
           <div className="motivation-line">
             <span>“{currentQuote.quote}”</span>
-            <span className="quote-author">// {currentQuote.author}</span>
+            <span className="quote-author">{`// ${currentQuote.author}`}</span>
           </div>
 
-          <Link 
-            href="/roadmap" 
-            className="btn btn-primary btn-sm" 
+          <Link
+            href="/roadmap"
+            className="btn btn-primary btn-sm"
             style={{ fontFamily: 'var(--font-mono)', fontSize: '0.68rem', letterSpacing: '0.04em' }}
           >
             <Newspaper size={13} style={{ marginRight: '0.3rem' }} /> DISPATCH // 100 ROADMAP
@@ -104,32 +106,34 @@ export default function Header({ onOpenCmd, onOpenScratchpad, streakCount, codin
             <span className="metric-box-label">DAILY FOCUS LOG</span>
             <Hourglass size={14} style={{ color: 'var(--text-muted)' }} />
           </div>
-          <div className="metric-box-val">{codingHoursData.todayTotal}h / {codingHoursData.target}h</div>
+          <div className="metric-box-val">
+            {codingHoursData.todayTotal}h / {codingHoursData.target}h
+          </div>
           <div className="metric-box-sub">{percentHours}% of Daily Goal Completed</div>
         </div>
 
         {/* Box 4: Command & Utilities Quick Bar */}
         <div className="header-metric-box" style={{ padding: '0.5rem' }}>
           <div className="metric-box-actions">
-            <button 
-              className="btn btn-secondary btn-sm" 
-              onClick={onOpenCmd} 
+            <button
+              className="btn btn-secondary btn-sm"
+              onClick={onOpenCmd}
               title="Command Palette (Ctrl+K)"
               type="button"
             >
               <Command size={13} /> ^K
             </button>
-            <button 
-              className="btn btn-secondary btn-sm" 
-              onClick={onOpenScratchpad} 
+            <button
+              className="btn btn-secondary btn-sm"
+              onClick={onOpenScratchpad}
               title="Quick Scratchpad Note"
               type="button"
             >
               <FileEdit size={13} /> Note
             </button>
-            <button 
-              className="btn-icon" 
-              onClick={toggleTheme} 
+            <button
+              className="btn-icon"
+              onClick={toggleTheme}
               title={`Switch to ${theme === 'light' ? 'Dark' : 'Light'} Mode`}
               type="button"
             >

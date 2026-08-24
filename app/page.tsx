@@ -2,22 +2,22 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { 
-  Zap, 
-  ArrowRight, 
-  Flame, 
-  Clock, 
-  CheckCircle2, 
-  TrendingUp, 
-  Compass, 
-  Star, 
-  Sparkles, 
-  ShieldCheck, 
-  Terminal, 
+import {
+  Zap,
+  ArrowRight,
+  Flame,
+  Clock,
+  CheckCircle2,
+  TrendingUp,
+  Compass,
+  Star,
+  Sparkles,
+  ShieldCheck,
+  Terminal,
   Code2,
   Calendar,
   Layers,
-  Cpu
+  Cpu,
 } from 'lucide-react';
 import GithubIcon from '@/components/icons/GithubIcon';
 
@@ -44,9 +44,9 @@ export default function DevSlashLandingPage() {
           </nav>
 
           <div className="landing-nav-actions">
-            <a 
-              href="https://github.com/sagarmurkute/devslash" 
-              target="_blank" 
+            <a
+              href="https://github.com/sagarmurkute/devslash"
+              target="_blank"
               rel="noreferrer"
               className="btn btn-secondary btn-sm"
               title="Star on GitHub"
@@ -68,12 +68,15 @@ export default function DevSlashLandingPage() {
         </div>
 
         <h1 className="hero-title">
-          Master Your Coding Streak.<br />
+          Master Your Coding Streak.
+          <br />
           <span className="hero-gradient-text">Level Up Your Engineering.</span>
         </h1>
 
         <p className="hero-subtitle">
-          A unified, high-performance workspace engineered for high-output developers. Track GitHub contributions, manage sprint sprints, automate focus sessions, and master 100 engineering capabilities.
+          A unified, high-performance workspace engineered for high-output developers. Track GitHub
+          contributions, manage sprint sprints, automate focus sessions, and master 100 engineering
+          capabilities.
         </p>
 
         <div className="hero-cta-group">
@@ -104,48 +107,90 @@ export default function DevSlashLandingPage() {
               {/* Stat Card 1 */}
               <div className="preview-mini-card">
                 <div className="preview-mini-header">
-                  <div className="stat-card-icon" style={{ backgroundColor: 'var(--accent-orange-light)', color: 'var(--accent-orange)', width: '28px', height: '28px' }}>
+                  <div
+                    className="stat-card-icon"
+                    style={{
+                      backgroundColor: 'var(--accent-orange-light)',
+                      color: 'var(--accent-orange)',
+                      width: '28px',
+                      height: '28px',
+                    }}
+                  >
                     <Flame size={14} />
                   </div>
                   <span>Current Streak</span>
                 </div>
-                <div className="preview-mini-val">32 <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>days</span></div>
-                <div style={{ fontSize: '0.7rem', color: 'var(--accent-green)' }}>Best: 47 days</div>
+                <div className="preview-mini-val">
+                  32 <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>days</span>
+                </div>
+                <div style={{ fontSize: '0.7rem', color: 'var(--accent-green)' }}>
+                  Best: 47 days
+                </div>
               </div>
 
               {/* Stat Card 2 */}
               <div className="preview-mini-card">
                 <div className="preview-mini-header">
-                  <div className="stat-card-icon" style={{ backgroundColor: 'var(--brand-blue-light)', color: 'var(--brand-blue)', width: '28px', height: '28px' }}>
+                  <div
+                    className="stat-card-icon"
+                    style={{
+                      backgroundColor: 'var(--brand-blue-light)',
+                      color: 'var(--brand-blue)',
+                      width: '28px',
+                      height: '28px',
+                    }}
+                  >
                     <Clock size={14} />
                   </div>
                   <span>Coding Hours</span>
                 </div>
-                <div className="preview-mini-val">4.6 <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>hrs</span></div>
+                <div className="preview-mini-val">
+                  4.6 <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>hrs</span>
+                </div>
                 <div style={{ fontSize: '0.7rem', color: 'var(--accent-green)' }}>↑ 12% today</div>
               </div>
 
               {/* Stat Card 3 */}
               <div className="preview-mini-card">
                 <div className="preview-mini-header">
-                  <div className="stat-card-icon" style={{ backgroundColor: 'var(--brand-blue-light)', color: 'var(--brand-blue)', width: '28px', height: '28px' }}>
+                  <div
+                    className="stat-card-icon"
+                    style={{
+                      backgroundColor: 'var(--brand-blue-light)',
+                      color: 'var(--brand-blue)',
+                      width: '28px',
+                      height: '28px',
+                    }}
+                  >
                     <CheckCircle2 size={14} />
                   </div>
                   <span>Tasks Completed</span>
                 </div>
-                <div className="preview-mini-val">12 <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>tasks</span></div>
+                <div className="preview-mini-val">
+                  12 <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>tasks</span>
+                </div>
                 <div style={{ fontSize: '0.7rem', color: 'var(--accent-green)' }}>↑ 20% today</div>
               </div>
 
               {/* Stat Card 4 */}
               <div className="preview-mini-card">
                 <div className="preview-mini-header">
-                  <div className="stat-card-icon" style={{ backgroundColor: 'var(--accent-green-light)', color: 'var(--accent-green)', width: '28px', height: '28px' }}>
+                  <div
+                    className="stat-card-icon"
+                    style={{
+                      backgroundColor: 'var(--accent-green-light)',
+                      color: 'var(--accent-green)',
+                      width: '28px',
+                      height: '28px',
+                    }}
+                  >
                     <TrendingUp size={14} />
                   </div>
                   <span>Productivity Score</span>
                 </div>
-                <div className="preview-mini-val">86 <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>/100</span></div>
+                <div className="preview-mini-val">
+                  86 <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>/100</span>
+                </div>
                 <div style={{ fontSize: '0.7rem', color: 'var(--accent-green)' }}>↑ 8% today</div>
               </div>
             </div>
@@ -163,74 +208,105 @@ export default function DevSlashLandingPage() {
         <div className="section-header">
           <h2 className="section-title">Engineered For Peak Developer Productivity</h2>
           <p className="section-subtitle">
-            Every feature is designed to keep you in flow state, eliminate distractions, and quantify your coding journey.
+            Every feature is designed to keep you in flow state, eliminate distractions, and
+            quantify your coding journey.
           </p>
         </div>
 
         <div className="features-grid">
           {/* Feature 1 */}
           <div className="feature-card">
-            <div className="feature-icon-box" style={{ backgroundColor: 'var(--accent-green-light)', color: 'var(--accent-green)' }}>
+            <div
+              className="feature-icon-box"
+              style={{ backgroundColor: 'var(--accent-green-light)', color: 'var(--accent-green)' }}
+            >
               <Code2 size={20} />
             </div>
             <h3 className="feature-title">90-Day GitHub Heatmap</h3>
             <p className="feature-desc">
-              Visual contribution matrix with 13-week history, live streak trackers, and multi-tier density color scales.
+              Visual contribution matrix with 13-week history, live streak trackers, and multi-tier
+              density color scales.
             </p>
           </div>
 
           {/* Feature 2 */}
           <div className="feature-card">
-            <div className="feature-icon-box" style={{ backgroundColor: 'var(--brand-blue-light)', color: 'var(--brand-blue)' }}>
+            <div
+              className="feature-icon-box"
+              style={{ backgroundColor: 'var(--brand-blue-light)', color: 'var(--brand-blue)' }}
+            >
               <Clock size={20} />
             </div>
             <h3 className="feature-title">Pomodoro Focus Station</h3>
             <p className="feature-desc">
-              Circular SVG countdown timer with synthesized Web Audio chimes, focus presets, and automatic coding hours logging.
+              Circular SVG countdown timer with synthesized Web Audio chimes, focus presets, and
+              automatic coding hours logging.
             </p>
           </div>
 
           {/* Feature 3 */}
           <div className="feature-card">
-            <div className="feature-icon-box" style={{ backgroundColor: 'var(--accent-orange-light)', color: 'var(--accent-orange)' }}>
+            <div
+              className="feature-icon-box"
+              style={{
+                backgroundColor: 'var(--accent-orange-light)',
+                color: 'var(--accent-orange)',
+              }}
+            >
               <Flame size={20} />
             </div>
             <h3 className="feature-title">7-Day Habit Matrix</h3>
             <p className="feature-desc">
-              Track daily habits with interactive Sunday–Saturday dots, dynamic streaks, and celebration audio triggers.
+              Track daily habits with interactive Sunday–Saturday dots, dynamic streaks, and
+              celebration audio triggers.
             </p>
           </div>
 
           {/* Feature 4 */}
           <div className="feature-card">
-            <div className="feature-icon-box" style={{ backgroundColor: 'var(--accent-purple-light)', color: 'var(--accent-purple)' }}>
+            <div
+              className="feature-icon-box"
+              style={{
+                backgroundColor: 'var(--accent-purple-light)',
+                color: 'var(--accent-purple)',
+              }}
+            >
               <Layers size={20} />
             </div>
             <h3 className="feature-title">Projects & Sprint Tracking</h3>
             <p className="feature-desc">
-              Monitor active workspaces with completion progress bars, priority badges, and quick repository shortcuts.
+              Monitor active workspaces with completion progress bars, priority badges, and quick
+              repository shortcuts.
             </p>
           </div>
 
           {/* Feature 5 */}
           <div className="feature-card">
-            <div className="feature-icon-box" style={{ backgroundColor: 'var(--accent-cyan-light)', color: 'var(--accent-cyan)' }}>
+            <div
+              className="feature-icon-box"
+              style={{ backgroundColor: 'var(--accent-cyan-light)', color: 'var(--accent-cyan)' }}
+            >
               <Terminal size={20} />
             </div>
             <h3 className="feature-title">Spotlight Command Palette</h3>
             <p className="feature-desc">
-              Press <kbd>⌘ K</kbd> or <kbd>Ctrl + K</kbd> to search tools, trigger focus sessions, and navigate at lightning speed.
+              Press <kbd>⌘ K</kbd> or <kbd>Ctrl + K</kbd> to search tools, trigger focus sessions,
+              and navigate at lightning speed.
             </p>
           </div>
 
           {/* Feature 6 */}
           <div className="feature-card">
-            <div className="feature-icon-box" style={{ backgroundColor: 'var(--accent-amber-light)', color: 'var(--accent-amber)' }}>
+            <div
+              className="feature-icon-box"
+              style={{ backgroundColor: 'var(--accent-amber-light)', color: 'var(--accent-amber)' }}
+            >
               <Compass size={20} />
             </div>
             <h3 className="feature-title">100 Engineering Roadmap</h3>
             <p className="feature-desc">
-              Explore 100 capabilities across Full-Stack, Cloud Native, System Design, DevOps, and AI Engineering.
+              Explore 100 capabilities across Full-Stack, Cloud Native, System Design, DevOps, and
+              AI Engineering.
             </p>
           </div>
         </div>
@@ -263,7 +339,8 @@ export default function DevSlashLandingPage() {
         <div className="landing-cta-card">
           <h2 className="cta-heading">Ready to Level Up Your Daily Workflow?</h2>
           <p className="cta-sub">
-            Join developers building their daily streaks and mastering full-stack architecture with DevSlash.
+            Join developers building their daily streaks and mastering full-stack architecture with
+            DevSlash.
           </p>
           <div className="cta-buttons">
             <Link href="/dashboard" className="btn btn-primary hero-btn-main">
@@ -284,7 +361,9 @@ export default function DevSlashLandingPage() {
               <div className="sidebar-logo-icon" style={{ width: '26px', height: '26px' }}>
                 <Zap size={15} fill="currentColor" />
               </div>
-              <span style={{ fontWeight: 700, fontSize: '0.95rem', color: 'var(--text-primary)' }}>DevStreak</span>
+              <span style={{ fontWeight: 700, fontSize: '0.95rem', color: 'var(--text-primary)' }}>
+                DevStreak
+              </span>
             </div>
             <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: '0.35rem' }}>
               The modern developer command center & capability matrix.
@@ -292,16 +371,28 @@ export default function DevSlashLandingPage() {
           </div>
 
           <div className="footer-right">
-            <Link href="/dashboard" className="card-link-btn">Dashboard</Link>
-            <Link href="/roadmap" className="card-link-btn">100 Roadmap</Link>
-            <a href="https://github.com/sagarmurkute/devdash" target="_blank" rel="noreferrer" className="card-link-btn">
+            <Link href="/dashboard" className="card-link-btn">
+              Dashboard
+            </Link>
+            <Link href="/roadmap" className="card-link-btn">
+              100 Roadmap
+            </Link>
+            <a
+              href="https://github.com/sagarmurkute/devdash"
+              target="_blank"
+              rel="noreferrer"
+              className="card-link-btn"
+            >
               GitHub Repo
             </a>
           </div>
         </div>
 
         <div className="footer-bottom-bar">
-          <span>&copy; {new Date().getFullYear()} DevStreak &bull; Architected by Sagar Murkute &bull; MIT License</span>
+          <span>
+            &copy; {new Date().getFullYear()} DevStreak &bull; Architected by Sagar Murkute &bull;
+            MIT License
+          </span>
         </div>
       </footer>
     </div>

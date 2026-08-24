@@ -48,10 +48,12 @@ DevSlash unifies your entire development workflow into a high-performance, singl
 ## ✨ Features
 
 ### 1. 🧭 Sidebar Navigation & Gamification
+
 - **12 Dedicated Sections**: Dashboard, Projects, Tasks, Habits, Focus, Learning, Notes, Analytics, Calendar, Goals, Achievements, and Settings.
 - **Level 12 XP Progression**: Real-time experience points bar tracking daily coding milestones (`XP 2,450 / 3,500`).
 
 ### 2. 📊 Swiss Metric Stat Cards
+
 - **🔥 Current Streak**: `32 days` with all-time personal best indicator (`Best: 47 days`).
 - **⏱️ Daily Coding Hours**: `4.6 hrs` with daily percentage comparison (`↑ 12% from yesterday`).
 - **☑️ Tasks Completed**: `12 tasks` completed across active sprints (`↑ 20% from yesterday`).
@@ -59,63 +61,73 @@ DevSlash unifies your entire development workflow into a high-performance, singl
 - **📈 Productivity Score**: Composite score of `86 /100` (`↑ 8% from yesterday`).
 
 ### 3. 🌿 90-Day GitHub Contribution Heatmap
+
 - 13-week by 7-day contribution grid with green gradient activity levels.
 - Month milestones: `Feb`, `Mar`, `Apr`, `May`.
 - Interactive hover cards detailing commit counts and timestamps.
 - Summary analytics: `523 contributions in last 90 days` and longest active streak counter.
 
 ### 4. ⏱️ Focus Session (Pomodoro Station)
+
 - Animated circular SVG countdown timer with thick progress ring (`#2563EB`).
 - Integrated Web Audio synthesizer chime frequencies for session start and completion.
 - Multi-mode selector: `Pomodoro 25/5`, `Short Break (5m)`, `Long Break (15m)`.
 - Confetti celebration and automatic logging to daily coding hours upon completion.
 
 ### 5. 📋 Today's Agenda
+
 - Interactive checklist with custom audio feedback on completion.
 - Time-blocked schedule tags (`9:00 AM – 11:00 AM`, `11:30 AM – 1:00 PM`, `3:00 PM – 4:00 PM`).
 - One-click navigation to full calendar view.
 
 ### 6. 📁 Projects Overview
+
 - Project workspace rows with custom brand badges (`DevSlash`, `Portfolio Website`, `AI Chat App`, `Blog Platform`).
 - Dynamic progress bars (`75%`, `40%`, `60%`, `20%`).
 - Colored status badges: `● On Track` (Emerald) and `● In Progress` (Amber).
 
 ### 7. 🎯 7-Day Habit Tracker
+
 - Interactive dot matrix across Sunday to Saturday (`S M T W T F S`).
 - Instant state toggling (`Completed`, `Half-Completed`, `Pending`) with audio chimes.
 - Habits: `Code Daily` (32d streak), `Read Books` (15d), `DSA Practice` (18d), `Workout` (12d).
 
 ### 8. 📰 Recent Activity Stream
+
 - Chronological timeline featuring Git commits, completed Pomodoro sessions, DSA problem logs, project updates, and streak trophy unlocks.
 
 ### 9. ⚡ Global Command Palette (`⌘ K` / `Ctrl + K`)
+
 - Instant spotlight search across dashboard pages, actions, and utilities with keyboard navigation (`↑`, `↓`, `Enter`, `Esc`).
 
 ### 10. 🗺️ 100 Engineering Capabilities Roadmap (`/roadmap`)
+
 - Curated index of 100 developer competencies across 10 domains (Full-Stack, Cloud Native, System Design, DevOps, AI Engineering, etc.).
 
 ### 11. 🚫 Custom 404 Page (`/not-found`)
+
 - Gradient 404 error badge, terminal route breadcrumb, and quick destination navigation.
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Layer | Technologies |
-| :--- | :--- |
-| **Framework** | [Next.js 14](https://nextjs.org/) (App Router, Server Components & Client Hooks) |
-| **Language** | [TypeScript 5.8](https://www.typescriptlang.org/) (Strict Mode) |
-| **UI & Styling** | Pure Modular CSS with Swiss Design Tokens & Unified Border Radius System |
-| **Typography** | `next/font/google` ([Inter](https://fonts.google.com/specimen/Inter) & [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono)) |
-| **Icons** | [Lucide React](https://lucide.dev/) & [Phosphor Icons](https://phosphoricons.com/) |
-| **Audio** | Custom Web Audio API Sine Wave Synthesizer |
-| **Animation** | Canvas Confetti & Smooth CSS Bezier Transitions |
+| Layer            | Technologies                                                                                                                               |
+| :--------------- | :----------------------------------------------------------------------------------------------------------------------------------------- |
+| **Framework**    | [Next.js 14](https://nextjs.org/) (App Router, Server Components & Client Hooks)                                                           |
+| **Language**     | [TypeScript 5.8](https://www.typescriptlang.org/) (Strict Mode)                                                                            |
+| **UI & Styling** | Pure Modular CSS with Swiss Design Tokens & Unified Border Radius System                                                                   |
+| **Typography**   | `next/font/google` ([Inter](https://fonts.google.com/specimen/Inter) & [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono)) |
+| **Icons**        | [Lucide React](https://lucide.dev/) & [Phosphor Icons](https://phosphoricons.com/)                                                         |
+| **Audio**        | Custom Web Audio API Sine Wave Synthesizer                                                                                                 |
+| **Animation**    | Canvas Confetti & Smooth CSS Bezier Transitions                                                                                            |
 
 ---
 
 ## 🚀 Quickstart
 
 ### Prerequisites
+
 - [Node.js](https://nodejs.org/) (v18.17.0 or higher recommended)
 - [npm](https://www.npmjs.com/) or [pnpm](https://pnpm.io/)
 
@@ -187,12 +199,12 @@ npm start
 
 ## ⌨️ Keyboard Shortcuts
 
-| Shortcut | Action |
-| :--- | :--- |
-| <kbd>⌘ K</kbd> / <kbd>Ctrl + K</kbd> | Open Global Command Palette |
-| <kbd>Esc</kbd> | Close Modals & Command Palette |
-| <kbd>↑</kbd> / <kbd>↓</kbd> | Navigate Command Palette items |
-| <kbd>Enter</kbd> | Select active item |
+| Shortcut                             | Action                         |
+| :----------------------------------- | :----------------------------- |
+| <kbd>⌘ K</kbd> / <kbd>Ctrl + K</kbd> | Open Global Command Palette    |
+| <kbd>Esc</kbd>                       | Close Modals & Command Palette |
+| <kbd>↑</kbd> / <kbd>↓</kbd>          | Navigate Command Palette items |
+| <kbd>Enter</kbd>                     | Select active item             |
 
 ---
 

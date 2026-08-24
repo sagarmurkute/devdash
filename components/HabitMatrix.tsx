@@ -1,7 +1,18 @@
 'use client';
 
 import React, { useState } from 'react';
-import { CheckSquare, Plus, Check, Flame, X, Code, BookOpen, GitCommit, Crosshair, Zap } from 'lucide-react';
+import {
+  CheckSquare,
+  Plus,
+  Check,
+  Flame,
+  X,
+  Code,
+  BookOpen,
+  GitCommit,
+  Crosshair,
+  Zap,
+} from 'lucide-react';
 import { HabitItem } from '@/lib/types';
 import { playSuccessChime } from '@/lib/audio';
 
@@ -22,12 +33,12 @@ export default function HabitMatrix({ habits, onUpdate }: HabitMatrixProps) {
   const completionRate = totalChecks > 0 ? Math.round((completedChecks / totalChecks) * 100) : 0;
 
   const toggleDay = (habitId: string, dayIndex: number) => {
-    const updated = habits.map(h => {
+    const updated = habits.map((h) => {
       if (h.id === habitId) {
         const nextDays = [...h.days];
         const willCheck = !nextDays[dayIndex];
         nextDays[dayIndex] = willCheck;
-        
+
         if (willCheck) {
           playSuccessChime();
         }
@@ -35,7 +46,7 @@ export default function HabitMatrix({ habits, onUpdate }: HabitMatrixProps) {
         return {
           ...h,
           days: nextDays,
-          streak: willCheck ? h.streak + 1 : Math.max(0, h.streak - 1)
+          streak: willCheck ? h.streak + 1 : Math.max(0, h.streak - 1),
         };
       }
       return h;
@@ -53,7 +64,7 @@ export default function HabitMatrix({ habits, onUpdate }: HabitMatrixProps) {
       title: newTitle.trim(),
       icon: newIcon,
       days: [false, false, false, false, false, false, false],
-      streak: 0
+      streak: 0,
     };
 
     onUpdate([...habits, newHabit]);
@@ -63,10 +74,14 @@ export default function HabitMatrix({ habits, onUpdate }: HabitMatrixProps) {
 
   const renderIcon = (iconName: string) => {
     switch (iconName) {
-      case 'BookOpen': return <BookOpen size={14} />;
-      case 'GitCommit': return <GitCommit size={14} />;
-      case 'Crosshair': return <Crosshair size={14} />;
-      case 'Zap': return <Zap size={14} />;
+      case 'BookOpen':
+        return <BookOpen size={14} />;
+      case 'GitCommit':
+        return <GitCommit size={14} />;
+      case 'Crosshair':
+        return <Crosshair size={14} />;
+      case 'Zap':
+        return <Zap size={14} />;
       case 'Code':
       default:
         return <Code size={14} />;
@@ -77,7 +92,10 @@ export default function HabitMatrix({ habits, onUpdate }: HabitMatrixProps) {
     <div className="card habits-card">
       <div className="card-header">
         <div className="card-title-group">
-          <div className="card-icon" style={{ background: 'rgba(16, 185, 129, 0.12)', color: 'var(--accent-emerald)' }}>
+          <div
+            className="card-icon"
+            style={{ background: 'rgba(16, 185, 129, 0.12)', color: 'var(--accent-emerald)' }}
+          >
             <CheckSquare size={15} />
           </div>
           <div>
@@ -86,8 +104,8 @@ export default function HabitMatrix({ habits, onUpdate }: HabitMatrixProps) {
           </div>
         </div>
 
-        <button 
-          className="btn btn-secondary btn-sm" 
+        <button
+          className="btn btn-secondary btn-sm"
           onClick={() => setIsAddModalOpen(true)}
           type="button"
         >
@@ -100,14 +118,14 @@ export default function HabitMatrix({ habits, onUpdate }: HabitMatrixProps) {
           <thead>
             <tr>
               <th style={{ width: '40%' }}>Habit Routine</th>
-              {DAYS_OF_WEEK.map(d => (
+              {DAYS_OF_WEEK.map((d) => (
                 <th key={d}>{d}</th>
               ))}
               <th>Streak</th>
             </tr>
           </thead>
           <tbody>
-            {habits.map(h => (
+            {habits.map((h) => (
               <tr key={h.id}>
                 <td>
                   <div className="habit-name-cell">
@@ -117,7 +135,7 @@ export default function HabitMatrix({ habits, onUpdate }: HabitMatrixProps) {
                 </td>
                 {h.days.map((checked, idx) => (
                   <td key={idx}>
-                    <button 
+                    <button
                       className={`habit-check-btn ${checked ? 'checked' : ''}`}
                       onClick={() => toggleDay(h.id, idx)}
                       title={`Toggle ${DAYS_OF_WEEK[idx]}`}
@@ -141,38 +159,62 @@ export default function HabitMatrix({ habits, onUpdate }: HabitMatrixProps) {
       {/* Add Habit Modal */}
       {isAddModalOpen && (
         <div className="modal-overlay" onClick={() => setIsAddModalOpen(false)}>
-          <div className="modal-container" style={{ maxWidth: '420px', padding: '1.5rem' }} onClick={e => e.stopPropagation()}>
+          <div
+            className="modal-container"
+            style={{ maxWidth: '420px', padding: '1.5rem' }}
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="card-header">
-              <h3 className="card-title" style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+              <h3
+                className="card-title"
+                style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}
+              >
                 <Plus size={16} style={{ color: 'var(--accent-emerald)' }} /> Add Daily Dev Habit
               </h3>
               <button className="btn-icon" onClick={() => setIsAddModalOpen(false)} type="button">
                 <X size={14} />
               </button>
             </div>
-            <form onSubmit={handleAddHabit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '1rem' }}>
+            <form
+              onSubmit={handleAddHabit}
+              style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '1rem' }}
+            >
               <div>
-                <label style={{ display: 'block', fontSize: '0.8rem', marginBottom: '0.4rem', color: 'var(--text-secondary)' }}>
+                <label
+                  style={{
+                    display: 'block',
+                    fontSize: '0.8rem',
+                    marginBottom: '0.4rem',
+                    color: 'var(--text-secondary)',
+                  }}
+                >
                   Habit Routine
                 </label>
-                <input 
-                  type="text" 
-                  className="input" 
-                  placeholder="e.g. Read RFC or Docs 15m" 
+                <input
+                  type="text"
+                  className="input"
+                  placeholder="e.g. Read RFC or Docs 15m"
                   value={newTitle}
-                  onChange={e => setNewTitle(e.target.value)}
-                  required 
-                  autoFocus 
+                  onChange={(e) => setNewTitle(e.target.value)}
+                  required
+                  autoFocus
                 />
               </div>
               <div>
-                <label style={{ display: 'block', fontSize: '0.8rem', marginBottom: '0.4rem', color: 'var(--text-secondary)' }}>
+                <label
+                  style={{
+                    display: 'block',
+                    fontSize: '0.8rem',
+                    marginBottom: '0.4rem',
+                    color: 'var(--text-secondary)',
+                  }}
+                >
                   Icon Symbol
                 </label>
-                <select 
+                <select
                   className="select"
                   value={newIcon}
-                  onChange={e => setNewIcon(e.target.value)}
+                  onChange={(e) => setNewIcon(e.target.value)}
                 >
                   <option value="Code">Code (&lt;/&gt;)</option>
                   <option value="BookOpen">Reading (Book)</option>
@@ -181,8 +223,19 @@ export default function HabitMatrix({ habits, onUpdate }: HabitMatrixProps) {
                   <option value="Zap">Speed (Lightning)</option>
                 </select>
               </div>
-              <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.6rem', marginTop: '0.5rem' }}>
-                <button type="button" className="btn btn-secondary" onClick={() => setIsAddModalOpen(false)}>
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'flex-end',
+                  gap: '0.6rem',
+                  marginTop: '0.5rem',
+                }}
+              >
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={() => setIsAddModalOpen(false)}
+                >
                   Cancel
                 </button>
                 <button type="submit" className="btn btn-primary">

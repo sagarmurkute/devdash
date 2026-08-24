@@ -17,20 +17,19 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: 'DevSlash | Modern Developer Command Center',
-  description: 'A feature-rich developer dashboard with GitHub streak matrix, daily coding hours, active projects, habit matrix, notes vault, and weekly analytics architected by Sagar Murkute.',
+  description:
+    'A feature-rich developer dashboard with GitHub streak matrix, daily coding hours, active projects, habit matrix, notes vault, and weekly analytics architected by Sagar Murkute.',
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${inter.variable} ${jetbrainsMono.variable}`}
+      suppressHydrationWarning
+    >
       <body className={inter.className}>
-        <ThemeProvider>
-          {children}
-        </ThemeProvider>
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );

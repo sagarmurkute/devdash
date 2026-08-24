@@ -11,7 +11,7 @@ interface GitHubContributionCardProps {
 
 export default function GitHubContributionCard({
   streak = 32,
-  totalContributions = 523
+  totalContributions = 523,
 }: GitHubContributionCardProps) {
   const [heatmapCells, setHeatmapCells] = useState<HeatmapCell[]>([]);
   const [period, setPeriod] = useState('Last 90 days');
@@ -61,7 +61,7 @@ export default function GitHubContributionCard({
         date: date.toISOString().split('T')[0],
         formattedDate: date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
         level,
-        count
+        count,
       });
     }
 
@@ -72,9 +72,13 @@ export default function GitHubContributionCard({
     <div className="devstreak-card">
       <div className="devstreak-card-header">
         <h3 className="card-heading">GitHub Contribution</h3>
-        <button 
-          className="focus-mode-dropdown" 
-          style={{ padding: '0.2rem 0.65rem', fontSize: '0.72rem', borderRadius: 'var(--radius-control)' }}
+        <button
+          className="focus-mode-dropdown"
+          style={{
+            padding: '0.2rem 0.65rem',
+            fontSize: '0.72rem',
+            borderRadius: 'var(--radius-control)',
+          }}
           type="button"
         >
           <span>{period}</span>

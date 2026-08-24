@@ -36,7 +36,9 @@ export default function DevStreakHeader({ onOpenCmd, onOpenNotifications }: Head
     <header className="devstreak-header">
       {/* Left: Greeting & Subtitle */}
       <div className="header-left-greeting">
-        <h1>{greeting}, {userName.split(' ')[0]} 👋</h1>
+        <h1>
+          {greeting}, {userName.split(' ')[0]} 👋
+        </h1>
         <p>Let&apos;s build something amazing today.</p>
       </div>
 
@@ -45,18 +47,18 @@ export default function DevStreakHeader({ onOpenCmd, onOpenNotifications }: Head
         {/* Search Bar with ⌘ K shortcut */}
         <div className="header-search-bar" onClick={onOpenCmd}>
           <Search size={14} style={{ color: 'var(--text-light)', flexShrink: 0 }} />
-          <input 
-            type="text" 
-            className="header-search-input" 
-            placeholder="Search anything..." 
-            readOnly 
+          <input
+            type="text"
+            className="header-search-input"
+            placeholder="Search anything..."
+            readOnly
           />
           <kbd className="header-search-kbd">⌘ K</kbd>
         </div>
 
         {/* Theme Toggle Button */}
-        <button 
-          className="header-notification-btn" 
+        <button
+          className="header-notification-btn"
           onClick={toggleTheme}
           title={`Switch to ${theme === 'light' ? 'Dark' : 'Light'} Mode`}
           type="button"
@@ -65,8 +67,8 @@ export default function DevStreakHeader({ onOpenCmd, onOpenNotifications }: Head
         </button>
 
         {/* Notification Bell with Red Dot */}
-        <button 
-          className="header-notification-btn" 
+        <button
+          className="header-notification-btn"
           onClick={onOpenNotifications}
           title="Notifications"
           type="button"
@@ -77,9 +79,7 @@ export default function DevStreakHeader({ onOpenCmd, onOpenNotifications }: Head
 
         {/* User Profile Pill */}
         <div className="header-user-pill" title="User Profile">
-          <div className="user-avatar">
-            SK
-          </div>
+          <div className="user-avatar">SK</div>
           <div className="user-info-text">
             <span className="user-name">{userName}</span>
             <span className="user-role">Full Stack Developer</span>

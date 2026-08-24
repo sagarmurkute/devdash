@@ -2,7 +2,17 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Sun, Moon, Star, Sparkles, Lock, Check, ThumbsUp, ArrowUpRight } from 'lucide-react';
+import {
+  ArrowLeft,
+  Sun,
+  Moon,
+  Star,
+  Sparkles,
+  Lock,
+  Check,
+  ThumbsUp,
+  ArrowUpRight,
+} from 'lucide-react';
 import GithubIcon from '@/components/icons/GithubIcon';
 import { useTheme } from '@/lib/theme-context';
 import { ROADMAP_DATA } from '@/lib/roadmap-data';
@@ -55,7 +65,7 @@ export default function RoadmapPage() {
   };
 
   const toggleSectionOpen = (catIdx: number) => {
-    setOpenSections(prev => ({ ...prev, [catIdx]: !prev[catIdx] }));
+    setOpenSections((prev) => ({ ...prev, [catIdx]: !prev[catIdx] }));
   };
 
   // Calculate matching specs
@@ -72,10 +82,10 @@ export default function RoadmapPage() {
             <Link href="/">
               <ArrowLeft size={13} /> BACK TO DASHBOARD
             </Link>
-            <button 
-              className="btn-icon" 
-              onClick={toggleTheme} 
-              title="Toggle Theme" 
+            <button
+              className="btn-icon"
+              onClick={toggleTheme}
+              title="Toggle Theme"
               style={{ height: '26px', width: '26px' }}
               type="button"
             >
@@ -86,7 +96,8 @@ export default function RoadmapPage() {
 
         <h1 className="masthead-title">The Next 100 Capabilities</h1>
         <p className="masthead-subtitle">
-          An engineering manifesto and comprehensive 100-feature roadmap for the ultimate minimalist developer command center.
+          An engineering manifesto and comprehensive 100-feature roadmap for the ultimate minimalist
+          developer command center.
         </p>
       </header>
 
@@ -100,18 +111,18 @@ export default function RoadmapPage() {
           </div>
         </div>
         <div className="author-links">
-          <a 
-            href="https://github.com/sagarmurkute" 
-            target="_blank" 
-            rel="noreferrer" 
+          <a
+            href="https://github.com/sagarmurkute"
+            target="_blank"
+            rel="noreferrer"
             className="btn btn-secondary btn-sm"
           >
             <GithubIcon size={13} style={{ marginRight: '0.25rem' }} /> @sagarmurkute
           </a>
-          <a 
-            href="https://github.com/sagarmurkute/devdash" 
-            target="_blank" 
-            rel="noreferrer" 
+          <a
+            href="https://github.com/sagarmurkute/devdash"
+            target="_blank"
+            rel="noreferrer"
             className="btn btn-primary btn-sm"
           >
             <Star size={13} /> Star on GitHub
@@ -127,20 +138,23 @@ export default function RoadmapPage() {
               Subscribe to DevSlash Release Notes
             </h3>
             <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>
-              Receive changelogs, architecture deep dives, and early feature access directly in your inbox.
+              Receive changelogs, architecture deep dives, and early feature access directly in your
+              inbox.
             </p>
           </div>
           <span className="badge badge-emerald">Weekly Dispatch</span>
         </div>
         <form className="newsletter-form" onSubmit={handleSubscribe}>
-          <input 
-            type="email" 
+          <input
+            type="email"
             placeholder="Enter your developer email (e.g. sagar@engineer.dev)"
             value={subscriberEmail}
-            onChange={e => setSubscriberEmail(e.target.value)}
-            required 
+            onChange={(e) => setSubscriberEmail(e.target.value)}
+            required
           />
-          <button type="submit" className="btn btn-primary">Subscribe</button>
+          <button type="submit" className="btn btn-primary">
+            Subscribe
+          </button>
         </form>
         {subscribeStatus && (
           <div style={{ fontSize: '0.72rem', color: 'var(--accent-emerald)', minHeight: '16px' }}>
@@ -153,37 +167,46 @@ export default function RoadmapPage() {
       <main>
         <div className="roadmap-controls">
           <div>
-            <h2 style={{ fontSize: '1.3rem', fontWeight: 800, letterSpacing: '-0.03em' }}>The 100-Feature Matrix</h2>
+            <h2 style={{ fontSize: '1.3rem', fontWeight: 800, letterSpacing: '-0.03em' }}>
+              The 100-Feature Matrix
+            </h2>
             <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>
-              All 10 category dropdowns are closed by default. Open any section and star the repo to unlock feature specs.
+              All 10 category dropdowns are closed by default. Open any section and star the repo to
+              unlock feature specs.
             </p>
           </div>
           <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
-            <input 
-              type="text" 
-              className="roadmap-search-input" 
-              placeholder="Search 100 features..." 
+            <input
+              type="text"
+              className="roadmap-search-input"
+              placeholder="Search 100 features..."
               value={searchQuery}
-              onChange={e => setSearchQuery(e.target.value)}
+              onChange={(e) => setSearchQuery(e.target.value)}
             />
             <span className="badge badge-indigo">
               {ROADMAP_DATA.reduce((acc, cat) => {
-                const matches = cat.features.filter(f => 
-                  !query || f.name.toLowerCase().includes(query) || f.desc.toLowerCase().includes(query) || f.id.includes(query)
+                const matches = cat.features.filter(
+                  (f) =>
+                    !query ||
+                    f.name.toLowerCase().includes(query) ||
+                    f.desc.toLowerCase().includes(query) ||
+                    f.id.includes(query)
                 );
                 return acc + matches.length;
-              }, 0)} / 100
+              }, 0)}{' '}
+              / 100
             </span>
           </div>
         </div>
 
         <div>
           {ROADMAP_DATA.map((cat, catIdx) => {
-            const filteredFeatures = cat.features.filter(f => 
-              !query || 
-              f.name.toLowerCase().includes(query) || 
-              f.desc.toLowerCase().includes(query) ||
-              f.id.includes(query)
+            const filteredFeatures = cat.features.filter(
+              (f) =>
+                !query ||
+                f.name.toLowerCase().includes(query) ||
+                f.desc.toLowerCase().includes(query) ||
+                f.id.includes(query)
             );
 
             if (filteredFeatures.length === 0) return null;
@@ -194,12 +217,9 @@ export default function RoadmapPage() {
 
             return (
               <div key={cat.num} className="roadmap-accordion-item">
-                <div 
-                  className="roadmap-accordion-header"
-                  onClick={() => toggleSectionOpen(catIdx)}
-                >
+                <div className="roadmap-accordion-header" onClick={() => toggleSectionOpen(catIdx)}>
                   <div className="category-title-group">
-                    <span className="category-num">// SECTION {cat.num}</span>
+                    <span className="category-num">{`// SECTION ${cat.num}`}</span>
                     <span className="category-title">{cat.category}</span>
                     <span className="badge badge-indigo" style={{ fontSize: '0.65rem' }}>
                       {filteredFeatures.length} Specs
@@ -217,42 +237,66 @@ export default function RoadmapPage() {
                       <div className="gate-left">
                         <Sparkles size={18} style={{ color: 'var(--accent-amber)' }} />
                         <div>
-                          <div className="gate-title">Star Repository on GitHub to Unlock Full Feature Specs & Vote</div>
-                          <div className="gate-sub">Support DevDash open-source development by Sagar Murkute on GitHub.</div>
+                          <div className="gate-title">
+                            Star Repository on GitHub to Unlock Full Feature Specs & Vote
+                          </div>
+                          <div className="gate-sub">
+                            Support DevDash open-source development by Sagar Murkute on GitHub.
+                          </div>
                         </div>
                       </div>
                       <div className="gate-actions">
-                        <a 
-                          href="https://github.com/sagarmurkute/devdash" 
-                          target="_blank" 
-                          rel="noreferrer" 
+                        <a
+                          href="https://github.com/sagarmurkute/devdash"
+                          target="_blank"
+                          rel="noreferrer"
                           className="btn btn-primary btn-sm"
                           onClick={() => setTimeout(() => unlockSection(catIdx), 600)}
                         >
                           <Star size={12} /> Star on GitHub
                         </a>
-                        <button 
-                          type="button" 
-                          className="btn btn-secondary btn-sm" 
+                        <button
+                          type="button"
+                          className="btn btn-secondary btn-sm"
                           onClick={() => unlockSection(catIdx)}
                         >
-                          {isUnlocked ? <><Check size={12} /> Unlocked</> : <><Lock size={12} /> Reveal 10 Features</>}
+                          {isUnlocked ? (
+                            <>
+                              <Check size={12} /> Unlocked
+                            </>
+                          ) : (
+                            <>
+                              <Lock size={12} /> Reveal 10 Features
+                            </>
+                          )}
                         </button>
                       </div>
                     </div>
 
                     {/* Features Grid */}
                     {!isUnlocked ? (
-                      <div style={{ textAlign: 'center', padding: '2rem', border: '1px dashed var(--border-glass)' }}>
-                        <Lock size={28} style={{ margin: '0 auto 0.5rem', color: 'var(--text-muted)' }} />
-                        <div style={{ fontWeight: 700, marginBottom: '0.25rem' }}>10 Detailed Engineering Specifications Hidden</div>
+                      <div
+                        style={{
+                          textAlign: 'center',
+                          padding: '2rem',
+                          border: '1px dashed var(--border-glass)',
+                        }}
+                      >
+                        <Lock
+                          size={28}
+                          style={{ margin: '0 auto 0.5rem', color: 'var(--text-muted)' }}
+                        />
+                        <div style={{ fontWeight: 700, marginBottom: '0.25rem' }}>
+                          10 Detailed Engineering Specifications Hidden
+                        </div>
                         <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
-                          Please star the repository on GitHub or click &quot;Reveal 10 Features&quot; above to view full technical breakdowns and vote.
+                          Please star the repository on GitHub or click &quot;Reveal 10
+                          Features&quot; above to view full technical breakdowns and vote.
                         </p>
                       </div>
                     ) : (
                       <div className="feature-list">
-                        {filteredFeatures.map(f => {
+                        {filteredFeatures.map((f) => {
                           const isVoted = !!upvotes[f.id];
                           const voteCount = (parseInt(f.id, 10) % 7) + (isVoted ? 1 : 0) + 14;
 
@@ -268,11 +312,17 @@ export default function RoadmapPage() {
                               </div>
 
                               <div className="feature-footer">
-                                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.65rem', color: 'var(--text-muted)' }}>
+                                <span
+                                  style={{
+                                    fontFamily: 'var(--font-mono)',
+                                    fontSize: '0.65rem',
+                                    color: 'var(--text-muted)',
+                                  }}
+                                >
                                   Priority: High
                                 </span>
-                                <button 
-                                  type="button" 
+                                <button
+                                  type="button"
                                   className={`btn-upvote ${isVoted ? 'voted' : ''}`}
                                   onClick={() => toggleUpvote(f.id)}
                                 >
@@ -296,14 +346,22 @@ export default function RoadmapPage() {
       {/* Newsletter Footer */}
       <footer className="dispatch-footer">
         <div>
-          <strong>DevDash</strong> — Conceived, designed, and engineered with precision by <strong>Sagar Murkute</strong>.
+          <strong>DevDash</strong> — Conceived, designed, and engineered with precision by{' '}
+          <strong>Sagar Murkute</strong>.
         </div>
         <div>
-          <a 
-            href="https://github.com/sagarmurkute/devdash" 
-            target="_blank" 
-            rel="noreferrer" 
-            style={{ color: 'var(--text-primary)', textDecoration: 'none', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}
+          <a
+            href="https://github.com/sagarmurkute/devdash"
+            target="_blank"
+            rel="noreferrer"
+            style={{
+              color: 'var(--text-primary)',
+              textDecoration: 'none',
+              fontWeight: 600,
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.25rem',
+            }}
           >
             GitHub Repository <ArrowUpRight size={13} />
           </a>

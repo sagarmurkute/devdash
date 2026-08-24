@@ -16,7 +16,7 @@ export default function WeeklyAnalytics({ weeklyLog, onDataImported }: WeeklyAna
   const [importStatus, setImportStatus] = useState('');
 
   const totalWeekHours = Math.round(weeklyLog.reduce((acc, curr) => acc + curr.hours, 0) * 10) / 10;
-  const maxHour = Math.max(...weeklyLog.map(w => w.hours), 8);
+  const maxHour = Math.max(...weeklyLog.map((w) => w.hours), 8);
 
   const handleImport = (e: React.FormEvent) => {
     e.preventDefault();
@@ -50,7 +50,10 @@ export default function WeeklyAnalytics({ weeklyLog, onDataImported }: WeeklyAna
     <div className="card analytics-card">
       <div className="card-header">
         <div className="card-title-group">
-          <div className="card-icon" style={{ background: 'rgba(99, 102, 241, 0.12)', color: 'var(--accent-primary)' }}>
+          <div
+            className="card-icon"
+            style={{ background: 'rgba(99, 102, 241, 0.12)', color: 'var(--accent-primary)' }}
+          >
             <TrendingUp size={15} />
           </div>
           <div>
@@ -60,16 +63,16 @@ export default function WeeklyAnalytics({ weeklyLog, onDataImported }: WeeklyAna
         </div>
 
         <div style={{ display: 'flex', gap: '0.4rem' }}>
-          <button 
-            className="btn btn-secondary btn-sm" 
+          <button
+            className="btn btn-secondary btn-sm"
             onClick={() => setIsImportModalOpen(true)}
             title="Import Data Backup"
             type="button"
           >
             <Upload size={12} /> Import
           </button>
-          <button 
-            className="btn btn-secondary btn-sm" 
+          <button
+            className="btn btn-secondary btn-sm"
             onClick={exportBackupJson}
             title="Export Local Data as JSON"
             type="button"
@@ -86,11 +89,15 @@ export default function WeeklyAnalytics({ weeklyLog, onDataImported }: WeeklyAna
             <div className="stat-metric-lbl">Total Time Logged</div>
           </div>
           <div className="stat-metric-card">
-            <div className="stat-metric-val" style={{ color: 'var(--accent-emerald)' }}>94%</div>
+            <div className="stat-metric-val" style={{ color: 'var(--accent-emerald)' }}>
+              94%
+            </div>
             <div className="stat-metric-lbl">Consistency Score</div>
           </div>
           <div className="stat-metric-card">
-            <div className="stat-metric-val" style={{ color: 'var(--accent-cyan)' }}>18</div>
+            <div className="stat-metric-val" style={{ color: 'var(--accent-cyan)' }}>
+              18
+            </div>
             <div className="stat-metric-lbl">Tasks Closed</div>
           </div>
         </div>
@@ -114,44 +121,76 @@ export default function WeeklyAnalytics({ weeklyLog, onDataImported }: WeeklyAna
       {/* Import Backup Modal */}
       {isImportModalOpen && (
         <div className="modal-overlay" onClick={() => setIsImportModalOpen(false)}>
-          <div className="modal-container" style={{ maxWidth: '480px', padding: '1.5rem' }} onClick={e => e.stopPropagation()}>
+          <div
+            className="modal-container"
+            style={{ maxWidth: '480px', padding: '1.5rem' }}
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="card-header">
-              <h3 className="card-title" style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+              <h3
+                className="card-title"
+                style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}
+              >
                 <Upload size={16} style={{ color: 'var(--accent-cyan)' }} /> Restore Backup JSON
               </h3>
-              <button className="btn-icon" onClick={() => setIsImportModalOpen(false)} type="button">
+              <button
+                className="btn-icon"
+                onClick={() => setIsImportModalOpen(false)}
+                type="button"
+              >
                 <X size={14} />
               </button>
             </div>
-            <form onSubmit={handleImport} style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '1rem' }}>
+            <form
+              onSubmit={handleImport}
+              style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '1rem' }}
+            >
               <div>
-                <label style={{ display: 'block', fontSize: '0.8rem', marginBottom: '0.4rem', color: 'var(--text-secondary)' }}>
+                <label
+                  style={{
+                    display: 'block',
+                    fontSize: '0.8rem',
+                    marginBottom: '0.4rem',
+                    color: 'var(--text-secondary)',
+                  }}
+                >
                   Upload JSON File or Paste JSON
                 </label>
-                <input 
-                  type="file" 
-                  accept=".json" 
-                  onChange={handleFileUpload} 
+                <input
+                  type="file"
+                  accept=".json"
+                  onChange={handleFileUpload}
                   style={{ marginBottom: '0.5rem', fontSize: '0.75rem' }}
                 />
-                <textarea 
-                  className="textarea textarea-mono" 
-                  rows={6} 
-                  placeholder='Paste JSON payload here...'
+                <textarea
+                  className="textarea textarea-mono"
+                  rows={6}
+                  placeholder="Paste JSON payload here..."
                   value={importText}
-                  onChange={e => setImportText(e.target.value)}
-                  required 
+                  onChange={(e) => setImportText(e.target.value)}
+                  required
                 />
               </div>
 
               {importStatus && (
-                <div style={{ fontSize: '0.75rem', color: importStatus.startsWith('✓') ? 'var(--accent-emerald)' : 'var(--accent-rose)' }}>
+                <div
+                  style={{
+                    fontSize: '0.75rem',
+                    color: importStatus.startsWith('✓')
+                      ? 'var(--accent-emerald)'
+                      : 'var(--accent-rose)',
+                  }}
+                >
                   {importStatus}
                 </div>
               )}
 
               <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.6rem' }}>
-                <button type="button" className="btn btn-secondary" onClick={() => setIsImportModalOpen(false)}>
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={() => setIsImportModalOpen(false)}
+                >
                   Cancel
                 </button>
                 <button type="submit" className="btn btn-primary">

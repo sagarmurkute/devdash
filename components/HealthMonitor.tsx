@@ -8,7 +8,7 @@ const INITIAL_SERVICES: PortService[] = [
   { name: 'Dev Server (Next.js/React)', port: 3000, status: 'online', latency: '12ms' },
   { name: 'Backend API (FastAPI/Express)', port: 8000, status: 'online', latency: '24ms' },
   { name: 'PostgreSQL / Database', port: 5432, status: 'online', latency: '4ms' },
-  { name: 'Redis Cache Server', port: 6379, status: 'idle', latency: '2ms' }
+  { name: 'Redis Cache Server', port: 6379, status: 'idle', latency: '2ms' },
 ];
 
 export default function HealthMonitor() {
@@ -18,10 +18,10 @@ export default function HealthMonitor() {
   const pingServices = () => {
     setIsPinging(true);
     setTimeout(() => {
-      setServices(prev => 
-        prev.map(s => ({
+      setServices((prev) =>
+        prev.map((s) => ({
           ...s,
-          latency: `${Math.floor(Math.random() * 26) + 3}ms`
+          latency: `${Math.floor(Math.random() * 26) + 3}ms`,
         }))
       );
       setIsPinging(false);
@@ -32,7 +32,10 @@ export default function HealthMonitor() {
     <div className="card">
       <div className="card-header">
         <div className="card-title-group">
-          <div className="card-icon" style={{ background: 'rgba(6, 182, 212, 0.12)', color: 'var(--accent-cyan)' }}>
+          <div
+            className="card-icon"
+            style={{ background: 'rgba(6, 182, 212, 0.12)', color: 'var(--accent-cyan)' }}
+          >
             <HardDrive size={15} />
           </div>
           <div>
@@ -40,9 +43,9 @@ export default function HealthMonitor() {
             <p className="card-subtitle">Local Developer Environment</p>
           </div>
         </div>
-        <button 
-          className="btn-icon btn-sm" 
-          onClick={pingServices} 
+        <button
+          className="btn-icon btn-sm"
+          onClick={pingServices}
           disabled={isPinging}
           title="Ping Services"
           type="button"
@@ -60,9 +63,11 @@ export default function HealthMonitor() {
             return (
               <div key={idx} className="port-item">
                 <div className="port-left">
-                  <span 
-                    className="status-indicator" 
-                    style={{ backgroundColor: isOnline ? 'var(--accent-emerald)' : 'var(--accent-amber)' }}
+                  <span
+                    className="status-indicator"
+                    style={{
+                      backgroundColor: isOnline ? 'var(--accent-emerald)' : 'var(--accent-amber)',
+                    }}
                   />
                   <div>
                     <div style={{ fontWeight: 500 }}>{s.name}</div>

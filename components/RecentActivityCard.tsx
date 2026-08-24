@@ -19,7 +19,7 @@ const ACTIVITIES: ActivityItem[] = [
     time: '2 minutes ago',
     icon: <GitCommit size={13} />,
     iconBg: 'var(--accent-orange-light)',
-    iconColor: 'var(--accent-orange)'
+    iconColor: 'var(--accent-orange)',
   },
   {
     id: '2',
@@ -27,7 +27,7 @@ const ACTIVITIES: ActivityItem[] = [
     time: '1 hour ago',
     icon: <Timer size={13} />,
     iconBg: 'var(--accent-orange-light)',
-    iconColor: 'var(--accent-orange)'
+    iconColor: 'var(--accent-orange)',
   },
   {
     id: '3',
@@ -35,7 +35,7 @@ const ACTIVITIES: ActivityItem[] = [
     time: '3 hours ago',
     icon: <Code size={13} />,
     iconBg: 'var(--accent-green-light)',
-    iconColor: 'var(--accent-green)'
+    iconColor: 'var(--accent-green)',
   },
   {
     id: '4',
@@ -43,7 +43,7 @@ const ACTIVITIES: ActivityItem[] = [
     time: '5 hours ago',
     icon: <Folder size={13} />,
     iconBg: 'var(--brand-blue-light)',
-    iconColor: 'var(--brand-blue)'
+    iconColor: 'var(--brand-blue)',
   },
   {
     id: '5',
@@ -51,8 +51,8 @@ const ACTIVITIES: ActivityItem[] = [
     time: '1 day ago',
     icon: <Trophy size={13} />,
     iconBg: 'var(--accent-amber-light)',
-    iconColor: 'var(--accent-amber)'
-  }
+    iconColor: 'var(--accent-amber)',
+  },
 ];
 
 export default function RecentActivityCard() {

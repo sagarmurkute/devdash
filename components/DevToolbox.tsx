@@ -1,34 +1,44 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Wrench, Code2, ArrowLeftRight, Bookmark, Brackets, Minimize2, Check, Copy, Trash2 } from 'lucide-react';
+import {
+  Wrench,
+  Code2,
+  ArrowLeftRight,
+  Bookmark,
+  Brackets,
+  Minimize2,
+  Check,
+  Copy,
+  Trash2,
+} from 'lucide-react';
 import { CodeSnippet } from '@/lib/types';
 
 const INITIAL_SNIPPETS: CodeSnippet[] = [
-  { 
-    id: 's1', 
-    title: 'Debounce Function', 
-    lang: 'JavaScript', 
-    code: 'function debounce(fn, ms=300) {\n  let t;\n  return (...args) => {\n    clearTimeout(t);\n    t = setTimeout(() => fn(...args), ms);\n  };\n}' 
+  {
+    id: 's1',
+    title: 'Debounce Function',
+    lang: 'JavaScript',
+    code: 'function debounce(fn, ms=300) {\n  let t;\n  return (...args) => {\n    clearTimeout(t);\n    t = setTimeout(() => fn(...args), ms);\n  };\n}',
   },
-  { 
-    id: 's2', 
-    title: 'Fetch with Timeout', 
-    lang: 'JavaScript', 
-    code: 'async function fetchWithTimeout(url, opts={}, ms=5000) {\n  const ctrl = new AbortController();\n  const id = setTimeout(() => ctrl.abort(), ms);\n  const res = await fetch(url, { ...opts, signal: ctrl.signal });\n  clearTimeout(id);\n  return res;\n}' 
+  {
+    id: 's2',
+    title: 'Fetch with Timeout',
+    lang: 'JavaScript',
+    code: 'async function fetchWithTimeout(url, opts={}, ms=5000) {\n  const ctrl = new AbortController();\n  const id = setTimeout(() => ctrl.abort(), ms);\n  const res = await fetch(url, { ...opts, signal: ctrl.signal });\n  clearTimeout(id);\n  return res;\n}',
   },
-  { 
-    id: 's3', 
-    title: 'Git Undo Last Commit', 
-    lang: 'Git', 
-    code: 'git reset --soft HEAD~1' 
+  {
+    id: 's3',
+    title: 'Git Undo Last Commit',
+    lang: 'Git',
+    code: 'git reset --soft HEAD~1',
   },
-  { 
-    id: 's4', 
-    title: 'Modern CSS Glassmorphism', 
-    lang: 'CSS', 
-    code: 'background: rgba(255, 255, 255, 0.05);\nbackdrop-filter: blur(12px);\nborder: 1px solid rgba(255, 255, 255, 0.1);' 
-  }
+  {
+    id: 's4',
+    title: 'Modern CSS Glassmorphism',
+    lang: 'CSS',
+    code: 'background: rgba(255, 255, 255, 0.05);\nbackdrop-filter: blur(12px);\nborder: 1px solid rgba(255, 255, 255, 0.1);',
+  },
 ];
 
 export default function DevToolbox() {
@@ -131,7 +141,10 @@ export default function DevToolbox() {
     <div className="card toolbox-card">
       <div className="card-header">
         <div className="card-title-group">
-          <div className="card-icon" style={{ background: 'rgba(168, 85, 247, 0.12)', color: 'var(--accent-purple)' }}>
+          <div
+            className="card-icon"
+            style={{ background: 'rgba(168, 85, 247, 0.12)', color: 'var(--accent-purple)' }}
+          >
             <Wrench size={15} />
           </div>
           <div>
@@ -144,21 +157,21 @@ export default function DevToolbox() {
       </div>
 
       <div className="toolbox-tabs">
-        <button 
+        <button
           className={`toolbox-tab-btn ${activeTab === 'json' ? 'active' : ''}`}
           onClick={() => setActiveTab('json')}
           type="button"
         >
           <Code2 size={13} /> JSON Formatter
         </button>
-        <button 
+        <button
           className={`toolbox-tab-btn ${activeTab === 'base64' ? 'active' : ''}`}
           onClick={() => setActiveTab('base64')}
           type="button"
         >
           <ArrowLeftRight size={13} /> Base64 & URL
         </button>
-        <button 
+        <button
           className={`toolbox-tab-btn ${activeTab === 'snippets' ? 'active' : ''}`}
           onClick={() => setActiveTab('snippets')}
           type="button"
@@ -170,12 +183,12 @@ export default function DevToolbox() {
       {/* JSON Tab */}
       {activeTab === 'json' && (
         <div className="toolbox-tab-content">
-          <textarea 
-            className="textarea textarea-mono" 
-            rows={6} 
+          <textarea
+            className="textarea textarea-mono"
+            rows={6}
             placeholder='Paste raw JSON here: {"dev": "dash", "streak": 8}'
             value={jsonInput}
-            onChange={e => setJsonInput(e.target.value)}
+            onChange={(e) => setJsonInput(e.target.value)}
           />
           <div className="tool-actions-bar">
             <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
@@ -185,7 +198,11 @@ export default function DevToolbox() {
               <button className="btn btn-secondary btn-sm" onClick={handleMinifyJson} type="button">
                 <Minimize2 size={12} /> Minify
               </button>
-              <button className="btn btn-secondary btn-sm" onClick={handleValidateJson} type="button">
+              <button
+                className="btn btn-secondary btn-sm"
+                onClick={handleValidateJson}
+                type="button"
+              >
                 <Check size={12} /> Validate
               </button>
             </div>
@@ -193,13 +210,26 @@ export default function DevToolbox() {
               <button className="btn btn-secondary btn-sm" onClick={copyJson} type="button">
                 <Copy size={12} /> Copy
               </button>
-              <button className="btn btn-secondary btn-sm" onClick={() => { setJsonInput(''); setJsonStatus(null); }} type="button">
+              <button
+                className="btn btn-secondary btn-sm"
+                onClick={() => {
+                  setJsonInput('');
+                  setJsonStatus(null);
+                }}
+                type="button"
+              >
                 <Trash2 size={12} /> Clear
               </button>
             </div>
           </div>
           {jsonStatus && (
-            <div style={{ fontSize: '0.75rem', color: jsonStatus.isError ? 'var(--accent-rose)' : 'var(--accent-emerald)', minHeight: '18px' }}>
+            <div
+              style={{
+                fontSize: '0.75rem',
+                color: jsonStatus.isError ? 'var(--accent-rose)' : 'var(--accent-emerald)',
+                minHeight: '18px',
+              }}
+            >
               {jsonStatus.msg}
             </div>
           )}
@@ -209,19 +239,27 @@ export default function DevToolbox() {
       {/* Base64 Tab */}
       {activeTab === 'base64' && (
         <div className="toolbox-tab-content">
-          <textarea 
-            className="textarea textarea-mono" 
-            rows={6} 
+          <textarea
+            className="textarea textarea-mono"
+            rows={6}
             placeholder="Enter plain text or Base64 string..."
             value={b64Input}
-            onChange={e => setB64Input(e.target.value)}
+            onChange={(e) => setB64Input(e.target.value)}
           />
           <div className="tool-actions-bar">
             <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
-              <button className="btn btn-primary btn-sm" onClick={handleB64Encode} type="button">Base64 Encode</button>
-              <button className="btn btn-primary btn-sm" onClick={handleB64Decode} type="button">Base64 Decode</button>
-              <button className="btn btn-secondary btn-sm" onClick={handleUrlEncode} type="button">URL Encode</button>
-              <button className="btn btn-secondary btn-sm" onClick={handleUrlDecode} type="button">URL Decode</button>
+              <button className="btn btn-primary btn-sm" onClick={handleB64Encode} type="button">
+                Base64 Encode
+              </button>
+              <button className="btn btn-primary btn-sm" onClick={handleB64Decode} type="button">
+                Base64 Decode
+              </button>
+              <button className="btn btn-secondary btn-sm" onClick={handleUrlEncode} type="button">
+                URL Encode
+              </button>
+              <button className="btn btn-secondary btn-sm" onClick={handleUrlDecode} type="button">
+                URL Decode
+              </button>
             </div>
             <button className="btn btn-secondary btn-sm" onClick={copyB64} type="button">
               <Copy size={12} /> Copy
@@ -234,7 +272,7 @@ export default function DevToolbox() {
       {activeTab === 'snippets' && (
         <div className="toolbox-tab-content">
           <div className="snippet-grid">
-            {INITIAL_SNIPPETS.map(s => (
+            {INITIAL_SNIPPETS.map((s) => (
               <div key={s.id} className="snippet-card">
                 <div className="snippet-header">
                   <span className="snippet-title">{s.title}</span>
@@ -242,12 +280,16 @@ export default function DevToolbox() {
                 </div>
                 <div className="snippet-code-preview">{s.code}</div>
                 <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                  <button 
-                    className="btn btn-secondary btn-sm" 
+                  <button
+                    className="btn btn-secondary btn-sm"
                     onClick={() => copySnippet(s)}
                     type="button"
                   >
-                    {copiedSnippetId === s.id ? <Check size={11} style={{ color: 'var(--accent-emerald)' }} /> : <Copy size={11} />}
+                    {copiedSnippetId === s.id ? (
+                      <Check size={11} style={{ color: 'var(--accent-emerald)' }} />
+                    ) : (
+                      <Copy size={11} />
+                    )}
                     {copiedSnippetId === s.id ? 'Copied!' : 'Copy Snippet'}
                   </button>
                 </div>

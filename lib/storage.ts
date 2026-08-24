@@ -8,7 +8,7 @@ export const DEFAULT_CODING_HOURS: CodingHoursData = {
   languages: [
     { name: 'JavaScript', hours: 2.5, color: '#f7df1e' },
     { name: 'TypeScript', hours: 1.2, color: '#3178c6' },
-    { name: 'CSS/HTML', hours: 0.8, color: '#6366f1' }
+    { name: 'CSS/HTML', hours: 0.8, color: '#6366f1' },
   ],
   weeklyLog: [
     { day: 'Mon', hours: 5.2 },
@@ -17,8 +17,8 @@ export const DEFAULT_CODING_HOURS: CodingHoursData = {
     { day: 'Thu', hours: 7.0 },
     { day: 'Fri', hours: 5.5 },
     { day: 'Sat', hours: 3.5 },
-    { day: 'Sun', hours: 4.5 }
-  ]
+    { day: 'Sun', hours: 4.5 },
+  ],
 };
 
 export const DEFAULT_PROJECTS: ProjectItem[] = [
@@ -30,7 +30,7 @@ export const DEFAULT_PROJECTS: ProjectItem[] = [
     progress: 85,
     repo: 'https://github.com/sagarmurkute/devdash',
     tags: ['Next.js', 'React', 'TypeScript'],
-    updated: 'Just now'
+    updated: 'Just now',
   },
   {
     id: 'p-2',
@@ -40,7 +40,7 @@ export const DEFAULT_PROJECTS: ProjectItem[] = [
     progress: 30,
     repo: 'https://github.com/sagarmurkute/ai-reviewer',
     tags: ['Python', 'OpenAI', 'Git'],
-    updated: '2d ago'
+    updated: '2d ago',
   },
   {
     id: 'p-3',
@@ -50,16 +50,46 @@ export const DEFAULT_PROJECTS: ProjectItem[] = [
     progress: 60,
     repo: 'https://github.com/sagarmurkute/saas-starter',
     tags: ['Next.js', 'PostgreSQL', 'Stripe'],
-    updated: '4d ago'
-  }
+    updated: '4d ago',
+  },
 ];
 
 export const DEFAULT_HABITS: HabitItem[] = [
-  { id: 'h-1', title: 'Commit to GitHub Streak', icon: 'GitCommit', days: [true, true, true, true, true, true, true], streak: 42 },
-  { id: 'h-2', title: 'Solve 1 LeetCode Problem', icon: 'Code', days: [true, true, true, false, true, true, true], streak: 12 },
-  { id: 'h-3', title: 'Read 1 Engineering Article', icon: 'BookOpen', days: [true, false, true, true, true, false, true], streak: 5 },
-  { id: 'h-4', title: 'Deep Focus 2h (No Distractions)', icon: 'Crosshair', days: [true, true, true, true, false, true, true], streak: 8 },
-  { id: 'h-5', title: 'Review 1 Pull Request', icon: 'GitPullRequest', days: [false, true, true, true, true, true, false], streak: 6 }
+  {
+    id: 'h-1',
+    title: 'Commit to GitHub Streak',
+    icon: 'GitCommit',
+    days: [true, true, true, true, true, true, true],
+    streak: 42,
+  },
+  {
+    id: 'h-2',
+    title: 'Solve 1 LeetCode Problem',
+    icon: 'Code',
+    days: [true, true, true, false, true, true, true],
+    streak: 12,
+  },
+  {
+    id: 'h-3',
+    title: 'Read 1 Engineering Article',
+    icon: 'BookOpen',
+    days: [true, false, true, true, true, false, true],
+    streak: 5,
+  },
+  {
+    id: 'h-4',
+    title: 'Deep Focus 2h (No Distractions)',
+    icon: 'Crosshair',
+    days: [true, true, true, true, false, true, true],
+    streak: 8,
+  },
+  {
+    id: 'h-5',
+    title: 'Review 1 Pull Request',
+    icon: 'GitPullRequest',
+    days: [false, true, true, true, true, true, false],
+    streak: 6,
+  },
 ];
 
 export const DEFAULT_NOTES: NoteItem[] = [
@@ -68,33 +98,71 @@ export const DEFAULT_NOTES: NoteItem[] = [
     title: 'DevDash Roadmap & Database Migration',
     category: 'Architecture',
     tag: 'High Priority',
-    content: 'Plan SQLite / PostgreSQL schema for user profiles, streak history, and sync across multiple dev machines.',
-    updated: 'Today'
+    content:
+      'Plan SQLite / PostgreSQL schema for user profiles, streak history, and sync across multiple dev machines.',
+    updated: 'Today',
   },
   {
     id: 'n-2',
     title: 'CSS Custom Properties Design Tokens',
     category: 'UI/UX',
     tag: 'Tokens',
-    content: 'Maintain dark glassmorphism system using HSL alpha transparency and smooth cubic-bezier transitions.',
-    updated: 'Yesterday'
+    content:
+      'Maintain dark glassmorphism system using HSL alpha transparency and smooth cubic-bezier transitions.',
+    updated: 'Yesterday',
   },
   {
     id: 'n-3',
     title: 'Web Audio Synthesizer Idea',
     category: 'Ideas',
     tag: 'Audio',
-    content: 'Use Web Audio API oscillator nodes for custom ambient noise generator (White noise, Pink noise, Rain sound).',
-    updated: '3d ago'
-  }
+    content:
+      'Use Web Audio API oscillator nodes for custom ambient noise generator (White noise, Pink noise, Rain sound).',
+    updated: '3d ago',
+  },
 ];
 
 export const DEFAULT_TASKS: KanbanTask[] = [
-  { id: 't-1', title: 'Implement React Next.js DevDash', status: 'done', priority: 'high', tag: 'Core', est: '2h' },
-  { id: 't-2', title: 'Maintain 8 commits for GitHub streak', status: 'in-progress', priority: 'high', tag: 'Git', est: '1h' },
-  { id: 't-3', title: 'Add dark glassmorphic styling & shortcuts', status: 'in-progress', priority: 'med', tag: 'UI/UX', est: '1.5h' },
-  { id: 't-4', title: 'Integrate JSON validator & snippet vault', status: 'todo', priority: 'med', tag: 'Tools', est: '3h' },
-  { id: 't-5', title: 'Setup port pinger & tech news aggregator', status: 'todo', priority: 'low', tag: 'API', est: '1h' }
+  {
+    id: 't-1',
+    title: 'Implement React Next.js DevDash',
+    status: 'done',
+    priority: 'high',
+    tag: 'Core',
+    est: '2h',
+  },
+  {
+    id: 't-2',
+    title: 'Maintain 8 commits for GitHub streak',
+    status: 'in-progress',
+    priority: 'high',
+    tag: 'Git',
+    est: '1h',
+  },
+  {
+    id: 't-3',
+    title: 'Add dark glassmorphic styling & shortcuts',
+    status: 'in-progress',
+    priority: 'med',
+    tag: 'UI/UX',
+    est: '1.5h',
+  },
+  {
+    id: 't-4',
+    title: 'Integrate JSON validator & snippet vault',
+    status: 'todo',
+    priority: 'med',
+    tag: 'Tools',
+    est: '3h',
+  },
+  {
+    id: 't-5',
+    title: 'Setup port pinger & tech news aggregator',
+    status: 'todo',
+    priority: 'low',
+    tag: 'API',
+    est: '1h',
+  },
 ];
 
 export function getStorageItem<T>(key: string, fallback: T): T {
@@ -145,7 +213,7 @@ export function importBackupJson(jsonString: string): boolean {
   if (typeof window === 'undefined') return false;
   try {
     const data = JSON.parse(jsonString);
-    Object.keys(data).forEach(k => {
+    Object.keys(data).forEach((k) => {
       if (k.startsWith(PREFIX)) {
         localStorage.setItem(k, typeof data[k] === 'string' ? data[k] : JSON.stringify(data[k]));
       }

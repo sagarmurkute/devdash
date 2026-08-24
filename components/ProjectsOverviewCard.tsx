@@ -23,7 +23,7 @@ const PROJECTS_DATA: ProjectOverviewItem[] = [
     status: 'On Track',
     icon: <Zap size={15} fill="currentColor" />,
     iconBg: '#0F172A',
-    iconColor: '#38BDF8'
+    iconColor: '#38BDF8',
   },
   {
     id: '2',
@@ -33,7 +33,7 @@ const PROJECTS_DATA: ProjectOverviewItem[] = [
     status: 'In Progress',
     icon: <Globe size={15} />,
     iconBg: 'var(--brand-blue-light)',
-    iconColor: 'var(--brand-blue)'
+    iconColor: 'var(--brand-blue)',
   },
   {
     id: '3',
@@ -43,7 +43,7 @@ const PROJECTS_DATA: ProjectOverviewItem[] = [
     status: 'On Track',
     icon: <MessageSquare size={15} />,
     iconBg: 'var(--accent-purple-light)',
-    iconColor: 'var(--accent-purple)'
+    iconColor: 'var(--accent-purple)',
   },
   {
     id: '4',
@@ -53,8 +53,8 @@ const PROJECTS_DATA: ProjectOverviewItem[] = [
     status: 'In Progress',
     icon: <FileText size={15} />,
     iconBg: 'var(--accent-cyan-light)',
-    iconColor: 'var(--accent-cyan)'
-  }
+    iconColor: 'var(--accent-cyan)',
+  },
 ];
 
 export default function ProjectsOverviewCard() {

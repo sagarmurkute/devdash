@@ -2,21 +2,21 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { 
-  Zap, 
-  Home, 
-  FolderGit2, 
-  CheckSquare, 
-  Target, 
-  Timer, 
-  BookOpen, 
-  FileText, 
-  BarChart3, 
-  Calendar, 
-  Crosshair, 
-  Trophy, 
+import {
+  Zap,
+  Home,
+  FolderGit2,
+  CheckSquare,
+  Target,
+  Timer,
+  BookOpen,
+  FileText,
+  BarChart3,
+  Calendar,
+  Crosshair,
+  Trophy,
   Settings,
-  Gem
+  Gem,
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -36,7 +36,7 @@ const NAV_ITEMS = [
   { id: 'calendar', label: 'Calendar', icon: Calendar },
   { id: 'goals', label: 'Goals', icon: Crosshair },
   { id: 'achievements', label: 'Achievements', icon: Trophy },
-  { id: 'settings', label: 'Settings', icon: Settings }
+  { id: 'settings', label: 'Settings', icon: Settings },
 ];
 
 export default function Sidebar({ activeTab, onTabChange }: SidebarProps) {
@@ -80,9 +80,7 @@ export default function Sidebar({ activeTab, onTabChange }: SidebarProps) {
         <div className="xp-progress-bar">
           <div className="xp-progress-fill" style={{ width: '70%' }} />
         </div>
-        <div className="xp-card-sub">
-          XP 2,450 / 3,500
-        </div>
+        <div className="xp-card-sub">XP 2,450 / 3,500</div>
       </div>
     </aside>
   );

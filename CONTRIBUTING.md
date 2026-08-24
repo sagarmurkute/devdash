@@ -57,6 +57,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 To ensure DevSlash maintains its clean, high-performance aesthetic, please follow these guidelines:
 
 ### 1. Design System & Border Radius
+
 - Use predefined CSS variables in [`app/globals.css`](./app/globals.css):
   - `--radius-card`: `14px` for main cards and widgets.
   - `--radius-control`: `10px` for buttons, inputs, dropdowns, and interactive items.
@@ -65,11 +66,13 @@ To ensure DevSlash maintains its clean, high-performance aesthetic, please follo
 - Avoid arbitrary inline hardcoded radius values unless specific to a custom SVG graphic.
 
 ### 2. TypeScript & Next.js App Router
+
 - Write clean, strongly typed TypeScript (`.tsx` / `.ts`).
 - Mark interactive components with `'use client';` at the top.
 - Maintain client-side persistence safety (check `typeof window !== 'undefined'` before accessing `localStorage`).
 
 ### 3. Icons
+
 - Use **Lucide React** (`lucide-react`) for UI icons.
 - For GitHub icons, use the custom [`components/icons/GithubIcon.tsx`](./components/icons/GithubIcon.tsx).
 

@@ -44,12 +44,12 @@ export default function Sidebar({ activeTab, onTabChange }: SidebarProps) {
     <aside className="devstreak-sidebar">
       <div>
         {/* Logo & Brand Name */}
-        <div className="sidebar-brand">
+        <Link href="/" className="sidebar-brand" style={{ textDecoration: 'none' }}>
           <div className="sidebar-logo-icon">
             <Zap size={18} fill="currentColor" />
           </div>
           <span className="sidebar-brand-name">DevStreak</span>
-        </div>
+        </Link>
 
         {/* Navigation Links */}
         <nav className="sidebar-nav">

@@ -1,0 +1,15 @@
+{
+  "name": "@devstreak/desktop",
+  "version": "2.2.0",
+  "private": true,
+  "description": "DevStreak Desktop Electron Application",
+  "main": "src/main.js",
+  "scripts": {
+    "dev": "electron .",
+    "build": "electron-builder"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^30.0.0"
+  }
+}
